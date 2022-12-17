@@ -15,7 +15,7 @@ namespace ProjectGameDevelopment.Characters
         public Vector2 Speed;
 
 
-        public abstract void Draw(SpriteBatch spriteBatch);
+        public abstract void Draw(SpriteBatch spriteBatch, GameTime gameTime);
         public abstract void Update();
         
 
