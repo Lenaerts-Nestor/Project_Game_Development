@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ProjectGameDevelopment.AnimationSection;
+using ProjectGameDevelopment.InputControl;
+using ProjectGameDevelopment.MovementBehaviour;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,36 +12,27 @@ using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.Characters
 {
-    public class Player : Entity
+    public class Player : Entity, IMovable
     {
-        public float PlayerSpeed = 2;
         public Animation PlayerAnimation;
+        public Vector2 Positie { get; set; }
+        public float Snelheid { get; set; }
+
+        public KeyboardReader KeyboardReader;
         public Player (Texture2D sprite)
         {
             this.Spritesheet = sprite;
-            this.Speed = new Vector2(); //TODO: na testen van Speed, zet het tussen de () van deze constructor.
+            KeyboardReader = new KeyboardReader();
+            Positie = new Vector2();
             PlayerAnimation = new Animation(this.Spritesheet);
         }
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            PlayerAnimation.Draw(spriteBatch, this.Position, gameTime);
+            PlayerAnimation.Draw(spriteBatch, this.Positie, gameTime);
         }
-
         public override void Update()
         {
-            //TODO: beweeg Keyboard naar een eigen klasse =>
-            //TODO: onderzoek waarom left is plus en right is min
-            KeyboardState keyboard = Keyboard.GetState();
-            if (keyboard.IsKeyDown(Keys.Left))
-            {
-                Speed.X += PlayerSpeed;
-            }
-            else if (keyboard.IsKeyDown(Keys.Right))
-            {
-                Speed.X -= PlayerSpeed;
-            }
-
-            Position = Speed;
+            Positie = KeyboardReader.ReadInput(this);
 
         }
     }

@@ -10,8 +10,9 @@ namespace ProjectGameDevelopment.AnimationSection
 {
     public  class Animation
     {
+        //Local variabele
         Texture2D spritesheet;
-        //rows en frames van de sprite image
+        
         int Frames;             // aantal frames in een sheet [denk aan columen]
         int Rijen;               // aantal rijen in een sheet
         int Teller = 0;        
