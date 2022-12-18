@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ProjectGameDevelopment.Characters;
+using ProjectGameDevelopment.InputControl;
 
 namespace ProjectGameDevelopment
 {
@@ -30,7 +31,9 @@ namespace ProjectGameDevelopment
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             _playerSprite = Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Running (32 x 32)");
-            _player = new Player(_playerSprite);
+            _player = new Player(
+               Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Idle (32 x 32)")
+              , Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Running (32 x 32)"));
             // TODO: use this.Content to load your game content here
         }
 

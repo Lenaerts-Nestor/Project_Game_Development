@@ -12,49 +12,46 @@ using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.Characters
 {
-    public class Player : Entity, IMovable
+    public class Player : Entity
     {
         //Properties: [public fields] => UpperCamelCase || [Private fields] lowerCamelCase
-        public Animation PlayerAnimation;
-        public Vector2 Position { get; set; }
-        public Vector2 Velocity { get; set; }
-        public float Speed { get; set; }
-
-        /*
-        public float JumpVelocity { get; set; }
-        public bool IsJumping { get; set; }
-        public bool CanJump { get; set; }
-        */
-
-        public KeyboardReader KeyboardReader;
-        
+        public Animation[] PlayerAnimation;
+        public AnimationMovement AnimationMovement;
+        public CurrentMovementState CurrentMovementState;
+    
+        public KeyboardReader InputReader { get; set; }
 
         //Constructor
-        public Player (Texture2D sprite)
+        public Player (Texture2D spriteIdle, Texture2D spriteRunning)
         {
-            this.Spritesheet = sprite;
+            
+            this.Spritesheet = spriteIdle;
             this.Position = new Vector2();
             this.Velocity = Position;
-
-            //TODO: vind uit hoe je gravity doet
             this.Speed = -2f;
-            //this.JumpVelocity = -500f;
-            //this.CanJump = true;
-            //this.IsJumping = false;
+            this.InputReader = new KeyboardReader();
 
+            //Basic Animatie
+            PlayerAnimation = new Animation[2];                             //voor het moment 2
+            PlayerAnimation[0] = new Animation(spriteIdle);
+            PlayerAnimation[1] = new Animation(spriteRunning);
 
-            KeyboardReader = new KeyboardReader();
-            PlayerAnimation = new Animation(this.Spritesheet);
-            
+            //Player Movementstate =>
+            CurrentMovementState = CurrentMovementState.Idle;               //de sprite begint altijd in idle
+            AnimationMovement = new AnimationMovement(this.Spritesheet);
         }
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            PlayerAnimation.Draw(spriteBatch, this.Position, gameTime);
+            AnimationMovement.DrawCharacterMovement(this, PlayerAnimation, spriteBatch, this.Position, gameTime);
         }
+
+        
+        //TODO: onderzoek waarom game werkt zonder dit de override void Update =>
         public override void Update(GameTime gameTime)
         {
-            Position = KeyboardReader.ReadInput(this, gameTime);
-          
+            
         }
+
+        
     }
 }
