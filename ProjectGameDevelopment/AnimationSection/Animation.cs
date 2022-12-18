@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.AnimationSection
 {
-    public  class Animation
+    public  class Animation:IAnimation
     {
         //Local variabele
         Texture2D spritesheet;
@@ -22,14 +22,15 @@ namespace ProjectGameDevelopment.AnimationSection
             this.spritesheet = spritesheet;
             Frames = (int)(spritesheet.Width / width);
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, GameTime gameTime, float miliSecPerFrame = 150)
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 position, GameTime gameTime, SpriteEffects spriteDirection, float miliSecPerFrame = 300)
         {
             if (Teller < Frames)
             {
                 
                 var rect = new Rectangle(32 * Teller, Rijen, 32, 32);
                 var gewensteSize = new Rectangle((int)position.X, (int)position.Y, 64, 64);
-                spriteBatch.Draw(spritesheet, gewensteSize, rect, Color.White, 0f, new Vector2(position.X, position.Y), SpriteEffects.None, 0f);
+                spriteBatch.Draw(spritesheet, gewensteSize, rect, Color.White, 0f, new Vector2(position.X, position.Y), spriteDirection, 0f);
                 
                 
                 TslFrame += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
