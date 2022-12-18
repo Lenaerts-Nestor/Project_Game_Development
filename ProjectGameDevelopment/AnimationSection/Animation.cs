@@ -23,7 +23,7 @@ namespace ProjectGameDevelopment.AnimationSection
             Frames = (int)(spritesheet.Width / width);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, GameTime gameTime, SpriteEffects spriteDirection, float miliSecPerFrame = 300)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position, GameTime gameTime, SpriteEffects spriteDirection, float miliSecPerFrame = 150)
         {
             if (Teller < Frames)
             {
