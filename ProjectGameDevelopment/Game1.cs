@@ -40,7 +40,7 @@ namespace ProjectGameDevelopment
                 Exit();
 
             // TODO: Add your update logic here
-            _player.Update();
+            _player.Update(gameTime);
             base.Update(gameTime);
         }
 

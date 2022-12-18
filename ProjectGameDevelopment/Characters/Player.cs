@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.Characters
 {
-    public class Player : Entity, IMovable, IJump
+    public class Player : Entity, IMovable
     {
         //Properties
         public Animation PlayerAnimation;
@@ -20,9 +20,11 @@ namespace ProjectGameDevelopment.Characters
         public Vector2 Velocity { get; set; }
         public float Speed { get; set; }
 
-        public float Jumpelocity { get; set; }
+        /*
+        public float JumpVelocity { get; set; }
         public bool IsJumping { get; set; }
         public bool CanJump { get; set; }
+        */
 
         public KeyboardReader KeyboardReader;
         
@@ -33,8 +35,12 @@ namespace ProjectGameDevelopment.Characters
             this.Spritesheet = sprite;
             this.Position = new Vector2();
             this.Velocity = Vector2.Zero;
-            this.CanJump = true;
-            this.IsJumping = false;
+
+            //TODO: vind uit hoe je gravity doet
+            //this.Speed = 200f;
+            //this.JumpVelocity = -500f;
+            //this.CanJump = true;
+            //this.IsJumping = false;
 
 
             KeyboardReader = new KeyboardReader();
@@ -47,9 +53,9 @@ namespace ProjectGameDevelopment.Characters
         {
             PlayerAnimation.Draw(spriteBatch, this.Position, gameTime);
         }
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
-            Position = KeyboardReader.ReadInput(this);
+            Position += KeyboardReader.ReadInput(this, gameTime);
           
         }
     }

@@ -14,7 +14,7 @@ namespace ProjectGameDevelopment.Characters
         public Texture2D Spritesheet { get; set; }
 
         public abstract void Draw(SpriteBatch spriteBatch, GameTime gameTime);
-        public abstract void Update();
+        public abstract void Update(GameTime gameTime);
         
 
 
