@@ -11,27 +11,28 @@ namespace ProjectGameDevelopment.InputControl
 {
     public class KeyboardReader
     {
-        public Vector2 ReadInput(Player player)
+        public Vector2 ReadInput(Player player, GameTime gameTime)
         {
             KeyboardState KeyboardState = Keyboard.GetState();
-            Vector2 richting = player.Position;
+            Vector2 Velocity = player.Velocity;
             //TODO: uitvinden waarom + naar links gaat en - naar rechts gaat....., Logica is ineens weg.
             if (KeyboardState.IsKeyDown(Keys.Left))
             {
-                richting.X += 2;
+                Velocity.X += 2;
             }
             else if (KeyboardState.IsKeyDown(Keys.Right))
             {
-                richting.X -= 2;
+                Velocity.X -= 2;
             }
             else
             {
-                richting.X += 0;
+                Velocity.X += 0;
             }
 
-            player.Position = richting;
-            return player.Position;
+           
+            return Velocity;
 
-        }
+        } 
+
     }
 }
