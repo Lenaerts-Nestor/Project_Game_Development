@@ -14,7 +14,7 @@ namespace ProjectGameDevelopment.Characters
 {
     public class Player : Entity, IMovable
     {
-        //Properties
+        //Properties: [public fields] => UpperCamelCase || [Private fields] lowerCamelCase
         public Animation PlayerAnimation;
         public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
@@ -34,18 +34,16 @@ namespace ProjectGameDevelopment.Characters
         {
             this.Spritesheet = sprite;
             this.Position = new Vector2();
-            this.Velocity = Vector2.Zero;
+            this.Velocity = Position;
 
             //TODO: vind uit hoe je gravity doet
-            //this.Speed = 200f;
+            this.Speed = -2f;
             //this.JumpVelocity = -500f;
             //this.CanJump = true;
             //this.IsJumping = false;
 
 
             KeyboardReader = new KeyboardReader();
-            
-
             PlayerAnimation = new Animation(this.Spritesheet);
             
         }
@@ -55,7 +53,7 @@ namespace ProjectGameDevelopment.Characters
         }
         public override void Update(GameTime gameTime)
         {
-            Position += KeyboardReader.ReadInput(this, gameTime);
+            Position = KeyboardReader.ReadInput(this, gameTime);
           
         }
     }

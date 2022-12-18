@@ -15,14 +15,15 @@ namespace ProjectGameDevelopment.InputControl
         {
             KeyboardState KeyboardState = Keyboard.GetState();
             Vector2 Velocity = player.Velocity;
-            //TODO: uitvinden waarom + naar links gaat en - naar rechts gaat....., Logica is ineens weg.
-            if (KeyboardState.IsKeyDown(Keys.Left))
+            
+            
+            if (KeyboardState.IsKeyDown(Keys.A))
             {
-                Velocity.X += 2;
+                Velocity.X -= player.Speed;
             }
-            else if (KeyboardState.IsKeyDown(Keys.Right))
+            else if (KeyboardState.IsKeyDown(Keys.D))
             {
-                Velocity.X -= 2;
+                Velocity.X += player.Speed;
             }
             else
             {
@@ -30,7 +31,7 @@ namespace ProjectGameDevelopment.InputControl
             }
 
            
-            return Velocity;
+            return Velocity+player.Position;
 
         } 
 
