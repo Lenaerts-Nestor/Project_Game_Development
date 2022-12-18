@@ -9,7 +9,8 @@ namespace ProjectGameDevelopment.MovementBehaviour
 {
     public interface IMovable
     {
-        public Vector2 Positie { get; set; }
-        public float Snelheid { get; set; }
+        public Vector2 Position { get; set; }
+        public Vector2 Velocity { get; set; }
+        public float Speed { get; set; }
     }
 }

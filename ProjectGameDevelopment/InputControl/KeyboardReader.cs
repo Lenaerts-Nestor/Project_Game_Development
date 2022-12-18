@@ -13,14 +13,14 @@ namespace ProjectGameDevelopment.InputControl
     {
         public Vector2 ReadInput(Player player)
         {
-            KeyboardState statekey = Keyboard.GetState();
-            Vector2 richting = player.Positie;
+            KeyboardState KeyboardState = Keyboard.GetState();
+            Vector2 richting = player.Position;
             //TODO: uitvinden waarom + naar links gaat en - naar rechts gaat....., Logica is ineens weg.
-            if (statekey.IsKeyDown(Keys.Left))
+            if (KeyboardState.IsKeyDown(Keys.Left))
             {
                 richting.X += 2;
             }
-            else if (statekey.IsKeyDown(Keys.Right))
+            else if (KeyboardState.IsKeyDown(Keys.Right))
             {
                 richting.X -= 2;
             }
@@ -29,8 +29,8 @@ namespace ProjectGameDevelopment.InputControl
                 richting.X += 0;
             }
 
-            player.Positie = richting;
-            return player.Positie;
+            player.Position = richting;
+            return player.Position;
 
         }
     }
