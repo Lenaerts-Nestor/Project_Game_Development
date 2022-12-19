@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ProjectGameDevelopment.Characters;
 using ProjectGameDevelopment.InputControl;
+using TiledSharp;
 
 namespace ProjectGameDevelopment
 {
@@ -11,8 +12,20 @@ namespace ProjectGameDevelopment
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+      
+
+        #region Player
+
         private Player _player;
-        private Texture2D _playerSprite;
+        #endregion
+
+
+        #region Map
+        private TmxMap map;
+        private MapManager mapManager;
+        private Texture2D tileset;
+        #endregion
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -30,7 +43,7 @@ namespace ProjectGameDevelopment
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            _playerSprite = Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Running (32 x 32)");
+           
             _player = new Player(
                Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Idle (32 x 32)")
               , Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Running (32 x 32)"));
