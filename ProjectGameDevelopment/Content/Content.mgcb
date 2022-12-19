@@ -13,6 +13,57 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin ../../../Game Development/Cave Tileset/Cave Tileset/_Complete_static_BG_(288 x 208).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../../Game Development/Cave Tileset/Cave Tileset/_Complete_static_BG_(288 x 208).png;Cave Tileset/_Complete_static_BG_(288 x 208).png
+
+#begin ../../../Game Development/Cave Tileset/Cave Tileset/Brown_Tile_Terrain (16 x 16).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../../Game Development/Cave Tileset/Cave Tileset/Brown_Tile_Terrain (16 x 16).png;Cave Tileset/Brown_Tile_Terrain (16 x 16).png
+
+#begin ../../../Game Development/Cave Tileset/Cave Tileset/Gray_Tile_Terrain (16 x 16).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../../Game Development/Cave Tileset/Cave Tileset/Gray_Tile_Terrain (16 x 16).png;Cave Tileset/Gray_Tile_Terrain (16 x 16).png
+
+#begin ../../../Game Development/Cave Tileset/Cave Tileset/Scaffolding_and_BG_Parts (16 x 16).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../../Game Development/Cave Tileset/Cave Tileset/Scaffolding_and_BG_Parts (16 x 16).png;Cave Tileset/Scaffolding_and_BG_Parts (16 x 16).png
+
+#begin Level 1.tmx
+/copy:Level 1.tmx
+
 #begin Sprite Pack 4/1 - Agent_Mike_Bullet (16 x 16).png
 /importer:TextureImporter
 /processor:TextureProcessor
