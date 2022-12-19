@@ -22,7 +22,7 @@ namespace ProjectGameDevelopment
 
         #region Map
         private TmxMap map;
-        private MapManager mapManager;
+        private MapManager tilemapManager;
         private Texture2D tileset;
         #endregion
 
@@ -43,7 +43,21 @@ namespace ProjectGameDevelopment
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-           
+
+
+            //Map
+            //TODO: MAP GOED MAKEN ==> 
+            //TODO: MAP SIZE AANPASSEN of character AANPASSEN
+            //TODO: Tilemap 3grote blokjes gebruiken
+            //TODO: ervoor zorgen dat de manneke op zelfde nieuvau land
+            map = new TmxMap("Content\\Level1.tmx");
+            tileset = Content.Load<Texture2D>("Cave Tileset\\" + map.Tilesets[0].Name.ToString());
+            int tileWidth = map.Tilesets[0].TileWidth;
+            int tileHeight = map.Tilesets[0].TileHeight;
+            int tilesetTileWidth = tileset.Width / tileWidth;
+
+            tilemapManager = new MapManager(map, tileset, tilesetTileWidth, tileWidth, tileHeight);
+            // Player
             _player = new Player(
                Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Idle (32 x 32)")
               , Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Running (32 x 32)"));
@@ -66,7 +80,10 @@ namespace ProjectGameDevelopment
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
+            tilemapManager.draw(_spriteBatch);
             _player.Draw(_spriteBatch, gameTime);
+
+           
             _spriteBatch.End();
 
             base.Draw(gameTime);

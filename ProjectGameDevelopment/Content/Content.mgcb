@@ -61,8 +61,8 @@
 /processorParam:TextureFormat=Color
 /build:../../../Game Development/Cave Tileset/Cave Tileset/Scaffolding_and_BG_Parts (16 x 16).png;Cave Tileset/Scaffolding_and_BG_Parts (16 x 16).png
 
-#begin Level 1.tmx
-/copy:Level 1.tmx
+#begin Level1.tmx
+/copy:Level1.tmx
 
 #begin Sprite Pack 4/1 - Agent_Mike_Bullet (16 x 16).png
 /importer:TextureImporter
