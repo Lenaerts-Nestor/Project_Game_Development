@@ -51,7 +51,7 @@ namespace ProjectGameDevelopment
             //TODO: Tilemap 3grote blokjes gebruiken
             //TODO: ervoor zorgen dat de manneke op zelfde nieuvau land
             map = new TmxMap("Content\\Level1.tmx");
-            tileset = Content.Load<Texture2D>("Cave Tileset\\" + map.Tilesets[0].Name.ToString());
+            tileset = Content.Load<Texture2D>("Final\\Assets\\" + map.Tilesets[0].Name.ToString());
             int tileWidth = map.Tilesets[0].TileWidth;
             int tileHeight = map.Tilesets[0].TileHeight;
             int tilesetTileWidth = tileset.Width / tileWidth;
