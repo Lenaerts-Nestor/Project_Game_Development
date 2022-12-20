@@ -9,9 +9,9 @@ using TiledSharp;
 
 namespace ProjectGameDevelopment.Map
 {
-    public class MapLevel :Map
+    public class MapMaker :Map
     {
-        public MapLevel(TmxMap _map,Texture2D _tileset)
+        public MapMaker(TmxMap _map,Texture2D _tileset)
         {
             this.TileMap = _map;
             this.Tileset = _tileset;

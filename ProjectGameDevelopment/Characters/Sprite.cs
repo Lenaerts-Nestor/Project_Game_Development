@@ -10,15 +10,12 @@ using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.Characters
 {
-    public abstract class Entity:IMovable
+    public abstract class Sprite:IMovable
     {
         //Properties: [public fields] => UpperCamelCase || [Private fields] lowerCamelCase
         
         //public fields
         public Texture2D Spritesheet { get; set; }
-        
-
-        
 
         //IMovable properties
         public Vector2 Position { get; set; }

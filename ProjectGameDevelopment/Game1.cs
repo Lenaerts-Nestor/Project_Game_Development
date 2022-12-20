@@ -22,14 +22,17 @@ namespace ProjectGameDevelopment
 
 
         #region Map
+        // map zelf
         private TmxMap _mapLevel1;
         private TmxMap _mapLevel2;
 
+        //tekening van de map
         private Texture2D _tileset1;
         private Texture2D _tileset2;
 
-        private MapLevel _map1;
-        private MapLevel _map2;
+        //map fabricatie
+        private MapMaker _map1;
+        private MapMaker _map2;
 
         #endregion
 
@@ -60,8 +63,8 @@ namespace ProjectGameDevelopment
             _tileset2 = Content.Load<Texture2D>("Final\\Assets\\" + _mapLevel2.Tilesets[0].Name.ToString());
 
             //creer de Mappen
-            _map1 = new MapLevel(_mapLevel1, _tileset1);
-            _map2 = new MapLevel(_mapLevel2, _tileset2);
+            _map1 = new MapMaker(_mapLevel1, _tileset1);
+            _map2 = new MapMaker(_mapLevel2, _tileset2);
 
             // creer Player
             _player = new Player(
