@@ -12,23 +12,36 @@ using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.Characters
 {
-    public class Player : Sprite
+    public class Player : Entity,IGameObject,IJump
     {
         //Properties: [public fields] => UpperCamelCase || [Private fields] lowerCamelCase
         public Animation[] PlayerAnimation;
         public AnimationMovement AnimationMovement;
         public CurrentMovementState CurrentMovementState;
-    
+
+
+        
+
+        //ZwarteKracht 
+       
+        
         public KeyboardReader InputReader { get; set; }
+
+        public float JumpVelocity { get; set; }
+        public bool IsJumping { get; set; }
+        public bool IsFalling { get; set; } = true;
+
+
 
         //Constructor
         public Player (Texture2D spriteIdle, Texture2D spriteRunning)
         {
             
             this.Spritesheet = spriteIdle;
-            this.Position = new Vector2();
-            this.Velocity = Position;
-            this.Speed = -2f;
+            this.Position = new Vector2(30,60);
+            this.Velocity = new Vector2();
+            this.Speed = 2f;
+            this.JumpVelocity = 2;
             this.InputReader = new KeyboardReader();
 
             //Basic Animatie
@@ -39,16 +52,20 @@ namespace ProjectGameDevelopment.Characters
             //Player Movementstate =>
             CurrentMovementState = CurrentMovementState.Idle;               //de sprite begint altijd in idle
             AnimationMovement = new AnimationMovement(this.Spritesheet);
+
+
+            this.Hitbox= new Rectangle((int)this.Position.X,(int)this.Position.Y,32,32);
         }
-        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            AnimationMovement.DrawCharacterMovement(this, PlayerAnimation, spriteBatch, this.Position, gameTime);
+            AnimationMovement.DrawCharacterMovement(this, PlayerAnimation, spriteBatch, gameTime);
         }
 
         
-        //TODO: onderzoek waarom game werkt zonder dit de override void Update =>
-        public override void Update(GameTime gameTime)
+    
+        public void Update(GameTime gameTime)
         {
+             InputReader.ReadInput(this, gameTime);
             
         }
 
