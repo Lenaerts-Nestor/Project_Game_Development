@@ -8,14 +8,15 @@ using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.AnimationSection
 {
-    public  class Animation:IAnimation
+    public class Animation : IAnimation
     {
         //Local variabele
         Texture2D spritesheet;
-        
-        int Frames;             // aantal frames in een sheet [denk aan columen]
-        int Rijen;               // aantal rijen in een sheet
-        int Teller = 0;        
+
+        public int Frames { get; set; }
+        public int Row { get; set; }
+        public int Teller { get; set; } = 0;
+
         float TslFrame = 0;     //tijds sinds laatste Frame
         public Animation(Texture2D spritesheet, float width = 32, float height = 32)
         {
@@ -28,7 +29,7 @@ namespace ProjectGameDevelopment.AnimationSection
             if (Teller < Frames)
             {
                 
-                var rect = new Rectangle(32 * Teller, Rijen, 32, 32);
+                var rect = new Rectangle(32 * Teller, Row, 32, 32);
                 var gewensteSize = new Rectangle((int)position.X, (int)position.Y, 45, 45);
                 spriteBatch.Draw(spritesheet, gewensteSize, rect, Color.White, 0f, new Vector2(position.X, position.Y), spriteDirection, 0f);
                 //spriteBatch.Draw(spritesheet, position,rect, Color.White);
