@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using ProjectGameDevelopment.Characters;
 using ProjectGameDevelopment.InputControl;
 using ProjectGameDevelopment.Map;
+using System.Collections.Generic;
 using TiledSharp;
 
 namespace ProjectGameDevelopment
@@ -14,6 +15,7 @@ namespace ProjectGameDevelopment
         private SpriteBatch _spriteBatch;
 
       
+
 
         #region Player
 
@@ -33,6 +35,12 @@ namespace ProjectGameDevelopment
         //map fabricatie
         private MapMaker _map1;
         private MapMaker _map2;
+
+        //TODO : DESIGN PATTERN DOEN 
+        private List<Rectangle> _collisionTiles;
+        private Rectangle startRect;
+        private Rectangle endRect;
+
 
         #endregion
 
@@ -66,6 +74,17 @@ namespace ProjectGameDevelopment
             _map1 = new MapMaker(_mapLevel1, _tileset1);
             _map2 = new MapMaker(_mapLevel2, _tileset2);
 
+
+            _collisionTiles = new List<Rectangle>();
+            foreach (var item in _mapLevel1.ObjectGroups["Collisions"].Objects)
+            {
+                if (item.Name == "")
+                {
+                    _collisionTiles.Add(new Rectangle((int)item.X, (int)item.Y, 32, 32));
+                }
+                
+            }
+
             // creer Player
             _player = new Player(
                Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Idle (32 x 32)")
@@ -79,7 +98,22 @@ namespace ProjectGameDevelopment
                 Exit();
 
             //Update de Character
+
+
+            
             _player.Update(gameTime);
+            //controleren elke frame bij elke rectangle 
+            foreach (var item in _collisionTiles)
+            {
+                if (item.Intersects(_player.Hitbox))
+                {
+                   
+                    _player.IsFalling = false;
+                }
+            }
+
+            
+
             base.Update(gameTime);
         }
 
@@ -90,7 +124,7 @@ namespace ProjectGameDevelopment
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
             //teken de map
-            _map2.Draw(_spriteBatch);
+            _map1.Draw(_spriteBatch);
             //teken de Character
             _player.Draw(_spriteBatch, gameTime);
 

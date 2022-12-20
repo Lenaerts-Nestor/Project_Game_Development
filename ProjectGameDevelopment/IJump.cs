@@ -10,6 +10,6 @@ namespace ProjectGameDevelopment
     {
         float JumpVelocity { get; set; }
         bool IsJumping { get; set; }
-        bool CanJump { get; set; } 
+        bool IsFalling { get; set; }
     }
 }
