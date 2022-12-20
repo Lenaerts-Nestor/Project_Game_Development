@@ -13,17 +13,15 @@ namespace ProjectGameDevelopment.AnimationSection
     public class AnimationMovement : Animation
     {
         public AnimationMovement(Texture2D spritesheet, float width = 32, float height = 32) : base(spritesheet, width, height) { }
-        public void DrawCharacterMovement(Player character, Animation[] entity, SpriteBatch spriteBatch, Vector2 Position, GameTime gameTime)
+        public void DrawCharacterMovement(Player character, Animation[] entity, SpriteBatch spriteBatch, GameTime gameTime)
         {
             switch (character.currentMovementState)
             {
                 case CurrentMovementState.Idle:
-                    character.InputReader.ReadInput(character, gameTime);
-                    entity[0].Draw(spriteBatch, Position, gameTime, character.SpriteDirection);
+                    entity[0].Draw(spriteBatch, character.Position, gameTime, character.SpriteMoveDirection);
                     break;
                 case CurrentMovementState.Run:
-                    character.InputReader.ReadInput(character, gameTime);
-                    entity[1].Draw(spriteBatch, Position, gameTime,character.SpriteDirection);
+                    entity[1].Draw(spriteBatch, character.Position, gameTime,character.SpriteMoveDirection);
                     break;
                 default:
                     break;
