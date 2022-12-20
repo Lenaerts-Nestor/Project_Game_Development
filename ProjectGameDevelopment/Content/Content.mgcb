@@ -61,6 +61,9 @@
 /processorParam:TextureFormat=Color
 /build:../../../Game Development/Cave Tileset/Cave Tileset/Scaffolding_and_BG_Parts (16 x 16).png;Cave Tileset/Scaffolding_and_BG_Parts (16 x 16).png
 
+#begin Assets.png
+/copy:Assets.png
+
 #begin Final/Assets/Assets.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1122,4 +1125,52 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprite Pack 5/9 - Wispy Fire/Weak_Flicker_(32 x 32).png
+
+#begin TileMap2/Assets.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:TileMap2/Assets.png
+
+#begin TileMap2/Background_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:TileMap2/Background_1.png
+
+#begin TileMap2/Background_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:TileMap2/Background_2.png
+
+#begin TileMap2/Character_Sprite_Sheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:TileMap2/Character_Sprite_Sheet.png
 
