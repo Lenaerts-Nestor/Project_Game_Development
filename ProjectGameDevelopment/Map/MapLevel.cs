@@ -9,33 +9,26 @@ using TiledSharp;
 
 namespace ProjectGameDevelopment.Map
 {
-    public class MapManager
+    public class MapLevel :Map
     {
-        //properties:
-
-        public TmxMap Map;
-        public Texture2D Tileset;
-        public int TilesetTilesWide;
-        public int TileWidth;
-        public int TileHeight;
-
-
-        public MapManager(TmxMap _map, Texture2D _tileset, int _tilesetWide, int _tileWidth, int _tileHeight)
+        public MapLevel(TmxMap _map,Texture2D _tileset)
         {
+            this.TileMap = _map;
+            this.Tileset = _tileset;
 
-            Map = _map;
-            Tileset = _tileset;
-            TilesetTilesWide = _tilesetWide;
-            TileWidth = _tileWidth;
-            TileHeight = _tileHeight;
+            //deze waarden gaan altijd zo zijn =>
+            this.TileWidth = _map.Tilesets[0].TileWidth;
+            this.TilesetTilesWide = _tileset.Width / TileWidth;
+            this.TileHeight = _map.Tilesets[0].TileHeight;
         }
-        public void draw(SpriteBatch spriteBatch)
+
+        public void Draw(SpriteBatch spriteBatch)
         {
-            for (int i = 0; i < Map.TileLayers.Count; i++)
+            for (int i = 0; i < TileMap.TileLayers.Count; i++)
             {
-                for (int j = 0; j < Map.TileLayers[i].Tiles.Count; j++)
+                for (int j = 0; j < TileMap.TileLayers[i].Tiles.Count; j++)
                 {
-                    int gid = Map.TileLayers[i].Tiles[j].Gid;
+                    int gid = TileMap.TileLayers[i].Tiles[j].Gid;
                     if (gid == 0)
                     {
                         //do niks
@@ -45,13 +38,14 @@ namespace ProjectGameDevelopment.Map
                         int tileFrame = gid - 1;
                         int column = tileFrame % TilesetTilesWide;
                         int row = (int)Math.Floor(tileFrame / (double)TilesetTilesWide);
-                        float x = j % Map.Width * Map.TileWidth;
-                        float y = (float)Math.Floor(j / (double)Map.Width) * Map.TileHeight;
+                        float x = j % TileMap.Width * TileMap.TileWidth;
+                        float y = (float)Math.Floor(j / (double)TileMap.Width) * TileMap.TileHeight;
                         Rectangle TilesetRec = new Rectangle(TileWidth * column, TileHeight * row, TileWidth, TileHeight);
                         spriteBatch.Draw(Tileset, new Rectangle((int)x, (int)y, TileWidth, TileHeight), TilesetRec, Color.White);
                     }
                 }
             }
         }
+
     }
 }
