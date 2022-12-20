@@ -76,6 +76,9 @@
 #begin Level1.tmx
 /copy:Level1.tmx
 
+#begin Level2.tmx
+/copy:Level2.tmx
+
 #begin Sprite Pack 4/1 - Agent_Mike_Bullet (16 x 16).png
 /importer:TextureImporter
 /processor:TextureProcessor

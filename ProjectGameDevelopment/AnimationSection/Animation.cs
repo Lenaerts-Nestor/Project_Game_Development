@@ -29,9 +29,9 @@ namespace ProjectGameDevelopment.AnimationSection
             {
                 
                 var rect = new Rectangle(32 * Teller, Rijen, 32, 32);
-                var gewensteSize = new Rectangle((int)position.X, (int)position.Y, 64, 64);
+                var gewensteSize = new Rectangle((int)position.X, (int)position.Y, 45, 45);
                 spriteBatch.Draw(spritesheet, gewensteSize, rect, Color.White, 0f, new Vector2(position.X, position.Y), spriteDirection, 0f);
-                
+                //spriteBatch.Draw(spritesheet, position,rect, Color.White);
                 
                 TslFrame += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 

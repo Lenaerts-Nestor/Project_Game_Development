@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ProjectGameDevelopment.Characters;
 using ProjectGameDevelopment.InputControl;
+using ProjectGameDevelopment.Map;
 using TiledSharp;
 
 namespace ProjectGameDevelopment

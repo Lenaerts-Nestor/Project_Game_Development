@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TiledSharp;
 
-namespace ProjectGameDevelopment
+namespace ProjectGameDevelopment.Map
 {
     public class MapManager
     {
@@ -20,14 +20,14 @@ namespace ProjectGameDevelopment
         public int TileHeight;
 
 
-        public MapManager( TmxMap _map, Texture2D _tileset, int _tilesetWide, int _tileWidth, int _tileHeight)
+        public MapManager(TmxMap _map, Texture2D _tileset, int _tilesetWide, int _tileWidth, int _tileHeight)
         {
-           
-            this.Map = _map;
-            this.Tileset = _tileset;
-            this.TilesetTilesWide = _tilesetWide;
-            this.TileWidth = _tileWidth;
-            this.TileHeight = _tileHeight;
+
+            Map = _map;
+            Tileset = _tileset;
+            TilesetTilesWide = _tilesetWide;
+            TileWidth = _tileWidth;
+            TileHeight = _tileHeight;
         }
         public void draw(SpriteBatch spriteBatch)
         {
@@ -44,10 +44,10 @@ namespace ProjectGameDevelopment
                     {
                         int tileFrame = gid - 1;
                         int column = tileFrame % TilesetTilesWide;
-                        int row = (int)Math.Floor((double)tileFrame / (double)TilesetTilesWide);
-                        float x = (j % Map.Width) * Map.TileWidth;
-                        float y = (float)Math.Floor(j/(double)Map.Width)*Map.TileHeight;
-                        Rectangle TilesetRec = new Rectangle((TileWidth) * column, (TileHeight) * row, TileWidth, TileHeight);
+                        int row = (int)Math.Floor(tileFrame / (double)TilesetTilesWide);
+                        float x = j % Map.Width * Map.TileWidth;
+                        float y = (float)Math.Floor(j / (double)Map.Width) * Map.TileHeight;
+                        Rectangle TilesetRec = new Rectangle(TileWidth * column, TileHeight * row, TileWidth, TileHeight);
                         spriteBatch.Draw(Tileset, new Rectangle((int)x, (int)y, TileWidth, TileHeight), TilesetRec, Color.White);
                     }
                 }
