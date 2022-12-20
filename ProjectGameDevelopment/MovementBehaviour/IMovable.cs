@@ -16,7 +16,8 @@ namespace ProjectGameDevelopment.MovementBehaviour
         public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
         public float Speed { get; set; }
-        public SpriteEffects SpriteDirection { get; set; }
+        public SpriteEffects SpriteMoveDirection { get; set; }
         public CurrentMovementState currentMovementState { get; set; }
+
     }
 }
