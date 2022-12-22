@@ -80,7 +80,7 @@ namespace ProjectGameDevelopment
             {
                 if (item.Name == "")
                 {
-                    _collisionTiles.Add(new Rectangle((int)item.X, (int)item.Y, 32, 32));
+                    _collisionTiles.Add(new Rectangle((int)item.X, (int)item.Y, (int)item.Width-10, (int)item.Height));
                 }
                 
             }
@@ -97,22 +97,28 @@ namespace ProjectGameDevelopment
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            //Update de Character
-
-
+            
+            
+            var initpos = _player.Position;
             
             _player.Update(gameTime);
-            //controleren elke frame bij elke rectangle 
-            foreach (var item in _collisionTiles)
+            #region GRAVITY CONTROLLER
+            foreach (var rect in _collisionTiles)
             {
-                if (item.Intersects(_player.Hitbox))
+                _player.IsFalling = true;
+                if (rect.Intersects(_player.Hitbox))
                 {
-                   
                     _player.IsFalling = false;
+                    _player.Position.X = initpos.X;
+                    _player.Position.Y = initpos.Y;
+
+                    break;
                 }
             }
+            #endregion
 
-            
+
+
 
             base.Update(gameTime);
         }

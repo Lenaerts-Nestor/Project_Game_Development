@@ -13,8 +13,6 @@ namespace ProjectGameDevelopment.MovementBehaviour
     public enum CurrentMovementState { Idle, Run }
     public interface IMovable
     {
-        public Vector2 Position { get; set; }
-        public Vector2 Velocity { get; set; }
         public float Speed { get; set; }
         public SpriteEffects SpriteMoveDirection { get; set; }
         public CurrentMovementState currentMovementState { get; set; }

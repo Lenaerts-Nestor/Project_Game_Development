@@ -13,11 +13,18 @@ namespace ProjectGameDevelopment.Characters
     public abstract class Entity : IMovable
     {
         public Texture2D Spritesheet { get; set; }
-        public Vector2 Position { get; set; }
-        public Vector2 Velocity { get; set; }
-        public float Speed { get; set; }
         public float FallSpeed { get; set; }
+
+        //Entity Position
+        public Vector2 Position;
+        public Vector2 Velocity;
+
+        //Gravity
         public Rectangle Hitbox;
+        public Rectangle FallRect;
+
+        //IMovable
+        public float Speed { get; set; }
         public SpriteEffects SpriteMoveDirection { get; set; }
         public CurrentMovementState currentMovementState { get; set; }
     }

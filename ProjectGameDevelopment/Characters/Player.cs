@@ -27,9 +27,10 @@ namespace ProjectGameDevelopment.Characters
         
         public KeyboardReader InputReader { get; set; }
 
-        public float JumpVelocity { get; set; }
+        public float FallVelocity { get; set; }
         public bool IsJumping { get; set; }
         public bool IsFalling { get; set; } = true;
+
 
 
 
@@ -41,7 +42,7 @@ namespace ProjectGameDevelopment.Characters
             this.Position = new Vector2(30,60);
             this.Velocity = new Vector2();
             this.Speed = 2f;
-            this.JumpVelocity = 2;
+            this.FallVelocity = 2;
             this.InputReader = new KeyboardReader();
 
             //Basic Animatie
@@ -54,7 +55,8 @@ namespace ProjectGameDevelopment.Characters
             AnimationMovement = new AnimationMovement(this.Spritesheet);
 
 
-            this.Hitbox= new Rectangle((int)this.Position.X,(int)this.Position.Y,32,32);
+            this.Hitbox= new Rectangle((int)this.Position.X, (int)this.Position.Y,20,30);
+            //this.FallRect = new Rectangle((int)this.Position.X+3, (int)this.Position.Y+32, 25, 1);
         }
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {

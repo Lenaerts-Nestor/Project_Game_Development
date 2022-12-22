@@ -16,11 +16,10 @@ namespace ProjectGameDevelopment.InputControl
         {
             KeyboardState KeyboardState = Keyboard.GetState();
             Vector2 Velocity = player.Velocity;
-
+            player.currentMovementState = MovementBehaviour.CurrentMovementState.Idle;
             if (player.IsFalling)
             {
-
-                Velocity.Y += player.JumpVelocity;
+                Velocity.Y += player.FallVelocity;
             }
 
             if (KeyboardState.IsKeyDown(Keys.A))
@@ -37,11 +36,7 @@ namespace ProjectGameDevelopment.InputControl
                 player.SpriteMoveDirection = SpriteEffects.None;
 
             }
-            else
-            {
-                player.currentMovementState = MovementBehaviour.CurrentMovementState.Idle;
-                Velocity.X += 0;
-            }
+            
 
            // player.Position = Velocity + player.Position;
 
@@ -50,6 +45,9 @@ namespace ProjectGameDevelopment.InputControl
 
             player.Hitbox.X = (int)player.Position.X;
             player.Hitbox.Y = (int)player.Position.Y;
+
+            player.FallRect.X = (int)player.Position.X;
+            player.FallRect.Y = (int)player.Position.Y+32;
         } 
 
     }
