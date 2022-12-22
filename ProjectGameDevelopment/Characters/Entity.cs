@@ -21,7 +21,7 @@ namespace ProjectGameDevelopment.Characters
 
         //Gravity
         public Rectangle Hitbox;
-        public Rectangle FallRect;
+       
 
         //IMovable
         public float Speed { get; set; }

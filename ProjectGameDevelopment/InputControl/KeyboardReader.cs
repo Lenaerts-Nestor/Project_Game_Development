@@ -22,6 +22,8 @@ namespace ProjectGameDevelopment.InputControl
                 Velocity.Y += player.FallVelocity;
             }
 
+            
+
             if (KeyboardState.IsKeyDown(Keys.A))
             {
                 Velocity.X -= player.Speed;
@@ -46,8 +48,6 @@ namespace ProjectGameDevelopment.InputControl
             player.Hitbox.X = (int)player.Position.X;
             player.Hitbox.Y = (int)player.Position.Y;
 
-            player.FallRect.X = (int)player.Position.X;
-            player.FallRect.Y = (int)player.Position.Y+32;
         } 
 
     }

@@ -38,8 +38,7 @@ namespace ProjectGameDevelopment
 
         //TODO : DESIGN PATTERN DOEN 
         private List<Rectangle> _collisionTiles;
-        private Rectangle startRect;
-        private Rectangle endRect;
+       
 
 
         #endregion
@@ -53,7 +52,7 @@ namespace ProjectGameDevelopment
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            
             base.Initialize();
         }
 
@@ -103,6 +102,7 @@ namespace ProjectGameDevelopment
             
             _player.Update(gameTime);
             #region GRAVITY CONTROLLER
+            //TODO : DESIGN PATTERN DOEN 
             foreach (var rect in _collisionTiles)
             {
                 _player.IsFalling = true;

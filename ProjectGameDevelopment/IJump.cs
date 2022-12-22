@@ -8,7 +8,9 @@ namespace ProjectGameDevelopment
 {
     public interface IJump
     {
+        float startY { get; set; }
         float FallVelocity { get; set; }
+        float JumpSpeed { get; set; }
         bool IsJumping { get; set; }
         bool IsFalling { get; set; }
     }

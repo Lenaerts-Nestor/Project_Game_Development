@@ -17,19 +17,17 @@ namespace ProjectGameDevelopment.Characters
         //Properties: [public fields] => UpperCamelCase || [Private fields] lowerCamelCase
         public Animation[] PlayerAnimation;
         public AnimationMovement AnimationMovement;
-        public CurrentMovementState CurrentMovementState;
-
-
-        
-
-        //ZwarteKracht 
-       
+        public CurrentMovementState CurrentMovementState;       
         
         public KeyboardReader InputReader { get; set; }
 
-        public float FallVelocity { get; set; }
-        public bool IsJumping { get; set; }
+        //IJUMP
+        public float FallVelocity { get; set; } = 2;
+        public float JumpSpeed { get; set; } = 2;
+        public bool IsJumping { get; set; } = false;
         public bool IsFalling { get; set; } = true;
+
+        public float startY { get; set; }
 
 
 
@@ -42,7 +40,7 @@ namespace ProjectGameDevelopment.Characters
             this.Position = new Vector2(30,60);
             this.Velocity = new Vector2();
             this.Speed = 2f;
-            this.FallVelocity = 2;
+            this.startY = this.Position.Y;
             this.InputReader = new KeyboardReader();
 
             //Basic Animatie
@@ -56,7 +54,7 @@ namespace ProjectGameDevelopment.Characters
 
 
             this.Hitbox= new Rectangle((int)this.Position.X, (int)this.Position.Y,20,30);
-            //this.FallRect = new Rectangle((int)this.Position.X+3, (int)this.Position.Y+32, 25, 1);
+          
         }
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
