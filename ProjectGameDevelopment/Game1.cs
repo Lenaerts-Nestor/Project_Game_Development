@@ -105,6 +105,7 @@ namespace ProjectGameDevelopment
             //TODO : DESIGN PATTERN DOEN 
             foreach (var rect in _collisionTiles)
             {
+                if(!_player.IsJumping)
                 _player.IsFalling = true;
                 if (rect.Intersects(_player.Hitbox))
                 {

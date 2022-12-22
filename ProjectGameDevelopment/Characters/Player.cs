@@ -23,7 +23,7 @@ namespace ProjectGameDevelopment.Characters
 
         //IJUMP
         public float FallVelocity { get; set; } = 2;
-        public float JumpSpeed { get; set; } = 2;
+        public float JumpSpeed { get; set; } = 0;
         public bool IsJumping { get; set; } = false;
         public bool IsFalling { get; set; } = true;
 
@@ -40,7 +40,7 @@ namespace ProjectGameDevelopment.Characters
             this.Position = new Vector2(30,60);
             this.Velocity = new Vector2();
             this.Speed = 2f;
-            this.startY = this.Position.Y;
+            this.startY = this.Velocity.Y;
             this.InputReader = new KeyboardReader();
 
             //Basic Animatie
