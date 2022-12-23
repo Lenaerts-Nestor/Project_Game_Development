@@ -17,8 +17,8 @@ namespace ProjectGameDevelopment.Characters
         //Properties: [public fields] => UpperCamelCase || [Private fields] lowerCamelCase
         public Animation[] PlayerAnimation;
         public AnimationMovement AnimationMovement;
-        public CurrentMovementState CurrentMovementState;       
-        
+        public CurrentMovementState CurrentMovementState;
+        public Rectangle playerFallRect;
         public KeyboardReader InputReader { get; set; }
 
         //IJUMP
@@ -26,35 +26,37 @@ namespace ProjectGameDevelopment.Characters
         public float JumpSpeed { get; set; } = 0;
         public bool IsJumping { get; set; } = false;
         public bool IsFalling { get; set; } = true;
-
-        public float startY { get; set; }
+        public float StartY { get; set; }
+        public bool isTouchingGround = false;
 
 
 
 
         //Constructor
-        public Player (Texture2D spriteIdle, Texture2D spriteRunning)
+        public Player (Vector2 position,Texture2D spriteIdle, Texture2D spriteRunning, Texture2D Jumping, Texture2D Falling)
         {
             
             this.Spritesheet = spriteIdle;
-            this.Position = new Vector2(30,60);
+            this.Position = position;
             this.Velocity = new Vector2();
             this.Speed = 2f;
-            this.startY = this.Velocity.Y;
+            this.StartY = this.Velocity.Y;
             this.InputReader = new KeyboardReader();
+            
 
             //Basic Animatie
-            PlayerAnimation = new Animation[2];                             //voor het moment 2
+            PlayerAnimation = new Animation[4];                             //voor het moment 2
             PlayerAnimation[0] = new Animation(spriteIdle);
             PlayerAnimation[1] = new Animation(spriteRunning);
-
+            PlayerAnimation[2] = new Animation(Jumping);
+            PlayerAnimation[3] = new Animation(Falling);
             //Player Movementstate =>
-            CurrentMovementState = CurrentMovementState.Idle;               //de sprite begint altijd in idle
+            CurrentMovementState = CurrentMovementState.Falling;               //de sprite begint altijd in idle
             AnimationMovement = new AnimationMovement(this.Spritesheet);
 
 
-            this.Hitbox= new Rectangle((int)this.Position.X, (int)this.Position.Y,20,30);
-          
+            this.Hitbox= new Rectangle((int)this.Position.X, (int)this.Position.Y,25,32);
+           
         }
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
@@ -65,8 +67,10 @@ namespace ProjectGameDevelopment.Characters
     
         public void Update(GameTime gameTime)
         {
-             InputReader.ReadInput(this, gameTime);
             
+            InputReader.ReadInput(this, gameTime);
+            
+
         }
 
         

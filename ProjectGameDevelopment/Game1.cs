@@ -38,7 +38,7 @@ namespace ProjectGameDevelopment
 
         //TODO : DESIGN PATTERN DOEN 
         private List<Rectangle> _collisionTiles;
-       
+        private Rectangle _startZone;
 
 
         #endregion
@@ -81,13 +81,21 @@ namespace ProjectGameDevelopment
                 {
                     _collisionTiles.Add(new Rectangle((int)item.X, (int)item.Y, (int)item.Width-10, (int)item.Height));
                 }
+                //de player zal verschijnen op het gewenste plaats
+                else if (item.Name == "Start")
+                {
+                    _startZone = new Rectangle((int)item.X, (int)item.Y, (int)item.Width , (int)item.Height);
+                }
                 
             }
 
             // creer Player
-            _player = new Player(
-               Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Idle (32 x 32)")
-              , Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Running (32 x 32)"));
+            _player = new Player(new Vector2(_startZone.X, _startZone.Y),
+               Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Idle_(32 x 32)"),
+               Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Running_(32 x 32)"),
+               Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Ducking_(32 x 32)"),
+               Content.Load<Texture2D>("Sprite Pack 5\\3 - Big Red\\Landed_(32 x 32)")
+               );
             
         }
 
@@ -96,31 +104,31 @@ namespace ProjectGameDevelopment
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            
-            
+
+
+
             var initpos = _player.Position;
-            
             _player.Update(gameTime);
             #region GRAVITY CONTROLLER
             //TODO : DESIGN PATTERN DOEN 
             foreach (var rect in _collisionTiles)
             {
-                if(!_player.IsJumping)
-                _player.IsFalling = true;
+                if (!_player.IsJumping)
+                    _player.IsFalling = true;
+                    
                 if (rect.Intersects(_player.Hitbox))
                 {
-                    _player.IsFalling = false;
                     _player.Position.X = initpos.X;
                     _player.Position.Y = initpos.Y;
-
+                    _player.IsFalling = false;
+                   
+                   
                     break;
                 }
+                
+               
             }
             #endregion
-
-
-
-
             base.Update(gameTime);
         }
 

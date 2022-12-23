@@ -11,7 +11,7 @@ namespace ProjectGameDevelopment.AnimationSection
     public class Animation : IAnimation
     {
         //Local variabele
-        Texture2D spritesheet;
+        Texture2D _texture;
 
         public int Frames { get; set; }
         public int Row { get; set; }
@@ -20,7 +20,7 @@ namespace ProjectGameDevelopment.AnimationSection
         float TslFrame = 0;     //tijds sinds laatste Frame
         public Animation(Texture2D spritesheet, float width = 32, float height = 32)
         {
-            this.spritesheet = spritesheet;
+            this._texture = spritesheet;
             Frames = (int)(spritesheet.Width / width);
         }
 
@@ -29,10 +29,13 @@ namespace ProjectGameDevelopment.AnimationSection
             if (Teller < Frames)
             {
                 
-                var rect = new Rectangle(32 * Teller, Row, 32, 32);
-                //var gewensteSize = new Rectangle((int)position.X, (int)position.Y, 32, 32);
-                //spriteBatch.Draw(spritesheet, gewensteSize, rect, Color.White, 0f, new Vector2(position.X, position.Y), spriteDirection, 0f);
-                spriteBatch.Draw(spritesheet, position,rect, Color.White);
+                var rect = new Rectangle(32 * Teller, 0, 32, 32);
+                //var rectSize = new Rectangle(32 * Teller, Row, 45, 45);
+                var gewensteSize = new Rectangle((int)position.X, (int)position.Y, 32, 32);
+                spriteBatch.Draw(_texture, position, rect, Color.White, 0f, new Vector2(), 1, spriteDirection, 0f);
+
+                //spriteBatch.Draw(spritesheet, rectSize, rect, Color.White, 0f, position, spriteDirection, 0f);
+                //spriteBatch.Draw(spritesheet, position,rect, Color.White);
                 
                 TslFrame += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 

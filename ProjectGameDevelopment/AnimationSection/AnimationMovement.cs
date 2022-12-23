@@ -18,10 +18,17 @@ namespace ProjectGameDevelopment.AnimationSection
             switch (character.currentMovementState)
             {
                 case CurrentMovementState.Idle:
-                    entity[0].Draw(spriteBatch, character.Position, gameTime, character.SpriteMoveDirection);
+                    entity[0].Draw(spriteBatch, character.Position, gameTime,character.SpriteMoveDirection);
                     break;
-                case CurrentMovementState.Run:
+                case CurrentMovementState.Running:
                     entity[1].Draw(spriteBatch, character.Position, gameTime,character.SpriteMoveDirection);
+                 
+                    break;
+                case CurrentMovementState.Jumping:
+                    entity[2].Draw(spriteBatch, character.Position, gameTime,character.SpriteMoveDirection);
+                    break;
+                case CurrentMovementState.Falling:
+                    entity[3].Draw(spriteBatch, character.Position, gameTime, character.SpriteMoveDirection);
                     break;
                 default:
                     break;

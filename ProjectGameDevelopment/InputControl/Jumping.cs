@@ -10,30 +10,37 @@ namespace ProjectGameDevelopment.InputControl
 {
     public class Jumping
     {
-        public void Jumps(Player charr, KeyboardState keyboardstate)
+        public void Jumps(Player player, KeyboardState keyboardstate)
         {
-            if (charr.IsJumping)
+           
+
+            if (player.IsJumping)
             {
-                charr.Velocity.Y += charr.JumpSpeed;
-                charr.JumpSpeed += 6;
-
-                if (charr.Velocity.Y >= charr.startY)
+                player.Velocity.Y += player.JumpSpeed;
+                player.JumpSpeed += 7;
+                //de jump gaat te snel => zoek een manier om de jump trager te doen omhoog, om te tonnen de animatie
+                player.currentMovementState = MovementBehaviour.CurrentMovementState.Jumping;
+                if (player.Velocity.Y >= player.StartY)
+                    //als het verder is dan de grond
                 {
-                    charr.Velocity.Y = charr.startY;
-                    charr.IsJumping = false;
+                    player.Velocity.Y = player.StartY;
+                    player.IsJumping = false; 
                 }
-
+                
+                
             }
             else
             {
-                if (keyboardstate.IsKeyDown(Keys.Space) && !charr.IsFalling)
+                if (keyboardstate.IsKeyDown(Keys.Space) && !player.IsFalling)
                 {
-                    charr.IsJumping = true;
-                    charr.IsFalling = false;
-
-                    charr.JumpSpeed = -12;
+                    player.IsJumping = true;
+                    player.IsFalling = false;
+                    player.JumpSpeed = -14;
+                    
                 }
             }
+            
+
 
 
         }

@@ -8,7 +8,7 @@ namespace ProjectGameDevelopment.InputControl
 {
     public interface IJump
     {
-        float startY { get; set; }
+        float StartY { get; set; }
         float FallVelocity { get; set; }
         float JumpSpeed { get; set; }
         bool IsJumping { get; set; }
