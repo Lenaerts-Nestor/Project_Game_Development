@@ -5,6 +5,7 @@ using ProjectGameDevelopment.Characters;
 using ProjectGameDevelopment.InputControl;
 using ProjectGameDevelopment.Map;
 using System.Collections.Generic;
+using System.Linq;
 using TiledSharp;
 
 namespace ProjectGameDevelopment
@@ -23,8 +24,18 @@ namespace ProjectGameDevelopment
         #endregion
 
 
+
+        #region Enemy
+        private Enemy npc1;
+        private List<Enemy> _enemyList;
+        private List<Rectangle> _enemyPathway;
+
+
+        #endregion
+
         #region Map
         // map zelf
+
         private TmxMap _mapLevel1;
         private TmxMap _mapLevel2;
 
@@ -60,8 +71,9 @@ namespace ProjectGameDevelopment
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             //TODO: mischien de maplevel in een array steken, dat onderzoeken
+            _enemyList = new List<Enemy>();
 
-
+            #region Map
             //Definieren van de Map [de tilemap]
             _mapLevel1 = new TmxMap("Content\\Level1.tmx");
             _mapLevel2 = new TmxMap("Content\\Level2.tmx");
@@ -72,9 +84,13 @@ namespace ProjectGameDevelopment
             //creer de Mappen
             _map1 = new MapMaker(_mapLevel1, _tileset1);
             _map2 = new MapMaker(_mapLevel2, _tileset2);
+            #endregion
 
-
+            #region Collision
             _collisionTiles = new List<Rectangle>();
+            _enemyPathway = new List<Rectangle>();
+
+
             foreach (var item in _mapLevel1.ObjectGroups["Collisions"].Objects)
             {
                 if (item.Name == "")
@@ -88,15 +104,40 @@ namespace ProjectGameDevelopment
                 }
                 
             }
+            foreach (var item in _mapLevel1.ObjectGroups["EnemyPathWay"].Objects)
+            {
+                _enemyPathway.Add(new Rectangle((int)item.X, (int)item.Y, (int)item.Width, (int)item.Height));
+            }
+            #endregion
 
+            #region Player Creation
             // creer Player
-            _player = new Player(new Vector2(_startZone.X, _startZone.Y),
+            _player = new Player(new Vector2(_startZone.X, _startZone.Y),true,
                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Idle_(32 x 32)"),
                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Running_(32 x 32)"),
-               Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Ducking_(32 x 32)"),
-               Content.Load<Texture2D>("Sprite Pack 5\\3 - Big Red\\Landed_(32 x 32)")
+               Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Ducking_(32 x 32)")
                );
-            
+            #endregion
+
+            #region Enemy Creation
+
+
+            npc1 = new Enemy(
+                 Content.Load<Texture2D>("Sprite Pack 4\\2 - Martian_Red_Idle (32 x 32)"),
+                Content.Load<Texture2D>("Sprite Pack 4\\2 - Martian_Red_Running (32 x 32)"),
+                Content.Load<Texture2D>("Sprite Pack 4\\2 - Martian_Red_Idle (32 x 32)"),
+                _enemyPathway[0],
+                2, 
+                false
+                );
+
+            _enemyList.Add(npc1);
+
+
+
+
+
+            #endregion
         }
 
         protected override void Update(GameTime gameTime)
@@ -107,10 +148,17 @@ namespace ProjectGameDevelopment
 
 
 
+            #region Enemy
+
+            foreach (var enemy in _enemyList)
+            {
+                enemy.Update(gameTime);
+            }
+            #endregion
+
+            #region Player Gravity
             var initpos = _player.Position;
             _player.Update(gameTime);
-            #region GRAVITY CONTROLLER
-            //TODO : DESIGN PATTERN DOEN 
             foreach (var rect in _collisionTiles)
             {
                 if (!_player.IsJumping)
@@ -141,6 +189,11 @@ namespace ProjectGameDevelopment
             //teken de map
             _map1.Draw(_spriteBatch);
             //teken de Character
+            foreach (var enemy in _enemyList)
+            {
+                enemy.Draw(_spriteBatch, gameTime);
+            }
+
             _player.Draw(_spriteBatch, gameTime);
 
             _spriteBatch.End();

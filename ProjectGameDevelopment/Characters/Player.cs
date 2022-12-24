@@ -24,34 +24,35 @@ namespace ProjectGameDevelopment.Characters
         //IJUMP
         public float FallVelocity { get; set; } = 2;
         public float JumpSpeed { get; set; } = 0;
-        public bool IsJumping { get; set; } = false;
-        public bool IsFalling { get; set; } = true;
+        public bool IsJumping { get; set; } 
+        public bool IsFalling { get; set; } 
         public float StartY { get; set; }
-        public bool isTouchingGround = false;
-
 
 
 
         //Constructor
-        public Player (Vector2 position,Texture2D spriteIdle, Texture2D spriteRunning, Texture2D Jumping, Texture2D Falling)
+        public Player (Vector2 _position,bool canJump,Texture2D _spriteIdle, Texture2D _spriteRunning, Texture2D _jumping)
         {
             
-            this.Spritesheet = spriteIdle;
-            this.Position = position;
-            this.Velocity = new Vector2();
-            this.Speed = 2f;
+            this.Spritesheet = _spriteIdle;
+            this.Position = _position;
             this.StartY = this.Velocity.Y;
             this.InputReader = new KeyboardReader();
-            
+
+            if (canJump == true)
+            {
+                this.IsJumping = false;
+                this.IsFalling = true;
+            }
+
 
             //Basic Animatie
             PlayerAnimation = new Animation[4];                             //voor het moment 2
-            PlayerAnimation[0] = new Animation(spriteIdle);
-            PlayerAnimation[1] = new Animation(spriteRunning);
-            PlayerAnimation[2] = new Animation(Jumping);
-            PlayerAnimation[3] = new Animation(Falling);
+            PlayerAnimation[0] = new Animation(_spriteIdle);
+            PlayerAnimation[1] = new Animation(_spriteRunning);
+            PlayerAnimation[2] = new Animation(_jumping);
             //Player Movementstate =>
-            CurrentMovementState = CurrentMovementState.Falling;               //de sprite begint altijd in idle
+            CurrentMovementState = CurrentMovementState.Idle;               //de sprite begint altijd in idle
             AnimationMovement = new AnimationMovement(this.Spritesheet);
 
 

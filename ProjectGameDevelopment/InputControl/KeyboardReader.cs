@@ -17,12 +17,15 @@ namespace ProjectGameDevelopment.InputControl
         public void ReadInput(Player player, GameTime gameTime)
         {
             Jumping Jumpcontrol = new();
+
             KeyboardState KeyboardState = Keyboard.GetState();
+
             Vector2 Velocity = player.Velocity;
 
             Jumpcontrol.Jumps(player, KeyboardState);
-            player.currentMovementState = MovementBehaviour.CurrentMovementState.Idle;
 
+
+            player.currentMovementState = MovementBehaviour.CurrentMovementState.Idle;
 
             if (player.IsFalling)
             {
@@ -44,14 +47,6 @@ namespace ProjectGameDevelopment.InputControl
                 player.currentMovementState = MovementBehaviour.CurrentMovementState.Running;
                 player.SpriteMoveDirection = SpriteEffects.None;
             }
-            
-            
-            
-            
-
-
-
-
 
 
             player.Position = Velocity + player.Position;

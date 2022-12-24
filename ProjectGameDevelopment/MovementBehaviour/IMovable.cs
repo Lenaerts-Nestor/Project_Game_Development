@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ProjectGameDevelopment.MovementBehaviour
 {
 
-    public enum CurrentMovementState { Idle, Running, Jumping, Falling }
+    public enum CurrentMovementState { Idle, Running, Jumping }
     public interface IMovable
     {
         public float Speed { get; set; }
