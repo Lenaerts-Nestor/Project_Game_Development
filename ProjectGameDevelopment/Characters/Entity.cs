@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ProjectGameDevelopment.Characters
 {
    
-    public abstract class Entity : IMovable
+    public abstract class Entity : IMovable, IJump
     {
         public Texture2D Spritesheet { get; set; }
    
@@ -26,7 +26,13 @@ namespace ProjectGameDevelopment.Characters
         public float Speed { get; set; } = 2;
         public SpriteEffects SpriteMoveDirection { get; set; }
         public CurrentMovementState currentMovementState { get; set; }
+
+        //IJUMP
         public float FallSpeed { get; set; }
         public float FallVelocity { get; set; } = 2;
+        public float StartY { get; set; }
+        public float JumpSpeed { get; set; }
+        public bool IsJumping { get; set; }
+        public bool IsFalling { get; set; }
     }
 }

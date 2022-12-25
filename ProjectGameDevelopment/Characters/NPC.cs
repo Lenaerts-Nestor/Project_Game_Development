@@ -14,6 +14,7 @@ namespace ProjectGameDevelopment.Characters
 
         public Rectangle Pathway;
         public bool isFacingRight;
+
         public Player Player;
 
         public PathWayMovement PathWayMovement;

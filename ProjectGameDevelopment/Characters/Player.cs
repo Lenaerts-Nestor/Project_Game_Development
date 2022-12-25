@@ -21,14 +21,7 @@ namespace ProjectGameDevelopment.Characters
         public Rectangle playerFallRect;
         public KeyboardReader InputReader { get; set; }
 
-        //IJUMP
-        public float JumpSpeed { get; set; } = 0;
-        public bool IsJumping { get; set; } 
-        public bool IsFalling { get; set; } 
-        public float StartY { get; set; }
-
-        
-        public bool IsFacingRight = true;
+  
 
 
 
@@ -65,7 +58,6 @@ namespace ProjectGameDevelopment.Characters
             AnimationMovement.DrawCharacterMovement(this, PlayerAnimation, spriteBatch, gameTime);
         }
 
-        
     
         public void Update(GameTime gameTime)
         {

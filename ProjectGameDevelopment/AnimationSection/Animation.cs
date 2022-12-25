@@ -23,7 +23,6 @@ namespace ProjectGameDevelopment.AnimationSection
             this._texture = spritesheet;
             Frames = (int)(spritesheet.Width / width);
         }
-
         public void Draw(SpriteBatch spriteBatch, Vector2 position, GameTime gameTime, SpriteEffects spriteDirection = SpriteEffects.None, float miliSecPerFrame = 150)
         {
             if (Teller < Frames)

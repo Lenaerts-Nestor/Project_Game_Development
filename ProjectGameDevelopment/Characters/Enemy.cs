@@ -17,24 +17,14 @@ namespace ProjectGameDevelopment.Characters
 
         public CurrentMovementState CurrentMovementState;
         public AnimationMovement AnimationMovement;
-
-        public float StartY { get; set; }
-        public float JumpSpeed { get; set; } = 0;
-        public bool IsJumping { get; set; }
-        public bool IsFalling { get; set; }
-        public bool CanJump { get; set; }
-
-
         
         #endregion
 
         public Enemy(Texture2D _enemySpriteSheet, Rectangle _pathway, float speed, bool _canJump, bool _isInteligent, Player _player, Vector2 inteligentPosition)
         {
-            this.StartY = this.Velocity.Y ;
+            this.IsInteligent = _isInteligent;
 
-
-
-            if (_isInteligent)
+            if (this.IsInteligent)
             {
                 this.Position = new Vector2(inteligentPosition.X, inteligentPosition.Y);
                 this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, 25, 32);
@@ -47,23 +37,26 @@ namespace ProjectGameDevelopment.Characters
 
             }
 
+
+            this.StartY = this.Velocity.Y;
             this.Spritesheet = _enemySpriteSheet;
             this.Pathway = _pathway;
             this.Speed = speed;
             this.isFacingRight = true;
-            this.IsInteligent = _isInteligent;
             this.Player = _player;
 
-            NPCAnimation = new Animation[1];                             //voor het moment 2
+            this.SpriteMoveDirection = SpriteEffects.None;
+            this.PathWayMovement = new PathWayMovement();
+            this.FollowingMovement = new Following_Movement();
+
+
+            NPCAnimation = new Animation[1];                             //voor het moment maar 1 animatie
             NPCAnimation[0] = new Animation(_enemySpriteSheet);
 
             currentMovementState =  CurrentMovementState.Running;
             AnimationMovement = new AnimationMovement(this.Spritesheet);
 
 
-            this.SpriteMoveDirection = SpriteEffects.None;
-            this.PathWayMovement = new PathWayMovement();
-            this.FollowingMovement = new Following_Movement();
 
             
 
@@ -71,14 +64,12 @@ namespace ProjectGameDevelopment.Characters
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-
             AnimationMovement.Draw(spriteBatch, this.Position, gameTime, this.SpriteMoveDirection);
-                
-        
         }
 
         public void Update(GameTime gameTime)
         {
+            //controleren welke type het is, INTELIGENT of PATHWAY TYPE
             if(!this.IsInteligent)
                 PathWayMovement.EnemysMovement(this, this.Player);
             else
