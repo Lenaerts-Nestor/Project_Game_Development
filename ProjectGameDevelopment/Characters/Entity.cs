@@ -27,5 +27,6 @@ namespace ProjectGameDevelopment.Characters
         public SpriteEffects SpriteMoveDirection { get; set; }
         public CurrentMovementState currentMovementState { get; set; }
         public float FallSpeed { get; set; }
+        public float FallVelocity { get; set; } = 2;
     }
 }

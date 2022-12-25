@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ProjectGameDevelopment.AnimationSection;
-using ProjectGameDevelopment.InputControl;
 using ProjectGameDevelopment.MovementBehaviour;
 using System;
 using System.Collections.Generic;
@@ -11,60 +10,80 @@ using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.Characters
 {
-    internal class Enemy : NPC, IGameObject, IJump
+    public class Enemy : NPC, IGameObject, IJump
     {
+        #region public fields
         public Animation[] NPCAnimation;
-        public CurrentMovementState CurrentMovementState = CurrentMovementState.Running;
-        public AnimationMovement AnimationMovement;
-        public PathWayMovement pathWayMove;
 
+        public CurrentMovementState CurrentMovementState;
+        public AnimationMovement AnimationMovement;
 
         public float StartY { get; set; }
-        public float FallVelocity { get; set; } = 2;
         public float JumpSpeed { get; set; } = 0;
         public bool IsJumping { get; set; }
         public bool IsFalling { get; set; }
         public bool CanJump { get; set; }
 
 
+        
+        #endregion
 
-        public Enemy(Texture2D _spriteIdle, Texture2D _spriteRunning, Texture2D _jumping, Rectangle _pathway, float speed, bool _canJump )
+        public Enemy(Texture2D _enemySpriteSheet, Rectangle _pathway, float speed, bool _canJump, bool _isInteligent, Player _player, Vector2 inteligentPosition)
         {
             this.StartY = this.Velocity.Y ;
-            this.Position = new Vector2(_pathway.X, _pathway.Y);
-            this.Spritesheet = _spriteIdle;
-            this.Pathway = _pathway;
-            this.Speed = speed;
 
-            if (_canJump == true)
+
+
+            if (_isInteligent)
             {
-                this.IsJumping = false;
-                this.IsFalling = true;
+                this.Position = new Vector2(inteligentPosition.X, inteligentPosition.Y);
+                this.Hitbox = new Rectangle((int)Position.X, (int)Position.Y, 25, 32);
+
+            }
+            else
+            {
+                this.Position = new Vector2(_pathway.X, _pathway.Y);
+                this.Hitbox = new Rectangle((int)this.Position.X, (int)this.Position.Y, 32, 32);
+
             }
 
-            NPCAnimation = new Animation[4];                             //voor het moment 2
-            NPCAnimation[0] = new Animation(_spriteIdle);
-            NPCAnimation[1] = new Animation(_spriteRunning);
-            NPCAnimation[2] = new Animation(_jumping);
+            this.Spritesheet = _enemySpriteSheet;
+            this.Pathway = _pathway;
+            this.Speed = speed;
+            this.isFacingRight = true;
+            this.IsInteligent = _isInteligent;
+            this.Player = _player;
 
-            pathWayMove = new PathWayMovement();
+            NPCAnimation = new Animation[1];                             //voor het moment 2
+            NPCAnimation[0] = new Animation(_enemySpriteSheet);
+
+            currentMovementState =  CurrentMovementState.Running;
             AnimationMovement = new AnimationMovement(this.Spritesheet);
-            this.Hitbox = new Rectangle(_pathway.X, _pathway.Y, 8, 8);
+
+
+            this.SpriteMoveDirection = SpriteEffects.None;
+            this.PathWayMovement = new PathWayMovement();
+            this.FollowingMovement = new Following_Movement();
+
             
 
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-                AnimationMovement.DrawNPCmovement(this, NPCAnimation, spriteBatch, gameTime);
-        
+
+            AnimationMovement.Draw(spriteBatch, this.Position, gameTime, this.SpriteMoveDirection);
+                
         
         }
 
         public void Update(GameTime gameTime)
         {
-
-            pathWayMove.UpdateMovement(this);
+            if(!this.IsInteligent)
+                PathWayMovement.EnemysMovement(this, this.Player);
+            else
+                FollowingMovement.EnemysMovement(this, this.Player);
+                           
         }
     }
 }

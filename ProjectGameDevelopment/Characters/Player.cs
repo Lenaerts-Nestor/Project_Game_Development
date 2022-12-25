@@ -22,11 +22,13 @@ namespace ProjectGameDevelopment.Characters
         public KeyboardReader InputReader { get; set; }
 
         //IJUMP
-        public float FallVelocity { get; set; } = 2;
         public float JumpSpeed { get; set; } = 0;
         public bool IsJumping { get; set; } 
         public bool IsFalling { get; set; } 
         public float StartY { get; set; }
+
+        
+        public bool IsFacingRight = true;
 
 
 
@@ -38,7 +40,6 @@ namespace ProjectGameDevelopment.Characters
             this.Position = _position;
             this.StartY = this.Velocity.Y;
             this.InputReader = new KeyboardReader();
-
             if (canJump == true)
             {
                 this.IsJumping = false;

@@ -6,28 +6,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectGameDevelopment.InputControl
+namespace ProjectGameDevelopment.MovementBehaviour
 {
-    public class Jumping
+    public class Players_Jumping
     {
         public void Jumps(Player player, KeyboardState keyboardstate)
         {
-           
-
             if (player.IsJumping)
             {
                 player.Velocity.Y += player.JumpSpeed;
                 player.JumpSpeed += 7;
                 //de jump gaat te snel => zoek een manier om de jump trager te doen omhoog, om te tonnen de animatie
-                player.currentMovementState = MovementBehaviour.CurrentMovementState.Jumping;
+                player.currentMovementState = CurrentMovementState.Jumping;
                 if (player.Velocity.Y >= player.StartY)
-                    //als het verder is dan de grond
+                //als het verder is dan de grond
                 {
                     player.Velocity.Y = player.StartY;
-                    player.IsJumping = false; 
+                    player.IsJumping = false;
                 }
-                
-                
+
+
             }
             else
             {
@@ -36,10 +34,10 @@ namespace ProjectGameDevelopment.InputControl
                     player.IsJumping = true;
                     player.IsFalling = false;
                     player.JumpSpeed = -14;
-                    
+
                 }
             }
-            
+
 
 
 

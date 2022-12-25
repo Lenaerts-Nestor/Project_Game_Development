@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectGameDevelopment.InputControl
+namespace ProjectGameDevelopment.MovementBehaviour
 {
     public interface IJump
     {
         float StartY { get; set; }
-        float FallVelocity { get; set; }
         float JumpSpeed { get; set; }
         bool IsJumping { get; set; }
         bool IsFalling { get; set; }

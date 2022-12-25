@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ProjectGameDevelopment.Characters;
+using ProjectGameDevelopment.MovementBehaviour;
 using SharpDX.Direct2D1;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace ProjectGameDevelopment.InputControl
     {
         public void ReadInput(Player player, GameTime gameTime)
         {
-            Jumping Jumpcontrol = new();
+            Players_Jumping Jumpcontrol = new();
 
             KeyboardState KeyboardState = Keyboard.GetState();
 
@@ -25,7 +26,7 @@ namespace ProjectGameDevelopment.InputControl
             Jumpcontrol.Jumps(player, KeyboardState);
 
 
-            player.currentMovementState = MovementBehaviour.CurrentMovementState.Idle;
+            player.currentMovementState = CurrentMovementState.Idle;
 
             if (player.IsFalling)
             {
@@ -37,14 +38,14 @@ namespace ProjectGameDevelopment.InputControl
             {
                 Velocity.X -= player.Speed;
                 player.SpriteMoveDirection = SpriteEffects.FlipHorizontally;
-                player.currentMovementState = MovementBehaviour.CurrentMovementState.Running;
+                player.currentMovementState = CurrentMovementState.Running;
 
             }
             else if (KeyboardState.IsKeyDown(Keys.D))
             {
                 Velocity.X += player.Speed;
                 
-                player.currentMovementState = MovementBehaviour.CurrentMovementState.Running;
+                player.currentMovementState = CurrentMovementState.Running;
                 player.SpriteMoveDirection = SpriteEffects.None;
             }
 

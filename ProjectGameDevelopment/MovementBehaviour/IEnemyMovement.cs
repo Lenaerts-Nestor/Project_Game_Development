@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.MovementBehaviour
 {
-    public interface INpcMovements
+    public interface IEnemyMovement
     {
-        public void UpdateMovement(NPC npc);
+        public void EnemysMovement(NPC npc, Player player = null);
 
     }
 }
