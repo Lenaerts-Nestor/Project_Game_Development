@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using ProjectGameDevelopment.Characters;
+using ProjectGameDevelopment.Characters.Playable;
 using ProjectGameDevelopment.MovementBehaviour;
 using SharpDX.Direct2D1;
 using System;

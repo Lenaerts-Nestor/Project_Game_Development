@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Input;
-using ProjectGameDevelopment.Characters;
+using ProjectGameDevelopment.Characters.Playable;
 using System;
 using System.Collections.Generic;
 using System.Linq;

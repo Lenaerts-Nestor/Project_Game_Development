@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ProjectGameDevelopment.Characters;
+using ProjectGameDevelopment.Characters.Playable;
 using System;
 using System.Collections.Generic;
 using System.Linq;

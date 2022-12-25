@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ProjectGameDevelopment.Characters;
+using ProjectGameDevelopment.Characters.Playable;
 using ProjectGameDevelopment.InputControl;
 using ProjectGameDevelopment.Map;
 using System.Collections.Generic;

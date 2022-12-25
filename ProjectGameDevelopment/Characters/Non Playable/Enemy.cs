@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ProjectGameDevelopment.AnimationSection;
+using ProjectGameDevelopment.Characters.Playable;
 using ProjectGameDevelopment.MovementBehaviour;
 using System;
 using System.Collections.Generic;

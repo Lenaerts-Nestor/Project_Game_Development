@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using ProjectGameDevelopment.Characters.Playable;
 using ProjectGameDevelopment.MovementBehaviour;
 using System;
 using System.Collections.Generic;

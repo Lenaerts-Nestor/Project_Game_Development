@@ -10,9 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectGameDevelopment.Characters
+namespace ProjectGameDevelopment.Characters.Playable
 {
-    public class Player : Entity,IGameObject,IJump
+    public class Player : Entity, IGameObject, IJump
     {
         //Properties: [public fields] => UpperCamelCase || [Private fields] lowerCamelCase
         public Animation[] PlayerAnimation;
@@ -21,22 +21,22 @@ namespace ProjectGameDevelopment.Characters
         public Rectangle playerFallRect;
         public KeyboardReader InputReader { get; set; }
 
-  
+
 
 
 
         //Constructor
-        public Player (Vector2 _position,bool canJump,Texture2D _spriteIdle, Texture2D _spriteRunning, Texture2D _jumping)
+        public Player(Vector2 _position, bool canJump, Texture2D _spriteIdle, Texture2D _spriteRunning, Texture2D _jumping)
         {
-            
-            this.Spritesheet = _spriteIdle;
-            this.Position = _position;
-            this.StartY = this.Velocity.Y;
-            this.InputReader = new KeyboardReader();
+
+            Spritesheet = _spriteIdle;
+            Position = _position;
+            StartY = Velocity.Y;
+            InputReader = new KeyboardReader();
             if (canJump == true)
             {
-                this.IsJumping = false;
-                this.IsFalling = true;
+                IsJumping = false;
+                IsFalling = true;
             }
 
 
@@ -47,26 +47,26 @@ namespace ProjectGameDevelopment.Characters
             PlayerAnimation[2] = new Animation(_jumping);
             //Player Movementstate =>
             CurrentMovementState = CurrentMovementState.Idle;               //de sprite begint altijd in idle
-            AnimationMovement = new AnimationMovement(this.Spritesheet);
+            AnimationMovement = new AnimationMovement(Spritesheet);
 
 
-            this.Hitbox= new Rectangle((int)this.Position.X, (int)this.Position.Y,25,32);
-           
+            Hitbox = new Rectangle((int)Position.X, (int)Position.Y, 25, 32);
+
         }
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             AnimationMovement.DrawCharacterMovement(this, PlayerAnimation, spriteBatch, gameTime);
         }
 
-    
+
         public void Update(GameTime gameTime)
         {
-            
+
             InputReader.ReadInput(this, gameTime);
-            
+
 
         }
 
-        
+
     }
 }
