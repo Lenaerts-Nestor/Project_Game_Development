@@ -14,20 +14,14 @@ namespace ProjectGameDevelopment.MovementBehaviour
 
         public void EnemysMovement(NPC npc, Player player)
         {
-
+            //Controleren als het de einde heeft geraakt of een iets met hitbox
             if (!npc.Pathway.Contains(npc.Hitbox))
             {
                 npc.Speed = -npc.Speed;
                 npc.isFacingRight = !npc.isFacingRight; 
             }
            
-            //dit is voor alle type ENEMIES
-            npc.Position.X += npc.Speed;
-            npc.Hitbox.X = (int)npc.Position.X;
-            npc.Hitbox.Y = (int)npc.Position.Y;
-
-            //dit om de effect te geven naar welke kant hij gaat =>
-            #region extratje movement
+           
             if (!npc.isFacingRight)
             {
                 npc.SpriteMoveDirection = SpriteEffects.FlipHorizontally;
@@ -37,7 +31,10 @@ namespace ProjectGameDevelopment.MovementBehaviour
                 npc.SpriteMoveDirection = SpriteEffects.None;
             }
 
-            #endregion
+            npc.Position.X += npc.Speed;
+            npc.Hitbox.X = (int)npc.Position.X;
+            npc.Hitbox.Y = (int)npc.Position.Y;
+
         }
     }
 }

@@ -17,19 +17,21 @@ namespace ProjectGameDevelopment.MovementBehaviour
         {
             Vector2 Velocity = npc.Velocity;
 
-
             if (player.IsFalling)
             {
-                Velocity.Y += npc.FallVelocity;
+                Velocity.Y += npc.FallVelocity+5;
             }
 
             if (player.Position.X > npc.Position.X)
             {
+                npc.SpriteMoveDirection = SpriteEffects.None;
                 Velocity.X += npc.Speed;
+
             }
             else if (player.Position.X < npc.Position.X)
             {
                 Velocity.X -= npc.Speed;
+                npc.SpriteMoveDirection = SpriteEffects.FlipHorizontally;
             }
 
             npc.Position = Velocity + npc.Position;
