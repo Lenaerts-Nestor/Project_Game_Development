@@ -19,7 +19,7 @@ namespace ProjectGameDevelopment.Objects
         }
 
         //controleren als de bullet iets heeft geraakt
-        public bool BulletHit(Rectangle rect)
+        public bool HasHit(Rectangle rect)
         {
             return Hitbox.Intersects(rect);
         }
