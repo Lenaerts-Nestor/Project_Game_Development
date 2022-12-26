@@ -21,7 +21,7 @@ namespace ProjectGameDevelopment.Characters.Playable
         public KeyboardReader InputReader { get; set; }
 
         //Constructor
-        public Player(Vector2 _position, bool canJump, Texture2D _spriteIdle, Texture2D _spriteRunning, Texture2D _jumping)
+        public Player(Vector2 _position, bool canJump, Texture2D _spriteIdle, Texture2D _spriteRunning, Texture2D _jumping, Texture2D _shooting)
         {
 
             Spritesheet = _spriteIdle;
@@ -45,6 +45,8 @@ namespace ProjectGameDevelopment.Characters.Playable
             PlayerAnimation[0] = new Animation(_spriteIdle);
             PlayerAnimation[1] = new Animation(_spriteRunning);
             PlayerAnimation[2] = new Animation(_jumping);
+            PlayerAnimation[3] = new Animation(_shooting);
+
             //Player Movementstate =>
             CurrentMovementState = CurrentMovementState.Idle;               //de sprite begint altijd in idle
             AnimationMovement = new AnimationMovement(Spritesheet);

@@ -20,23 +20,25 @@ namespace ProjectGameDevelopment.InputControl
             Players_Jumping Jumpcontrol = new();
 
             KeyboardState KeyboardState = Keyboard.GetState();
-
             Vector2 Velocity = player.Velocity;
-            player.IsShooting = KeyboardState.IsKeyDown(Keys.R);
+
 
             player.currentMovementState = CurrentMovementState.Idle;
 
             Jumpcontrol.Jumps(player, KeyboardState);
 
-
+            player.IsShooting = KeyboardState.IsKeyDown(Keys.R);
 
             //GRAVITY
             if (player.IsFalling)
             {
                 Velocity.Y += player.FallVelocity;
             }
-           
-           
+            if (player.IsShooting)
+            {
+                player.currentMovementState = CurrentMovementState.Shooting;
+            }
+
             if (KeyboardState.IsKeyDown(Keys.A))
             {
                 Velocity.X -= player.Speed;
@@ -51,6 +53,7 @@ namespace ProjectGameDevelopment.InputControl
                 player.currentMovementState = CurrentMovementState.Running;
                 player.SpriteMoveDirection = SpriteEffects.None;
             }
+            
 
 
             player.Position = Velocity + player.Position;

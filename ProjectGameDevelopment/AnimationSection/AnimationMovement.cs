@@ -26,6 +26,10 @@ namespace ProjectGameDevelopment.AnimationSection
                 case CurrentMovementState.Jumping:
                     _spriteAnimation[2].Draw(spriteBatch, character.Position, gameTime,character.SpriteMoveDirection);
                     break;
+                case CurrentMovementState.Shooting:
+                    _spriteAnimation[3].Draw(spriteBatch, character.Position, gameTime, character.SpriteMoveDirection);
+                    break;
+
                 default:
                     break;
             }

@@ -143,9 +143,11 @@ namespace ProjectGameDevelopment
 
             // creer Player => 
             _player = new Player(new Vector2(_RespawnZone[0].X, _RespawnZone[0].Y),true,
-               Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Idle (32 x 32)"),
-               Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Running (32 x 32)"),
-               Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Hurt (32 x 32)")
+               Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Idle_(32 x 32)"),
+               Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Running_(32 x 32)"),
+               Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Ducking_(32 x 32)"),
+                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Casting_Spell_Repeating_(32 x 32)")
+              
                );
 
 
@@ -173,7 +175,7 @@ namespace ProjectGameDevelopment
             #region Bullet Creation
 
             _bullets = new List<Bullet>();
-            _bulletTexture = Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Bullet (16 x 16)");
+            _bulletTexture = Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Sparkles_(8 x 8)");
 
 
             #endregion
