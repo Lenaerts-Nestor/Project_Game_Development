@@ -5,6 +5,8 @@ using ProjectGameDevelopment.Characters;
 using ProjectGameDevelopment.Characters.Playable;
 using ProjectGameDevelopment.InputControl;
 using ProjectGameDevelopment.Map;
+using ProjectGameDevelopment.Objects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TiledSharp;
@@ -22,6 +24,12 @@ namespace ProjectGameDevelopment
         #region Player
 
         private Player _player;
+        private List<Bullet> _bullets;
+        private Texture2D _bulletTexture;
+        private int _points = 0;
+        private Vector2 _initPos;
+        private int _time_x_bullet;
+
         #endregion
 
 
@@ -32,7 +40,6 @@ namespace ProjectGameDevelopment
         private Enemy npc3;
         private List<Enemy> _enemyList;
         private List<Rectangle> _enemyPathway;
-
 
         #endregion
 
@@ -46,13 +53,13 @@ namespace ProjectGameDevelopment
         private Texture2D _tileset1;
         private Texture2D _tileset2;
 
+        public Vector2 enemyInitPos;
         //map fabricatie
         private MapMaker _map1;
         private MapMaker _map2;
 
         //TODO : DESIGN PATTERN DOEN 
         private List<Rectangle> _collisionTiles;
-        private Rectangle _startZone;
         private List<Rectangle> _RespawnZone;
         
 
@@ -125,13 +132,14 @@ namespace ProjectGameDevelopment
             }
             #endregion
 
-            #region Player Creation
+            #region Player Creation 
             // creer Player => 
             _player = new Player(new Vector2(_RespawnZone[0].X, _RespawnZone[0].Y),true,
-               Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Idle_(32 x 32)"),
-               Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Running_(32 x 32)"),
-               Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Ducking_(32 x 32)")
+               Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Idle (32 x 32)"),
+               Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Running (32 x 32)"),
+               Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Hurt (32 x 32)")
                );
+
             #endregion
 
             #region Enemy Creation
@@ -142,13 +150,22 @@ namespace ProjectGameDevelopment
             npc2 = new Enemy(Content.Load<Texture2D>("Sprite Pack 4\\8 - Roach_Running (32 x 32)"),_enemyPathway[1],0.5f,
                 false,false,_player,new Vector2()
                 );
-            npc3 = new Enemy(Content.Load<Texture2D>("Sprite Pack 4\\8 - Roach_Running (32 x 32)"),new Rectangle(),2f,
+            npc3 = new Enemy(Content.Load<Texture2D>("Sprite Pack 4\\8 - Roach_Running (32 x 32)"),new Rectangle(),1f,
                false,true,_player, new Vector2(_RespawnZone[1].X, _RespawnZone[1].Y)
                );
             //voeg de Enemies in de lijst => 
             _enemyList.Add(npc1);
             _enemyList.Add(npc2);
             _enemyList.Add(npc3); //deze is de Intiligente Enemy die de Player/Hero zal volgen
+
+
+            #endregion
+
+
+            #region Bullet Creation
+
+            _bullets = new List<Bullet>();
+            _bulletTexture = Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Bullet (16 x 16)");
 
 
             #endregion
@@ -159,13 +176,49 @@ namespace ProjectGameDevelopment
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-         
 
-            #region Entity Gravity
-            var initpos = _player.Position;
-            var enemyInitPos = _enemyList[2].Position;
+            #region Bullet Collision
 
-            //PLAYER COLLISION
+            //Player heeft tenminste 20 kogels
+
+            
+            if(_enemyList.Count > 0)
+                enemyInitPos = _enemyList.Last().Position;
+            else
+                enemyInitPos= new Vector2();
+            #endregion
+
+            #region Entity Collision
+            foreach (var bullet in _bullets.ToArray())
+            {
+                bullet.Update(gameTime);
+                foreach (var rect in _collisionTiles)
+                {
+                    if (rect.Intersects(bullet.Hitbox))
+                    {
+                        _bullets.Remove(bullet);
+                        break;
+                    }
+                }
+
+                //als een bullet een Enemy raakt
+                foreach (var enemy in _enemyList.ToArray())
+                {
+                    if (bullet.Hitbox.Intersects(enemy.Hitbox))
+                    {
+                        _enemyList.Remove(enemy);
+                        _bullets.Remove(bullet);
+                        _points++;
+                        break;
+                    }
+                }
+            }
+
+
+                _initPos = _player.Position;
+          
+
+            //PLAYER COLLISION && PLAYER UPDATE
             _player.Update(gameTime);
             foreach (var rect in _collisionTiles)
             {
@@ -173,34 +226,79 @@ namespace ProjectGameDevelopment
                     _player.IsFalling = true;
                 if (rect.Intersects(_player.Hitbox))
                 {
-                    _player.Position.X = initpos.X;
-                    _player.Position.Y = initpos.Y;
+                    _player.Position.X = _initPos.X;
+                    _player.Position.Y = _initPos.Y;
                     _player.IsFalling = false;
-                   
-                   
                     break;
                 }
             }
 
-            //ENEMY COLLISION
+
+
+
+
+            //ENEMY UPDATE
             foreach (var enemy in _enemyList)
             {
                 enemy.Update(gameTime);
             }
+
+            //Inteligent ENEMY COLISION
             foreach (var rect in _collisionTiles)
             {
-                if (!_player.IsJumping)
-                    _enemyList[2].IsFalling = true;
-
-                if (rect.Intersects(_enemyList[2].Hitbox))
+              
+                foreach (var enemy in _enemyList)
                 {
 
-                    _enemyList[2].Position.X = enemyInitPos.X;
-                    _enemyList[2].Position.Y = enemyInitPos.Y;
-                    _enemyList[2].IsFalling = false;
-                    break;
+                    if (rect.Intersects(enemy.Hitbox))
+                    {
+                        enemy.IsFalling = true;
+                        if (enemy.IsInteligent)
+                        {
+                            if (enemy.IsAlive)
+                            {
+                                enemy.Position.X = enemyInitPos.X;
+                                enemy.Position.Y = enemyInitPos.Y;
+                                enemy.IsFalling = false;
+                            }
+                        }
+                        else
+                        {
+                            // dit is voor Enemies met een pathway, dus er hun positie worden niet aangepast
+                        }
+                       
+                        break;
+                    }
                 }
             }
+
+            if (_player.IsShooting && _bullets.ToArray().Length < 5)
+            {
+                if (_time_x_bullet > 5)
+                {
+                    //dit is om te weten naar welke kant de bullet zal gaan, dus als we naar recht kijken gaat het naar recht
+                    if (_player.SpriteMoveDirection == SpriteEffects.None)
+                    {
+                        // new Vector2(_player.Position.X -7, _player.Position.Y -13)
+                        _bullets.Add(new Bullet(_bulletTexture, new Vector2((int)_player.Position.X + 13, (int)_player.Position.Y + 16), 4));
+                    }
+                    else if (_player.SpriteMoveDirection == SpriteEffects.FlipHorizontally)
+                    {
+                        _bullets.Add(new Bullet(_bulletTexture, new Vector2((int)_player.Position.X + 13, (int)_player.Position.Y + 16), -4));
+                    }
+                    _time_x_bullet = 0;
+                }
+                else
+                {
+                    _time_x_bullet += 2;
+                }
+
+            }
+
+
+          
+
+
             #endregion
 
             base.Update(gameTime);
@@ -214,14 +312,20 @@ namespace ProjectGameDevelopment
             _spriteBatch.Begin();
             //teken de map
             _map1.Draw(_spriteBatch);
-            //teken de Character
+            //teken de Objecten
+            #region Enemy
             foreach (var enemy in _enemyList)
             {
                 enemy.Draw(_spriteBatch, gameTime);
             }
-
+            #endregion
+            #region Player
             _player.Draw(_spriteBatch, gameTime);
-
+            foreach (var bullet in _bullets.ToArray())
+            {
+                bullet.Draw(_spriteBatch,gameTime);
+            }
+            #endregion
             _spriteBatch.End();
 
             base.Draw(gameTime);
