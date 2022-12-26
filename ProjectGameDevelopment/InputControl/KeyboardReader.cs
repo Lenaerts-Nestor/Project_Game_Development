@@ -22,12 +22,15 @@ namespace ProjectGameDevelopment.InputControl
             KeyboardState KeyboardState = Keyboard.GetState();
 
             Vector2 Velocity = player.Velocity;
+            player.IsShooting = KeyboardState.IsKeyDown(Keys.R);
+
+            player.currentMovementState = CurrentMovementState.Idle;
 
             Jumpcontrol.Jumps(player, KeyboardState);
 
 
-            player.currentMovementState = CurrentMovementState.Idle;
 
+            //GRAVITY
             if (player.IsFalling)
             {
                 Velocity.Y += player.FallVelocity;
