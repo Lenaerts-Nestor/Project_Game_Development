@@ -73,7 +73,7 @@
  </layer>
  <objectgroup id="4" name="EnemyPathWay">
   <object id="1" name="EnemyPathWay [0]" x="101.917" y="365.167" width="94.1667" height="32"/>
-  <object id="4" name="Respawn" x="16.8438" y="355.031" width="29.3125" height="35.9375"/>
+  <object id="4" name="Respawn2" x="16.8438" y="355.031" width="29.3125" height="35.9375"/>
  </objectgroup>
  <objectgroup id="5" name="Collisions">
   <object id="2" x="0.5" y="400.5" width="737.5" height="80"/>

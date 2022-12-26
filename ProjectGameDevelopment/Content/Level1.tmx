@@ -184,8 +184,8 @@
   <object id="131" x="191.938" y="352.125" width="15.625" height="15.75"/>
   <object id="135" x="447.131" y="366.134" width="66.5125" height="16.587"/>
   <object id="141" x="302.667" y="335.75" width="16" height="33.5"/>
-  <object id="143" name="Respawn" x="33.1771" y="249.031" width="29.3125" height="35.9375"/>
-  <object id="150" name="Respawn" x="643.26" y="294.198" width="18.3125" height="23.9375"/>
+  <object id="143" name="Respawn" x="51.1771" y="247.031" width="29.3125" height="35.9375"/>
+  <object id="150" name="Respawn" x="556.26" y="320.198" width="18.3125" height="23.9375"/>
   <object id="153" x="367.62" y="367.224" width="32.7605" height="16.2188"/>
   <object id="154" x="608.286" y="368.891" width="15.7605" height="16.2188"/>
   <object id="155" x="672.786" y="319.224" width="15.7605" height="16.2188"/>

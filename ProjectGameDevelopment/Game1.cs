@@ -21,7 +21,7 @@ namespace ProjectGameDevelopment
 
 
 
-        private bool _gameOver = false;
+        private LoadLevel _desiredLevel = new LoadLevel();
 
         #region Player
 
@@ -44,7 +44,8 @@ namespace ProjectGameDevelopment
         private Enemy npc3;
         private int _time_X_attacking;
         private List<Enemy> _enemyList;
-        private List<Rectangle> _enemyPathway;
+        private List<Rectangle> _enemyPathwayLVL1 = new List<Rectangle>();
+        private List<Rectangle> _enemyPathwayLVL2 = new List<Rectangle>();
 
         #endregion
 
@@ -64,9 +65,10 @@ namespace ProjectGameDevelopment
         private MapMaker _map2;
 
         //TODO : DESIGN PATTERN DOEN 
-        private List<Rectangle> _collisionTiles;
-        private List<Rectangle> _RespawnZone;
-        
+        private List<Rectangle> _collisionTilesLVL1 = new List<Rectangle>();
+        private List<Rectangle> _collisionTilesLVL2 = new List<Rectangle>();
+        private List<Rectangle> _respawnZoneLVL1 = new List<Rectangle>();
+        private List<Rectangle> _respawnZoneLVL2 = new List<Rectangle>();
 
 
         #endregion
@@ -87,11 +89,8 @@ namespace ProjectGameDevelopment
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
             _enemyList = new List<Enemy>();
-            
-            _collisionTiles = new List<Rectangle>();
-            _enemyPathway = new List<Rectangle>();
-            _RespawnZone = new List<Rectangle>();
 
 
 
@@ -111,30 +110,21 @@ namespace ProjectGameDevelopment
             _map1 = new MapMaker(_mapLevel1, _tileset1);
             _map2 = new MapMaker(_mapLevel2, _tileset2);
 
-
             #endregion
 
             #region Collision Bewaren
 
             //het bewaren van de collision in de maps
-            foreach (var CollisionRect in _mapLevel1.ObjectGroups["Collisions"].Objects)
-            {
-                if (CollisionRect.Name == "")
-                {
-                    _collisionTiles.Add(new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width-10, (int)CollisionRect.Height-10));
-                }
-                //de player zal verschijnen op het gewenste plaats
-                else if (CollisionRect.Name == "Respawn")
-                {
-                    _RespawnZone.Add(new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width-10 , (int)CollisionRect.Height));
-                }
-                
 
-            }
-            foreach (var CollisionRect in _mapLevel1.ObjectGroups["EnemyPathWay"].Objects)
-            {
-                _enemyPathway.Add(new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width, (int)CollisionRect.Height));
-            }
+            _collisionTilesLVL1 = _desiredLevel.GetCollisionTiles(_mapLevel1, _collisionTilesLVL1);
+            _collisionTilesLVL2 = _desiredLevel.GetCollisionTiles(_mapLevel1, _collisionTilesLVL2);
+
+            _respawnZoneLVL1 = _desiredLevel.GetRespawnZone(_mapLevel1, _respawnZoneLVL1);
+
+            //Pathway van LVL 1
+            _enemyPathwayLVL1 = _desiredLevel.GetEnemyPathWay(_mapLevel1, _enemyPathwayLVL1);
+            _enemyPathwayLVL2 = _desiredLevel.GetEnemyPathWay(_mapLevel2, _enemyPathwayLVL2);
+
 
 
             #endregion
@@ -142,12 +132,11 @@ namespace ProjectGameDevelopment
             #region Player Creation 
 
             // creer Player => 
-            _player = new Player(new Vector2(_RespawnZone[0].X, _RespawnZone[0].Y),true,
+            _player = new Player(new Vector2(_respawnZoneLVL1[0].X, _respawnZoneLVL1[0].Y),true,
                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Idle_(32 x 32)"),
                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Running_(32 x 32)"),
                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Ducking_(32 x 32)"),
                 Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Casting_Spell_Repeating_(32 x 32)")
-              
                );
 
 
@@ -155,15 +144,16 @@ namespace ProjectGameDevelopment
 
             #region Enemy Creation
             //creer de Enemies =>
-            npc1 = new Enemy( Content.Load<Texture2D>("Sprite Pack 4\\2 - Martian_Red_Running (32 x 32)"),_enemyPathway[0],0.5f,
+            npc1 = new Enemy( Content.Load<Texture2D>("Sprite Pack 4\\2 - Martian_Red_Running (32 x 32)"),_enemyPathwayLVL1[0],0.5f,
                 false,false,_player,new Vector2()
                 ) ;
-            npc2 = new Enemy(Content.Load<Texture2D>("Sprite Pack 4\\8 - Roach_Running (32 x 32)"),_enemyPathway[1],0.5f,
+            npc2 = new Enemy(Content.Load<Texture2D>("Sprite Pack 4\\8 - Roach_Running (32 x 32)"),_enemyPathwayLVL1[1],0.5f,
                 false,false,_player,new Vector2()
                 );
             npc3 = new Enemy(Content.Load<Texture2D>("Sprite Pack 4\\8 - Roach_Running (32 x 32)"),new Rectangle(),1f,
-               false,true,_player, new Vector2(_RespawnZone[1].X, _RespawnZone[1].Y)
+               false,true,_player, new Vector2(_respawnZoneLVL1[1].X, _respawnZoneLVL1[1].Y)
                );
+
             //voeg de Enemies in de lijst => 
             _enemyList.Add(npc1);
             _enemyList.Add(npc2);
@@ -219,11 +209,6 @@ namespace ProjectGameDevelopment
                 
             }
 
-            
-            Debug.WriteLine(_playerHP);
-
-            
-
             #endregion
 
 
@@ -231,7 +216,7 @@ namespace ProjectGameDevelopment
 
 
             //de Player =>
-            foreach (var rect in _collisionTiles)
+            foreach (var rect in _collisionTilesLVL1)
             {
                 if (!_player.IsJumping)
                     _player.IsFalling = true;
@@ -248,7 +233,7 @@ namespace ProjectGameDevelopment
             foreach (var bullet in _bullets.ToArray())
             {
                 bullet.Update(gameTime);
-                foreach (var rect in _collisionTiles)
+                foreach (var rect in _collisionTilesLVL1)
                 {
                     if (rect.Intersects(bullet.Hitbox))
                     {
@@ -271,7 +256,7 @@ namespace ProjectGameDevelopment
             }
 
             //Inteligent ENEMY COLISION bugs voorkomen => 
-            foreach (var rect in _collisionTiles)
+            foreach (var rect in _collisionTilesLVL1)
             {
               
                 foreach (var enemy in _enemyList)
@@ -336,7 +321,7 @@ namespace ProjectGameDevelopment
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
             //teken de map
-            _map1.Draw(_spriteBatch);
+            _desiredLevel.DrawLevel(_spriteBatch, _map1);
             //teken de Objecten
             #region Enemy
             foreach (var enemy in _enemyList)
