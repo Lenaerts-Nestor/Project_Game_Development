@@ -20,8 +20,6 @@ namespace ProjectGameDevelopment.Characters.Playable
         public CurrentMovementState CurrentMovementState;
         public KeyboardReader InputReader { get; set; }
 
-
-
         //Constructor
         public Player(Vector2 _position, bool canJump, Texture2D _spriteIdle, Texture2D _spriteRunning, Texture2D _jumping)
         {
@@ -60,7 +58,6 @@ namespace ProjectGameDevelopment.Characters.Playable
             AnimationMovement.DrawCharacterMovement(this, PlayerAnimation, spriteBatch, gameTime);
         }
 
-
         public void Update(GameTime gameTime)
         {
 
@@ -68,7 +65,6 @@ namespace ProjectGameDevelopment.Characters.Playable
 
 
         }
-
         public bool TouchedEnemy(List<Enemy> enemyList)
         {
             foreach (var item in enemyList.ToArray())
