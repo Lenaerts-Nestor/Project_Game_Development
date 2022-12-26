@@ -70,7 +70,7 @@ namespace ProjectGameDevelopment.Characters
 
         public bool HasHit(Rectangle objectHitbox)
         {
-            return true;
+            return this.Hitbox.Intersects(objectHitbox);
         }
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
