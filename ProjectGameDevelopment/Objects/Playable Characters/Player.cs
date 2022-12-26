@@ -22,9 +22,6 @@ namespace ProjectGameDevelopment.Characters.Playable
 
 
 
-
-
-
         //Constructor
         public Player(Vector2 _position, bool canJump, Texture2D _spriteIdle, Texture2D _spriteRunning, Texture2D _jumping)
         {
@@ -72,6 +69,9 @@ namespace ProjectGameDevelopment.Characters.Playable
 
         }
 
-
+        public bool HasHit(Rectangle objectHitbox)
+        {
+            return true;
+        }
     }
 }

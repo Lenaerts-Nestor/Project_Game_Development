@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace ProjectGameDevelopment.Characters
 {
    
-    public abstract class Entity : Object,IMovable, IJump,IShooting, IConditionCheck
+    public abstract class Entity : Object,IMovable, IJump,IShooting
     {
    
 
@@ -32,7 +32,9 @@ namespace ProjectGameDevelopment.Characters
         public bool IsShooting { get; set; }
 
         //IConditionCheck
-        public bool IsAlive { get; set; } = true; 
+        public bool IsAlive { get; set; } = true;
+
+        
 
     }
 }
