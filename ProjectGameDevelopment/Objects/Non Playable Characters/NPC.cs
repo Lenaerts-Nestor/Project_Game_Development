@@ -20,5 +20,6 @@ namespace ProjectGameDevelopment.Characters
 
         public PathWayMovement PathWayMovement;
         public Following_Movement FollowingMovement;
+
     }
 }

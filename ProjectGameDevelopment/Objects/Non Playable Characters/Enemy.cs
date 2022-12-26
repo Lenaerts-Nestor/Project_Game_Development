@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.Characters
 {
-    public class Enemy : NPC, IJump
+    public class Enemy : NPC, IJump, IGameObject
     {
         #region public fields
         public Animation[] NPCAnimation;
@@ -67,8 +67,11 @@ namespace ProjectGameDevelopment.Characters
 
         }
 
-       
 
+        public bool HasHit(Rectangle objectHitbox)
+        {
+            return true;
+        }
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             AnimationMovement.Draw(spriteBatch, this.Position, gameTime, this.SpriteMoveDirection);
