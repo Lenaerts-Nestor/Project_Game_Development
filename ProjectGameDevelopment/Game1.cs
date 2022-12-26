@@ -28,6 +28,8 @@ namespace ProjectGameDevelopment
         private Player _player;
         private List<Bullet> _bullets;
         private Texture2D _bulletTexture;
+        private int _playerHP = 10;
+        private int _time_x_hurt = 80;
         private int _points = 0;
         private Vector2 _initPos;
         private int _time_x_bullet;
@@ -40,6 +42,7 @@ namespace ProjectGameDevelopment
         private Enemy npc1;
         private Enemy npc2;
         private Enemy npc3;
+        private int _time_X_attacking;
         private List<Enemy> _enemyList;
         private List<Rectangle> _enemyPathway;
 
@@ -203,17 +206,19 @@ namespace ProjectGameDevelopment
             {
                 enemy.Update(gameTime);
 
+                if (_player.TouchedEnemy(_enemyList)){
+                    _time_X_attacking++;
+                    if(_time_X_attacking > _time_x_hurt)
+                    {
+                        _playerHP--;
+                        _time_X_attacking = 0;
+                    }
+                }
                 
             }
 
-            foreach (var enemy in _enemyList.ToArray())
-            {
-                if (_player.Hitbox.Intersects(enemy.Hitbox)){
-                    _gameOver = true;
-               
-                }
-            }
-            Debug.WriteLine(_player.TouchedEnemy(_enemyList));
+            
+            Debug.WriteLine(_playerHP);
 
             
 
