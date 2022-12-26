@@ -18,8 +18,9 @@ namespace ProjectGameDevelopment
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-      
 
+
+        private bool _gameOver = false;
 
         #region Player
 
@@ -48,7 +49,7 @@ namespace ProjectGameDevelopment
 
         private TmxMap _mapLevel1;
         private TmxMap _mapLevel2;
-
+        
         //tekening van de map
         private Texture2D _tileset1;
         private Texture2D _tileset2;
@@ -109,7 +110,7 @@ namespace ProjectGameDevelopment
 
             #endregion
 
-            #region Collision
+            #region Collision Bewaren
 
             //het bewaren van de collision in de maps
             foreach (var CollisionRect in _mapLevel1.ObjectGroups["Collisions"].Objects)
@@ -130,15 +131,19 @@ namespace ProjectGameDevelopment
             {
                 _enemyPathway.Add(new Rectangle((int)CollisionRect.X, (int)CollisionRect.Y, (int)CollisionRect.Width, (int)CollisionRect.Height));
             }
+
+
             #endregion
 
             #region Player Creation 
+
             // creer Player => 
             _player = new Player(new Vector2(_RespawnZone[0].X, _RespawnZone[0].Y),true,
                Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Idle (32 x 32)"),
                Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Running (32 x 32)"),
                Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Hurt (32 x 32)")
                );
+
 
             #endregion
 
@@ -161,7 +166,6 @@ namespace ProjectGameDevelopment
 
             #endregion
 
-
             #region Bullet Creation
 
             _bullets = new List<Bullet>();
@@ -177,18 +181,49 @@ namespace ProjectGameDevelopment
                 Exit();
 
 
-            #region Bullet Collision
-
-            //Player heeft tenminste 20 kogels
-
-            
-            if(_enemyList.Count > 0)
+            #region Positie updaten van Entiteiten
+            //dit is om de inteligente enemy positie goed te kunnen updaten en bugs voorkomen
+            if (_enemyList.Count > 0)
                 enemyInitPos = _enemyList.Last().Position;
             else
                 enemyInitPos= new Vector2();
+
+            //dit is om de Player positie goed te kunnen updaten en bugs voorkomen
+            _initPos = _player.Position;
+
             #endregion
 
-            #region Entity Collision
+
+            #region Entiteiten updaten
+
+            _player.Update(gameTime);
+
+            foreach (var enemy in _enemyList)
+            {
+                enemy.Update(gameTime);
+            }
+
+            #endregion
+
+
+            #region Objecten Collision
+
+
+            //de Player =>
+            foreach (var rect in _collisionTiles)
+            {
+                if (!_player.IsJumping)
+                    _player.IsFalling = true;
+                if (rect.Intersects(_player.Hitbox))
+                {
+                    _player.Position.X = _initPos.X;
+                    _player.Position.Y = _initPos.Y;
+                    _player.IsFalling = false;
+                    break;
+                }
+            }
+
+            //de Bullet && Enemy =>
             foreach (var bullet in _bullets.ToArray())
             {
                 bullet.Update(gameTime);
@@ -214,36 +249,7 @@ namespace ProjectGameDevelopment
                 }
             }
 
-
-                _initPos = _player.Position;
-          
-
-            //PLAYER COLLISION && PLAYER UPDATE
-            _player.Update(gameTime);
-            foreach (var rect in _collisionTiles)
-            {
-                if (!_player.IsJumping)
-                    _player.IsFalling = true;
-                if (rect.Intersects(_player.Hitbox))
-                {
-                    _player.Position.X = _initPos.X;
-                    _player.Position.Y = _initPos.Y;
-                    _player.IsFalling = false;
-                    break;
-                }
-            }
-
-
-
-
-
-            //ENEMY UPDATE
-            foreach (var enemy in _enemyList)
-            {
-                enemy.Update(gameTime);
-            }
-
-            //Inteligent ENEMY COLISION
+            //Inteligent ENEMY COLISION bugs voorkomen => 
             foreach (var rect in _collisionTiles)
             {
               
@@ -252,7 +258,7 @@ namespace ProjectGameDevelopment
 
                     if (rect.Intersects(enemy.Hitbox))
                     {
-                        enemy.IsFalling = true;
+                        enemy.IsFalling = true;        
                         if (enemy.IsInteligent)
                         {
                             if (enemy.IsAlive)
@@ -274,6 +280,7 @@ namespace ProjectGameDevelopment
 
             if (_player.IsShooting && _bullets.ToArray().Length < 5)
             {
+                //na de gewenste tijd word de bullets herladen
                 if (_time_x_bullet > 5)
                 {
                     //dit is om te weten naar welke kant de bullet zal gaan, dus als we naar recht kijken gaat het naar recht
@@ -290,13 +297,10 @@ namespace ProjectGameDevelopment
                 }
                 else
                 {
-                    _time_x_bullet += 2;
+                    _time_x_bullet += 1;
                 }
 
             }
-
-
-          
 
 
             #endregion
