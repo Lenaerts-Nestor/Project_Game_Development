@@ -10,12 +10,12 @@ namespace ProjectGameDevelopment.MovementBehaviour
 {
     public class Players_Jumping
     {
-        public void Jumps(Player player, KeyboardState keyboardstate)
+        public void Jumps(Player player, KeyboardState keyboardstate) 
         {
             if (player.IsJumping)
             {
                 player.Velocity.Y += player.JumpSpeed;
-                player.JumpSpeed += 7;
+                player.JumpSpeed += 1;
                 //de jump gaat te snel => zoek een manier om de jump trager te doen omhoog, om te tonnen de animatie
                 player.currentMovementState = CurrentMovementState.Jumping;
                 if (player.Velocity.Y >= player.StartY)
@@ -33,7 +33,7 @@ namespace ProjectGameDevelopment.MovementBehaviour
                 {
                     player.IsJumping = true;
                     player.IsFalling = false;
-                    player.JumpSpeed = -14;
+                    player.JumpSpeed = -4;
 
                 }
             }
