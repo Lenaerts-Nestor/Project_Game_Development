@@ -68,10 +68,7 @@ namespace ProjectGameDevelopment.Characters
         }
 
 
-        public bool HasHit(Rectangle objectHitbox)
-        {
-            return this.Hitbox.Intersects(objectHitbox);
-        }
+        
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             AnimationMovement.Draw(spriteBatch, this.Position, gameTime, this.SpriteMoveDirection);

@@ -69,9 +69,17 @@ namespace ProjectGameDevelopment.Characters.Playable
 
         }
 
-        public bool HasHit(Rectangle objectHitbox)
+        public bool TouchedEnemy(List<Enemy> enemyList)
         {
-            return true;
+            foreach (var item in enemyList.ToArray())
+            {
+                if (this.Hitbox.Intersects(item.Hitbox))
+                    return true;
+            }
+            return false;
+
+
+
         }
     }
 }

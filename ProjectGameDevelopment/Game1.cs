@@ -8,6 +8,7 @@ using ProjectGameDevelopment.Map;
 using ProjectGameDevelopment.Objects;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using TiledSharp;
 
@@ -201,7 +202,20 @@ namespace ProjectGameDevelopment
             foreach (var enemy in _enemyList)
             {
                 enemy.Update(gameTime);
+
+                
             }
+
+            foreach (var enemy in _enemyList.ToArray())
+            {
+                if (_player.Hitbox.Intersects(enemy.Hitbox)){
+                    _gameOver = true;
+               
+                }
+            }
+            Debug.WriteLine(_player.TouchedEnemy(_enemyList));
+
+            
 
             #endregion
 

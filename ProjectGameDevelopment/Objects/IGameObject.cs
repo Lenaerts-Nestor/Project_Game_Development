@@ -16,7 +16,7 @@ namespace ProjectGameDevelopment.Characters
         void Draw(SpriteBatch spriteBatch, GameTime gameTime);
         void Update(GameTime gameTime);
 
-        bool HasHit(Rectangle objectHitbox);
+
 
 
     }
