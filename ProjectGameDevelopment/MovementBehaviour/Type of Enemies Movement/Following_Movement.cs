@@ -34,6 +34,7 @@ namespace ProjectGameDevelopment.MovementBehaviour
                 Velocity.X -= npc.Speed;
                 npc.SpriteMoveDirection = SpriteEffects.FlipHorizontally;
             }
+            
 
             npc.Position = Velocity + npc.Position;
             npc.Hitbox.X = (int)npc.Position.X;
