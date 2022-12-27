@@ -124,7 +124,7 @@ namespace ProjectGameDevelopment.Map
                 Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Casting_Spell_Repeating_(32 x 32)")
                );
 
-            _buffItem = new BuffItem(Content.Load<Texture2D>("Sprite Pack 4\\4 - Ballooney_Flying (32 x 32)"),
+            _buffItem = new BuffItem(Content.Load<Texture2D>("Health_Kit (16 x 16)"),
                 new Vector2(_respawnZone[2].X, _respawnZone[2].Y), 2
                 );
             _buffItemList.Add(_buffItem); 
@@ -225,6 +225,7 @@ namespace ProjectGameDevelopment.Map
                     _time_X_attacking++;
                     if (_time_X_attacking > _time_x_hurt)
                     {
+                        //TODO: HP MAKEN MISCHIEN ?
                         _playerHP--;
                         _time_X_attacking = 0;
                     }
@@ -236,8 +237,7 @@ namespace ProjectGameDevelopment.Map
             {
                 if (_player.Hitbox.Intersects(item.Hitbox))
                 {
-                    _player.Speed += 2;
-                    canfly = true;
+                    _player.Speed += 4;
                     _buffItemList.Remove(item);
                 }
                 
