@@ -60,6 +60,10 @@ namespace ProjectGameDevelopment.Map
         public LoadCollisions _collisionController { get; set; }
 
 
+        public BuffItem _buffItem { get; set; }
+        public List<BuffItem> _buffItemList { get;set; }
+
+        public bool canfly { get; set; } = false;
         public Level1(Game1 game):base(game)
         {
             
@@ -78,6 +82,7 @@ namespace ProjectGameDevelopment.Map
             _bullets = new List<Bullet>();
             _collisionController = new LoadCollisions();
             _endZone = new Rectangle();
+            _buffItemList = new List<BuffItem>();
 
             _enemyList = new List<Enemy>();
 
@@ -118,6 +123,12 @@ namespace ProjectGameDevelopment.Map
                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Ducking_(32 x 32)"),
                 Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Casting_Spell_Repeating_(32 x 32)")
                );
+
+            _buffItem = new BuffItem(Content.Load<Texture2D>("Sprite Pack 4\\4 - Ballooney_Flying (32 x 32)"),
+                new Vector2(_respawnZone[2].X, _respawnZone[2].Y), 2
+                );
+            _buffItemList.Add(_buffItem); 
+
 
             #endregion
 
@@ -165,6 +176,11 @@ namespace ProjectGameDevelopment.Map
             #endregion
             #region Player
             _player.Draw(_spriteBatch, gameTime);
+            foreach (var buffItem in _buffItemList.ToArray())
+            {
+                buffItem.Draw(_spriteBatch, gameTime);
+            }
+
             foreach (var bullet in _bullets.ToArray())
             {
                 bullet.Draw(_spriteBatch, gameTime);
@@ -216,6 +232,16 @@ namespace ProjectGameDevelopment.Map
 
             }
 
+            foreach (var item in _buffItemList.ToArray())
+            {
+                if (_player.Hitbox.Intersects(item.Hitbox))
+                {
+                    _player.Speed += 2;
+                    canfly = true;
+                    _buffItemList.Remove(item);
+                }
+                
+            }
             
 
             #endregion
@@ -227,8 +253,14 @@ namespace ProjectGameDevelopment.Map
             //de Player =>
             foreach (var rect in _collisionTiles)
             {
+                
                 if (!_player.IsJumping)
                     _player.IsFalling = true;
+                if (canfly)
+                {
+                    _player.IsFalling = false;
+                }
+
                 if (rect.Intersects(_player.Hitbox))
                 {
                     _player.Position.X = _initPos.X;
@@ -236,6 +268,7 @@ namespace ProjectGameDevelopment.Map
                     _player.IsFalling = false;
                     break;
                 }
+                
             }
 
             //de Bullet && Enemy =>

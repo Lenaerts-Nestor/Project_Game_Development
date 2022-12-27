@@ -191,7 +191,7 @@
   <object id="156" x="28.6979" y="15.9062" width="749.271" height="16.1875"/>
   <object id="159" name="END" x="84.3438" y="118.031" width="29.3125" height="35.9375"/>
   <object id="160" x="239.333" y="334.917" width="16" height="33.5"/>
-  <object id="163" name="Buff" x="377" y="341" width="16" height="20"/>
+  <object id="163" name="Respawn" x="377" y="341" width="16" height="20"/>
  </objectgroup>
  <objectgroup id="6" name="EnemyPathWay">
   <object id="144" name="EnemyPathWay [0]" x="210.5" y="336.334" width="25.5003" height="32"/>
