@@ -3,13 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ProjectGameDevelopment.Characters.Playable;
 using ProjectGameDevelopment.MovementBehaviour;
-using SharpDX.Direct2D1;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.InputControl
 {
@@ -38,7 +31,7 @@ namespace ProjectGameDevelopment.InputControl
             {
                 player.currentMovementState = CurrentMovementState.Shooting;
             }
-            
+
             if (KeyboardState.IsKeyDown(Keys.A))
             {
                 Velocity.X -= player.Speed;
@@ -49,19 +42,19 @@ namespace ProjectGameDevelopment.InputControl
             else if (KeyboardState.IsKeyDown(Keys.D))
             {
                 Velocity.X += player.Speed;
-                
+
                 player.currentMovementState = CurrentMovementState.Running;
                 player.SpriteMoveDirection = SpriteEffects.None;
             }
-            
+
 
 
             player.Position = Velocity + player.Position;
             player.Hitbox.X = (int)player.Position.X;
             player.Hitbox.Y = (int)player.Position.Y;
-            
-            
-           
+
+
+
             // player.Position = Velocity + player.Position;
 
 
@@ -70,7 +63,7 @@ namespace ProjectGameDevelopment.InputControl
 
 
 
-        } 
+        }
 
     }
 }

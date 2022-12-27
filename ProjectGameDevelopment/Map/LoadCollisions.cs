@@ -1,15 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using ProjectGameDevelopment.Characters;
-using ProjectGameDevelopment.Characters.Playable;
-using ProjectGameDevelopment.Objects;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 using TiledSharp;
 
 namespace ProjectGameDevelopment.Map
@@ -71,6 +62,6 @@ namespace ProjectGameDevelopment.Map
             return _endRect;
 
         }
-        
+
     }
 }

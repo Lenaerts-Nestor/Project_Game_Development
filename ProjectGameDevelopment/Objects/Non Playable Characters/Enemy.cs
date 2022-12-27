@@ -3,11 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using ProjectGameDevelopment.AnimationSection;
 using ProjectGameDevelopment.Characters.Playable;
 using ProjectGameDevelopment.MovementBehaviour;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.Characters
 {
@@ -50,7 +45,7 @@ namespace ProjectGameDevelopment.Characters
             this.FollowingMovement = new Following_Movement();
 
             //IN DEZE GAME KUNNEN DE VIJANDEN GEWOON NIET SHIETEN, dus ik vraag ze ook niet in de constructor parameters
-           
+
             CanShoot = false;
             IsShooting = false;
 
@@ -58,17 +53,17 @@ namespace ProjectGameDevelopment.Characters
             NPCAnimation = new Animation[1];                             //voor het moment maar 1 animatie
             NPCAnimation[0] = new Animation(_enemySpriteSheet);
 
-            currentMovementState =  CurrentMovementState.Running;
+            currentMovementState = CurrentMovementState.Running;
             AnimationMovement = new AnimationMovement(this.Spritesheet);
 
 
 
-            
+
 
         }
 
 
-        
+
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             AnimationMovement.Draw(spriteBatch, this.Position, gameTime, this.SpriteMoveDirection);
@@ -77,11 +72,11 @@ namespace ProjectGameDevelopment.Characters
         public void Update(GameTime gameTime)
         {
             //controleren welke type het is, INTELIGENT of PATHWAY TYPE
-            if(!this.IsInteligent)
+            if (!this.IsInteligent)
                 PathWayMovement.EnemysMovement(this, this.Player);
             else
                 FollowingMovement.EnemysMovement(this, this.Player);
-                           
+
         }
     }
 }

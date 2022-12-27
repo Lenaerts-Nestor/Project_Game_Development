@@ -1,17 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TiledSharp;
 
 namespace ProjectGameDevelopment.Map
 {
-    public class MapMaker :Map
+    public class MapMaker : Map
     {
-        public MapMaker(TmxMap _map,Texture2D _tileset)
+        public MapMaker(TmxMap _map, Texture2D _tileset)
         {
             this.TileMap = _map;
             this.Tileset = _tileset;

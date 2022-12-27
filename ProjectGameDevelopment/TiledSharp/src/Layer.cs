@@ -4,29 +4,29 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Xml.Linq;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 namespace TiledSharp
 {
     public class TmxLayer : ITmxLayer
     {
-        public string Name {get; private set;}
+        public string Name { get; private set; }
         // TODO: Legacy (Tiled Java) attributes (x, y, width, height)
-        public double Opacity {get; private set;}
-        public bool Visible {get; private set; }
-        public double? OffsetX {get; private set;}
-        public double? OffsetY {get; private set;}
+        public double Opacity { get; private set; }
+        public bool Visible { get; private set; }
+        public double? OffsetX { get; private set; }
+        public double? OffsetY { get; private set; }
         public TmxColor Tint { get; private set; }
-        public Collection<TmxLayerTile> Tiles {get; private set;}
-        public PropertyDict Properties {get; private set;}
+        public Collection<TmxLayerTile> Tiles { get; private set; }
+        public PropertyDict Properties { get; private set; }
         public TmxLayer(XElement xLayer, int width, int height)
         {
-            Name = (string) xLayer.Attribute("name");
-            Opacity = (double?) xLayer.Attribute("opacity") ?? 1.0;
-            Visible = (bool?) xLayer.Attribute("visible") ?? true;
-            OffsetX = (double?) xLayer.Attribute("offsetx") ?? 0.0;
-            OffsetY = (double?) xLayer.Attribute("offsety") ?? 0.0;
+            Name = (string)xLayer.Attribute("name");
+            Opacity = (double?)xLayer.Attribute("opacity") ?? 1.0;
+            Visible = (bool?)xLayer.Attribute("visible") ?? true;
+            OffsetX = (double?)xLayer.Attribute("offsetx") ?? 0.0;
+            OffsetY = (double?)xLayer.Attribute("offsety") ?? 0.0;
             Tint = new TmxColor(xLayer.Attribute("tint"));
             var xData = xLayer.Element("data");
             var encoding = (string)xData.Attribute("encoding");
@@ -57,14 +57,14 @@ namespace TiledSharp
                 var stream = decodedStream.Data;
                 using (var br = new BinaryReader(stream))
                     for (int j = 0; j < height; j++)
-                    for (int i = 0; i < width; i++)
-                        Tiles.Add(new TmxLayerTile(br.ReadUInt32(), i + startX, j + startY));
+                        for (int i = 0; i < width; i++)
+                            Tiles.Add(new TmxLayerTile(br.ReadUInt32(), i + startX, j + startY));
             }
             else if (encoding == "csv")
             {
-                var csvData = (string) xData.Value;
+                var csvData = (string)xData.Value;
                 int k = 0;
-                foreach (var s in csvData.Split(new[] {',', '\n'}, StringSplitOptions.RemoveEmptyEntries))
+                foreach (var s in csvData.Split(new[] { ',', '\n' }, StringSplitOptions.RemoveEmptyEntries))
                 {
                     var gid = uint.Parse(s.Trim());
                     var x = k % width;
@@ -78,7 +78,7 @@ namespace TiledSharp
                 int k = 0;
                 foreach (var e in xData.Elements("tile"))
                 {
-                    var gid = (uint?) e.Attribute("gid") ?? 0;
+                    var gid = (uint?)e.Attribute("gid") ?? 0;
                     var x = k % width;
                     var y = k / width;
                     Tiles.Add(new TmxLayerTile(gid, x + startX, y + startY));
@@ -92,14 +92,14 @@ namespace TiledSharp
     {
         // Tile flip bit flags
         const uint FLIPPED_HORIZONTALLY_FLAG = 0x80000000;
-        const uint FLIPPED_VERTICALLY_FLAG   = 0x40000000;
-        const uint FLIPPED_DIAGONALLY_FLAG   = 0x20000000;
-        public int Gid {get; private set;}
-        public int X {get; private set;}
-        public int Y {get; private set;}
-        public bool HorizontalFlip {get; private set;}
-        public bool VerticalFlip {get; private set;}
-        public bool DiagonalFlip {get; private set;}
+        const uint FLIPPED_VERTICALLY_FLAG = 0x40000000;
+        const uint FLIPPED_DIAGONALLY_FLAG = 0x20000000;
+        public int Gid { get; private set; }
+        public int X { get; private set; }
+        public int Y { get; private set; }
+        public bool HorizontalFlip { get; private set; }
+        public bool VerticalFlip { get; private set; }
+        public bool DiagonalFlip { get; private set; }
         public TmxLayerTile(uint id, int x, int y)
         {
             var rawGid = id;

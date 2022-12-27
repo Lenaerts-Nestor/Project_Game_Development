@@ -1,11 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using ProjectGameDevelopment.Characters.Playable;
 using ProjectGameDevelopment.MovementBehaviour;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.Characters
 {

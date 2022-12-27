@@ -1,16 +1,11 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using ProjectGameDevelopment.Characters.Playable;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.MovementBehaviour
 {
     public class Players_Jumping
     {
-        public void Jumps(Player player, KeyboardState keyboardstate) 
+        public void Jumps(Player player, KeyboardState keyboardstate)
         {
             if (player.IsJumping)
             {

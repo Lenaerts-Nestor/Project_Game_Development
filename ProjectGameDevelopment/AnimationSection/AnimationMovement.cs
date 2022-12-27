@@ -2,11 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using ProjectGameDevelopment.Characters;
 using ProjectGameDevelopment.MovementBehaviour;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.AnimationSection
 {
@@ -18,13 +13,13 @@ namespace ProjectGameDevelopment.AnimationSection
             switch (character.currentMovementState)
             {
                 case CurrentMovementState.Idle:
-                    _spriteAnimation[0].Draw(spriteBatch, character.Position, gameTime,character.SpriteMoveDirection);
+                    _spriteAnimation[0].Draw(spriteBatch, character.Position, gameTime, character.SpriteMoveDirection);
                     break;
                 case CurrentMovementState.Running:
-                    _spriteAnimation[1].Draw(spriteBatch, character.Position, gameTime,character.SpriteMoveDirection);
+                    _spriteAnimation[1].Draw(spriteBatch, character.Position, gameTime, character.SpriteMoveDirection);
                     break;
                 case CurrentMovementState.Jumping:
-                    _spriteAnimation[2].Draw(spriteBatch, character.Position, gameTime,character.SpriteMoveDirection);
+                    _spriteAnimation[2].Draw(spriteBatch, character.Position, gameTime, character.SpriteMoveDirection);
                     break;
                 case CurrentMovementState.Shooting:
                     _spriteAnimation[3].Draw(spriteBatch, character.Position, gameTime, character.SpriteMoveDirection);
@@ -34,9 +29,9 @@ namespace ProjectGameDevelopment.AnimationSection
                     break;
             }
         }
-        
-       
-    
-    
+
+
+
+
     }
 }

@@ -1,17 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ProjectGameDevelopment.Characters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.Objects
 {
-    public class Bullet: Characters.Object, IGameObject
+    public class Bullet : Characters.Object, IGameObject
     {
-        public Bullet(Texture2D _bulletTexture, Vector2 _position, float _speed )
+        public Bullet(Texture2D _bulletTexture, Vector2 _position, float _speed)
         {
             this.Spritesheet = _bulletTexture;
             this.Speed = _speed;
@@ -28,7 +23,7 @@ namespace ProjectGameDevelopment.Objects
         {
             spriteBatch.Draw(this.Spritesheet, this.Hitbox, Color.White);
         }
-        
+
         public void Update(GameTime gameTime)
         {
             Hitbox.X += (int)Speed;

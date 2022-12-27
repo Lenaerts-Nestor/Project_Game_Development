@@ -3,36 +3,35 @@
 // http://www.apache.org/licenses/LICENSE-2.0
 using System;
 using System.Collections.Generic;
-using System.Xml.Linq;
-using System.Globalization;
 using System.IO;
-using System.Xml;
 using System.Linq;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace TiledSharp
 {
     public class TmxMap : TmxDocument
     {
-        public string Version {get; private set;}
+        public string Version { get; private set; }
         public string TiledVersion { get; private set; }
-        public int Width {get; private set;}
-        public int Height {get; private set;}
-        public int TileWidth {get; private set;}
-        public int TileHeight {get; private set;}
-        public int? HexSideLength {get; private set;}
-        public OrientationType Orientation {get; private set;}
-        public StaggerAxisType StaggerAxis {get; private set;}
-        public StaggerIndexType StaggerIndex {get; private set;}
-        public RenderOrderType RenderOrder {get; private set;}
-        public TmxColor BackgroundColor {get; private set;}
-        public int? NextObjectID {get; private set;}
+        public int Width { get; private set; }
+        public int Height { get; private set; }
+        public int TileWidth { get; private set; }
+        public int TileHeight { get; private set; }
+        public int? HexSideLength { get; private set; }
+        public OrientationType Orientation { get; private set; }
+        public StaggerAxisType StaggerAxis { get; private set; }
+        public StaggerIndexType StaggerIndex { get; private set; }
+        public RenderOrderType RenderOrder { get; private set; }
+        public TmxColor BackgroundColor { get; private set; }
+        public int? NextObjectID { get; private set; }
 
-        public TmxList<TmxTileset> Tilesets {get; private set;}
-        public TmxList<TmxLayer> TileLayers {get; private set;}
-        public TmxList<TmxObjectGroup> ObjectGroups {get; private set;}
-        public TmxList<TmxImageLayer> ImageLayers {get; private set;}
+        public TmxList<TmxTileset> Tilesets { get; private set; }
+        public TmxList<TmxLayer> TileLayers { get; private set; }
+        public TmxList<TmxObjectGroup> ObjectGroups { get; private set; }
+        public TmxList<TmxImageLayer> ImageLayers { get; private set; }
         public TmxList<TmxGroup> Groups { get; private set; }
-        public PropertyDict Properties {get; private set;}
+        public PropertyDict Properties { get; private set; }
 
         public TmxList<ITmxLayer> Layers { get; private set; }
 
@@ -43,7 +42,7 @@ namespace TiledSharp
 
         public TmxMap(Stream inputStream, ICustomLoader customLoader = null) : base(customLoader)
         {
-            XmlReader xmlReader = XmlReader.Create (inputStream);
+            XmlReader xmlReader = XmlReader.Create(inputStream);
             Load(XDocument.Load(xmlReader));
         }
 
@@ -55,14 +54,14 @@ namespace TiledSharp
         private void Load(XDocument xDoc)
         {
             var xMap = xDoc.Element("map");
-            Version = (string) xMap.Attribute("version");
+            Version = (string)xMap.Attribute("version");
             TiledVersion = (string)xMap.Attribute("tiledversion");
 
-            Width = (int) xMap.Attribute("width");
-            Height = (int) xMap.Attribute("height");
-            TileWidth = (int) xMap.Attribute("tilewidth");
-            TileHeight = (int) xMap.Attribute("tileheight");
-            HexSideLength = (int?) xMap.Attribute("hexsidelength");
+            Width = (int)xMap.Attribute("width");
+            Height = (int)xMap.Attribute("height");
+            TileWidth = (int)xMap.Attribute("tilewidth");
+            TileHeight = (int)xMap.Attribute("tileheight");
+            HexSideLength = (int?)xMap.Attribute("hexsidelength");
 
             // Map orientation type
             var orientDict = new Dictionary<string, OrientationType> {
@@ -73,7 +72,7 @@ namespace TiledSharp
                 {"hexagonal", OrientationType.Hexagonal},
             };
 
-            var orientValue = (string) xMap.Attribute("orientation");
+            var orientValue = (string)xMap.Attribute("orientation");
             if (orientValue != null)
                 Orientation = orientDict[orientValue];
 
@@ -83,7 +82,7 @@ namespace TiledSharp
                 {"y", StaggerAxisType.Y},
             };
 
-            var staggerAxisValue = (string) xMap.Attribute("staggeraxis");
+            var staggerAxisValue = (string)xMap.Attribute("staggeraxis");
             if (staggerAxisValue != null)
                 StaggerAxis = staggerAxisDict[staggerAxisValue];
 
@@ -93,7 +92,7 @@ namespace TiledSharp
                 {"even", StaggerIndexType.Even},
             };
 
-            var staggerIndexValue = (string) xMap.Attribute("staggerindex");
+            var staggerIndexValue = (string)xMap.Attribute("staggerindex");
             if (staggerIndexValue != null)
                 StaggerIndex = staggerIndexDict[staggerIndexValue];
 
@@ -105,7 +104,7 @@ namespace TiledSharp
                 {"left-up", RenderOrderType.LeftUp}
             };
 
-            var renderValue = (string) xMap.Attribute("renderorder");
+            var renderValue = (string)xMap.Attribute("renderorder");
             if (renderValue != null)
                 RenderOrder = renderDict[renderValue];
 

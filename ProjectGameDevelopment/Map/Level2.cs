@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Screens;
 using ProjectGameDevelopment.Characters;
 using ProjectGameDevelopment.Characters.Playable;
 using ProjectGameDevelopment.Objects;
+using System.Collections.Generic;
+using System.Linq;
 using TiledSharp;
 
 namespace ProjectGameDevelopment.Map
@@ -51,7 +48,7 @@ namespace ProjectGameDevelopment.Map
 
         public List<Rectangle> _collisionTiles { get; set; }
         public List<Rectangle> _respawnZone { get; set; }
-        public Rectangle _endZone { get; set; } 
+        public Rectangle _endZone { get; set; }
 
         public LoadCollisions _collisionController { get; set; }
         #endregion

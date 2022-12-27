@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Screens;
 using ProjectGameDevelopment.Characters;
 using ProjectGameDevelopment.Characters.Playable;
 using ProjectGameDevelopment.Objects;
+using System.Collections.Generic;
+using System.Linq;
 using TiledSharp;
 
 namespace ProjectGameDevelopment.Map
 {
-    public class Level1 : GameScreen,ILevelDesigner
+    public class Level1 : GameScreen, ILevelDesigner
     {
         private new Game1 Game => (Game1)base.Game;
 
         #region ILEVELDESIGNER
         //PLAYER
-        public Player _player { get; set; } 
+        public Player _player { get; set; }
         public List<Bullet> _bullets { get; set; }
         public Texture2D _bulletTexture { get; set; }
 
@@ -59,12 +56,12 @@ namespace ProjectGameDevelopment.Map
         public SpriteBatch _spriteBatch;
         public LoadCollisions _collisionController { get; set; }
         public BuffItem _buffItem { get; set; }
-        public List<BuffItem> _buffItemList { get;set; }
+        public List<BuffItem> _buffItemList { get; set; }
 
         public bool _canfly { get; set; } = false;
-        public Level1(Game1 game):base(game)
+        public Level1(Game1 game) : base(game)
         {
-            
+
         }
 
 
@@ -108,7 +105,7 @@ namespace ProjectGameDevelopment.Map
 
             _respawnZone = _collisionController.GetRespawnZone(_map, _respawnZone);
 
-            _endZone = _collisionController.GetEnd(_map,_endZone);
+            _endZone = _collisionController.GetEnd(_map, _endZone);
 
             #endregion
 
@@ -125,7 +122,7 @@ namespace ProjectGameDevelopment.Map
             _buffItem = new BuffItem(Content.Load<Texture2D>("Health_Kit (16 x 16)"),
                 new Vector2(_respawnZone[2].X, _respawnZone[2].Y), 2
                 );
-            _buffItemList.Add(_buffItem); 
+            _buffItemList.Add(_buffItem);
 
 
             #endregion
@@ -145,7 +142,7 @@ namespace ProjectGameDevelopment.Map
             //ENEMIES TOEVOEGEN AAN DE LIJST =>
             _enemyList.Add(npc1);
             _enemyList.Add(npc2);
-            _enemyList.Add(npc3); 
+            _enemyList.Add(npc3);
 
 
             #endregion
@@ -165,11 +162,15 @@ namespace ProjectGameDevelopment.Map
             _spriteBatch.Begin();
 
 
-        
+
             //teken de map
             _collisionController.DrawLevel(_spriteBatch, _mapMaker);
+            //teken de punten boven links Text
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS : {this._points}", new Vector2(50, 50), Color.White);
+            //teken de buff text boven buff als de buff Item bestaat
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"Buff Item", new Vector2(50, 50), Color.White);
 
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS : {this._points}", new Vector2(50,50), Color.White);
+
             //teken de Objecten
             #region Enemy
             foreach (var enemy in _enemyList)
@@ -195,12 +196,12 @@ namespace ProjectGameDevelopment.Map
 
         public override void Update(GameTime gameTime)
         {
-            
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Game.Exit();
 
 
-            
+
             #region Positie updaten van Entiteiten
 
             //ENEMY POSITIE =>
@@ -243,9 +244,9 @@ namespace ProjectGameDevelopment.Map
                     _player.Speed += 4;
                     _buffItemList.Remove(item);
                 }
-                
+
             }
-            
+
 
             #endregion
 
@@ -256,7 +257,7 @@ namespace ProjectGameDevelopment.Map
             //de Player =>
             foreach (var rect in _collisionTiles)
             {
-                
+
                 if (!_player.IsJumping)
                     _player.IsFalling = true;
                 if (_canfly)
@@ -271,7 +272,7 @@ namespace ProjectGameDevelopment.Map
                     _player.IsFalling = false;
                     break;
                 }
-                
+
             }
 
             //de Bullet && Enemy =>
@@ -356,7 +357,7 @@ namespace ProjectGameDevelopment.Map
 
             #endregion
 
-           
+
         }
 
 

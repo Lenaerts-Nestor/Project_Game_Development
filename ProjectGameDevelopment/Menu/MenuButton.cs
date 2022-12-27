@@ -1,12 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using ProjectGameDevelopment.Characters;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.Menu
 {
@@ -29,7 +24,7 @@ namespace ProjectGameDevelopment.Menu
         public event EventHandler Click;
         public Color PenColour { get; set; }
         public bool Clicked { get; private set; }
-        public Vector2 Position { get;set; }
+        public Vector2 Position { get; set; }
 
         #endregion
 
@@ -37,7 +32,7 @@ namespace ProjectGameDevelopment.Menu
         {
             get
             {
-                return new Rectangle((int)Position.X,(int)Position.Y, _texture.Width, _texture.Height);
+                return new Rectangle((int)Position.X, (int)Position.Y, _texture.Width, _texture.Height);
             }
         }
 
@@ -74,7 +69,7 @@ namespace ProjectGameDevelopment.Menu
 
         public override void Update(GameTime gameTime)
         {
-             _previousMouse = _currentMouse;
+            _previousMouse = _currentMouse;
             _currentMouse = Mouse.GetState();
 
             var mouseRectangle = new Rectangle(_currentMouse.X, _currentMouse.Y, 1, 1);
@@ -91,7 +86,7 @@ namespace ProjectGameDevelopment.Menu
                 }
 
             }
-            
+
         }
     }
 }

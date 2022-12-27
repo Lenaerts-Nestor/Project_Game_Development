@@ -16,7 +16,7 @@ namespace TiledSharp
 {
     public abstract class TmxDocument
     {
-        public string TmxDirectory {get; private set;}
+        public string TmxDirectory { get; private set; }
 
         protected ICustomLoader CustomLoader { get; }
 
@@ -46,8 +46,10 @@ namespace TiledSharp
             // Otherwise, assume filepath is an explicit path
             if (fileRes != null)
             {
-                using (Stream xmlStream = asm.GetManifestResourceStream(fileRes)) {
-                    using (XmlReader reader = XmlReader.Create(xmlStream)) {
+                using (Stream xmlStream = asm.GetManifestResourceStream(fileRes))
+                {
+                    using (XmlReader reader = XmlReader.Create(xmlStream))
+                    {
                         xDoc = XDocument.Load(reader);
                     }
                 }
@@ -72,7 +74,7 @@ namespace TiledSharp
 
     public interface ITmxElement
     {
-        string Name {get;}
+        string Name { get; }
     }
 
     public class TmxList<T> : KeyedCollection<string, T> where T : ITmxElement
@@ -101,7 +103,8 @@ namespace TiledSharp
 
             // For duplicate keys, append a counter
             // For pathological cases, insert underscores to ensure uniqueness
-            while (Contains(name)) {
+            while (Contains(name))
+            {
                 name = name + String.Concat(Enumerable.Repeat("_", dupes))
                             + count.ToString();
                 dupes++;
@@ -123,9 +126,12 @@ namespace TiledSharp
                 string pname, pval;
 
                 pname = p.Attribute("name").Value;
-                try {
+                try
+                {
                     pval = p.Attribute("value").Value;
-                } catch (System.NullReferenceException) {
+                }
+                catch (System.NullReferenceException)
+                {
                     // Fallback to element value if no "value"
                     pval = p.Value;
                 }
@@ -137,12 +143,12 @@ namespace TiledSharp
 
     public class TmxImage
     {
-        public string Source {get; private set;}
-        public string Format {get; private set;}
-        public Stream Data {get; private set;}
-        public TmxColor Trans {get; private set;}
-        public int? Width {get; private set;}
-        public int? Height {get; private set;}
+        public string Source { get; private set; }
+        public string Format { get; private set; }
+        public Stream Data { get; private set; }
+        public TmxColor Trans { get; private set; }
+        public int? Width { get; private set; }
+        public int? Height { get; private set; }
 
         public TmxImage(XElement xImage, string tmxDir = "")
         {
@@ -153,7 +159,8 @@ namespace TiledSharp
             if (xSource != null)
                 // Append directory if present
                 Source = Path.Combine(tmxDir, (string)xSource);
-            else {
+            else
+            {
                 Format = (string)xImage.Attribute("format");
                 var xData = xImage.Element("data");
                 var decodedStream = new TmxBase64Data(xData);
@@ -168,9 +175,9 @@ namespace TiledSharp
 
     public class TmxColor
     {
-        public int R {get; private set;}
-        public int G {get; private set;}
-        public int B {get; private set;}
+        public int R { get; private set; }
+        public int G { get; private set; }
+        public int B { get; private set; }
 
         public TmxColor(XAttribute xColor)
         {
@@ -186,12 +193,12 @@ namespace TiledSharp
 
     public class TmxBase64Data
     {
-        public Stream Data {get; private set;}
+        public Stream Data { get; private set; }
 
         public TmxBase64Data(XElement xData)
         {
-            string encoding = (string) (xData.Attribute("encoding") ?? xData.Parent?.Attribute("encoding"));
-            string compression = (string) (xData.Attribute("compression") ?? xData.Parent?.Attribute("compression"));
+            string encoding = (string)(xData.Attribute("encoding") ?? xData.Parent?.Attribute("encoding"));
+            string compression = (string)(xData.Attribute("compression") ?? xData.Parent?.Attribute("compression"));
             if (encoding != "base64")
                 throw new Exception(
                     "TmxBase64Data: Only Base64-encoded data is supported.");
@@ -199,18 +206,20 @@ namespace TiledSharp
             var rawData = Convert.FromBase64String((string)xData.Value);
             Data = new MemoryStream(rawData, false);
 
-            if (compression == "gzip") {
-                Data = new GZipStream (Data, CompressionMode.Decompress);
+            if (compression == "gzip")
+            {
+                Data = new GZipStream(Data, CompressionMode.Decompress);
             }
-            else if (compression == "zlib") {
+            else if (compression == "zlib")
+            {
                 // Strip 2-byte header and 4-byte checksum
                 // TODO: Validate header here
                 var bodyLength = rawData.Length - 6;
                 byte[] bodyData = new byte[bodyLength];
-                Array.Copy (rawData, 2, bodyData, 0, bodyLength);
+                Array.Copy(rawData, 2, bodyData, 0, bodyLength);
 
-                var bodyStream = new MemoryStream (bodyData, false);
-                Data = new DeflateStream (bodyStream, CompressionMode.Decompress);
+                var bodyStream = new MemoryStream(bodyData, false);
+                Data = new DeflateStream(bodyStream, CompressionMode.Decompress);
 
                 // TODO: Validate checksum?
             }

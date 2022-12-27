@@ -1,19 +1,13 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using ProjectGameDevelopment.MovementBehaviour;
 using ProjectGameDevelopment.Objects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.Characters
 {
-   
-    public abstract class Entity : Object,IMovable, IJump,IShooting
+
+    public abstract class Entity : Object, IMovable, IJump, IShooting
     {
-   
+
 
         //IMovable
         public SpriteEffects SpriteMoveDirection { get; set; }
@@ -34,7 +28,7 @@ namespace ProjectGameDevelopment.Characters
         //IConditionCheck
         public bool IsAlive { get; set; } = true;
 
-        
+
 
     }
 }

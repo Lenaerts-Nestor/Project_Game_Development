@@ -2,12 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using ProjectGameDevelopment.Characters;
 using ProjectGameDevelopment.Characters.Playable;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.MovementBehaviour
 {
@@ -20,7 +14,7 @@ namespace ProjectGameDevelopment.MovementBehaviour
 
             if (player.IsFalling)
             {
-                Velocity.Y += npc.FallVelocity+5;
+                Velocity.Y += npc.FallVelocity + 5;
             }
 
             if (player.Position.X > npc.Position.X)
@@ -38,12 +32,12 @@ namespace ProjectGameDevelopment.MovementBehaviour
             {
                 npc.SpriteMoveDirection = SpriteEffects.None;
             }
-            
+
 
             npc.Position = Velocity + npc.Position;
             npc.Hitbox.X = (int)npc.Position.X;
             npc.Hitbox.Y = (int)npc.Position.Y;
-            
+
         }
 
     }

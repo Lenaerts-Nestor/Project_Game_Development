@@ -1,12 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using ProjectGameDevelopment.Characters;
 using ProjectGameDevelopment.Characters.Playable;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.MovementBehaviour
 {
@@ -19,10 +13,10 @@ namespace ProjectGameDevelopment.MovementBehaviour
             if (!npc.Pathway.Contains(npc.Hitbox))
             {
                 npc.Speed = -npc.Speed;
-                npc.isFacingRight = !npc.isFacingRight; 
+                npc.isFacingRight = !npc.isFacingRight;
             }
-           
-           
+
+
             if (!npc.isFacingRight)
             {
                 npc.SpriteMoveDirection = SpriteEffects.FlipHorizontally;

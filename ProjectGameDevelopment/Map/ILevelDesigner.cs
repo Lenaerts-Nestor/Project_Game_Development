@@ -3,11 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using ProjectGameDevelopment.Characters;
 using ProjectGameDevelopment.Characters.Playable;
 using ProjectGameDevelopment.Objects;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TiledSharp;
 
 namespace ProjectGameDevelopment.Map
@@ -20,7 +16,7 @@ namespace ProjectGameDevelopment.Map
         public Texture2D _bulletTexture { get; set; }
 
         public int _playerHP { get; set; }
-        public int _time_x_hurt { get;set; }
+        public int _time_x_hurt { get; set; }
         public int _time_x_bullet { get; set; }
 
         public int _points { get; set; }

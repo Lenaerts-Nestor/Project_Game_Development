@@ -11,32 +11,32 @@ namespace TiledSharp
 {
     public class TmxObjectGroup : ITmxLayer
     {
-        public string Name {get; private set;}
+        public string Name { get; private set; }
 
         // TODO: Legacy (Tiled Java) attributes (x, y, width, height)
 
-        public TmxColor Color {get; private set;}
-        public DrawOrderType DrawOrder {get; private set;}
+        public TmxColor Color { get; private set; }
+        public DrawOrderType DrawOrder { get; private set; }
 
-        public double Opacity {get; private set;}
-        public bool Visible {get; private set;}
-        public double OffsetX {get; private set;}
-        public double OffsetY {get; private set;}
+        public double Opacity { get; private set; }
+        public bool Visible { get; private set; }
+        public double OffsetX { get; private set; }
+        public double OffsetY { get; private set; }
 
-        public TmxList<TmxObject> Objects {get; private set;}
-        public PropertyDict Properties {get; private set;}
+        public TmxList<TmxObject> Objects { get; private set; }
+        public PropertyDict Properties { get; private set; }
 
         double? ITmxLayer.OffsetX => OffsetX;
         double? ITmxLayer.OffsetY => OffsetY;
 
         public TmxObjectGroup(XElement xObjectGroup)
         {
-            Name = (string) xObjectGroup.Attribute("name") ?? String.Empty;
+            Name = (string)xObjectGroup.Attribute("name") ?? String.Empty;
             Color = new TmxColor(xObjectGroup.Attribute("color"));
-            Opacity = (double?) xObjectGroup.Attribute("opacity") ?? 1.0;
-            Visible = (bool?) xObjectGroup.Attribute("visible") ?? true;
-            OffsetX = (double?) xObjectGroup.Attribute("offsetx") ?? 0.0;
-            OffsetY = (double?) xObjectGroup.Attribute("offsety") ?? 0.0;
+            Opacity = (double?)xObjectGroup.Attribute("opacity") ?? 1.0;
+            Visible = (bool?)xObjectGroup.Attribute("visible") ?? true;
+            OffsetX = (double?)xObjectGroup.Attribute("offsetx") ?? 0.0;
+            OffsetY = (double?)xObjectGroup.Attribute("offsety") ?? 0.0;
 
             var drawOrderDict = new Dictionary<string, DrawOrderType> {
                 {"unknown", DrawOrderType.UnknownOrder},
@@ -44,7 +44,7 @@ namespace TiledSharp
                 {"index", DrawOrderType.IndexOrder}
             };
 
-            var drawOrderValue = (string) xObjectGroup.Attribute("draworder");
+            var drawOrderValue = (string)xObjectGroup.Attribute("draworder");
             if (drawOrderValue != null)
                 DrawOrder = drawOrderDict[drawOrderValue];
 
@@ -60,21 +60,21 @@ namespace TiledSharp
     {
         // Many TmxObjectTypes are distinguished by null values in fields
         // It might be smart to subclass TmxObject
-        public int Id {get; private set;}
-        public string Name {get; private set;}
-        public TmxObjectType ObjectType {get; private set;}
-        public string Type {get; private set;}
-        public double X {get; private set;}
-        public double Y {get; private set;}
-        public double Width {get; private set;}
-        public double Height {get; private set;}
-        public double Rotation {get; private set;}
-        public TmxLayerTile Tile {get; private set;}
-        public bool Visible {get; private set;}
+        public int Id { get; private set; }
+        public string Name { get; private set; }
+        public TmxObjectType ObjectType { get; private set; }
+        public string Type { get; private set; }
+        public double X { get; private set; }
+        public double Y { get; private set; }
+        public double Width { get; private set; }
+        public double Height { get; private set; }
+        public double Rotation { get; private set; }
+        public TmxLayerTile Tile { get; private set; }
+        public bool Visible { get; private set; }
         public TmxText Text { get; private set; }
 
-        public Collection<TmxObjectPoint> Points {get; private set;}
-        public PropertyDict Properties {get; private set;}
+        public Collection<TmxObjectPoint> Points { get; private set; }
+        public PropertyDict Properties { get; private set; }
 
         public TmxObject(XElement xObject)
         {
@@ -146,8 +146,8 @@ namespace TiledSharp
 
     public class TmxObjectPoint
     {
-        public double X {get; private set;}
-        public double Y {get; private set;}
+        public double X { get; private set; }
+        public double Y { get; private set; }
 
         public TmxObjectPoint(double x, double y)
         {

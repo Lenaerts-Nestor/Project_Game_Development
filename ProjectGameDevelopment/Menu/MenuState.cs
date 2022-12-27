@@ -1,17 +1,11 @@
-﻿using Apos.Gui;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Screens;
 using MonoGame.Extended.Screens.Transitions;
 using ProjectGameDevelopment.Map;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectGameDevelopment.Menu
 {
@@ -30,7 +24,7 @@ namespace ProjectGameDevelopment.Menu
             //LEVEL 1
             var Level1button = new MenuButton(buttonTexture, buttonFont)
             {
-                Position = new Vector2(300,200),
+                Position = new Vector2(300, 200),
                 Text = "START LVL 1",
 
             };
@@ -65,7 +59,7 @@ namespace ProjectGameDevelopment.Menu
 
         private void Level1Button_click(object sender, EventArgs e)
         {
-            
+
             LoadLevel1();
 
         }
@@ -95,7 +89,7 @@ namespace ProjectGameDevelopment.Menu
 
         public override void Update(GameTime gameTime)
         {
-           
+
 
             foreach (var component in _components)
             {
