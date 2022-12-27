@@ -14,8 +14,8 @@ namespace ProjectGameDevelopment.Characters.Playable
         public AnimationMovement AnimationMovement;
         public CurrentMovementState CurrentMovementState;
         public KeyboardReader InputReader { get; set; }
-        public bool _canFly = false;
         public static int _playerPoint = 0;
+        public bool _touchedBuff;
         //Constructor
         public Player(Vector2 _position, bool canJump, Texture2D _spriteIdle, Texture2D _spriteRunning, Texture2D _jumping, Texture2D _shooting)
         {
@@ -27,6 +27,7 @@ namespace ProjectGameDevelopment.Characters.Playable
 
             CanShoot = true;
             IsShooting = false;
+            _touchedBuff = false;
 
 
             if (canJump == true)
@@ -72,8 +73,7 @@ namespace ProjectGameDevelopment.Characters.Playable
             }
             return false;
 
-
-
         }
+      
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Screens;
 using ProjectGameDevelopment.Characters.Playable;
 using ProjectGameDevelopment.Map;
@@ -57,12 +58,15 @@ namespace ProjectGameDevelopment
 
         protected override void Update(GameTime gameTime)
         {
+           
+
             if (_Nextstate != null)
             {
                 _currentState = _Nextstate;
                 _Nextstate = null;
             }
 
+           
 
             _currentState.Update(gameTime);
 
@@ -78,6 +82,7 @@ namespace ProjectGameDevelopment
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
 
             _currentState.Draw(gameTime, _spriteBatch);
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Screens;
 using MonoGame.Extended.Screens.Transitions;
 using ProjectGameDevelopment.Map;
@@ -12,8 +13,6 @@ namespace ProjectGameDevelopment.Menu
     public class MenuState : State
     {
         private List<MenuComponent> _components;
-
-
         private ScreenManager _screenManager;
         private Game1 tijdelijkeGame;
         private GraphicsDevice _device;
@@ -45,11 +44,26 @@ namespace ProjectGameDevelopment.Menu
             };
             Level2button.Click += Level2Button_click;
 
+
+            var exitButton = new MenuButton(buttonTexture, buttonFont)
+            {
+                Position = new Vector2(300, 300),
+                Text = "EXIT",
+            };
+            exitButton.Click += ExitButton_Click;
+
+
             _components = new List<MenuComponent>
             {
                 Level1button,
-                Level2button
+                Level2button,
+                exitButton
             };
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            exitGame();
         }
 
         private void Level2Button_click(object sender, EventArgs e)
@@ -67,16 +81,12 @@ namespace ProjectGameDevelopment.Menu
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
-
+            
 
             foreach (var component in _components)
             {
                 component.Draw(spriteBatch, gameTime);
             }
-
-
-
-
 
 
             spriteBatch.End();
@@ -89,7 +99,7 @@ namespace ProjectGameDevelopment.Menu
 
         public override void Update(GameTime gameTime)
         {
-
+            
 
             foreach (var component in _components)
             {
@@ -109,7 +119,10 @@ namespace ProjectGameDevelopment.Menu
             _screenManager.LoadScreen(new Level2(tijdelijkeGame), new FadeTransition(_device, Color.Black));
         }
 
-
+        private void exitGame()
+        {
+            this._game1.Exit();
+        }
 
     }
 }

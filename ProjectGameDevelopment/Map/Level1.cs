@@ -167,8 +167,16 @@ namespace ProjectGameDevelopment.Map
             _collisionController.DrawLevel(_spriteBatch, _mapMaker);
             //teken de punten boven links Text
             _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS : {this._points}", new Vector2(50, 50), Color.White);
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"HP : {this._playerHP}", new Vector2(50, 80), Color.White);
+
+
+            //teken end game portal
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"END PORTAL", new Vector2(670, 45), Color.White);
+
+
             //teken de buff text boven buff als de buff Item bestaat
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"Buff Item", new Vector2(50, 50), Color.White);
+            if (!_player._touchedBuff)
+                _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"Buff Item", new Vector2(390,320 ), Color.White);
 
 
             //teken de Objecten
@@ -242,6 +250,7 @@ namespace ProjectGameDevelopment.Map
                 if (_player.Hitbox.Intersects(item.Hitbox))
                 {
                     _player.Speed += 4;
+                    _player._touchedBuff = true;
                     _buffItemList.Remove(item);
                 }
 
