@@ -38,7 +38,7 @@ namespace ProjectGameDevelopment.InputControl
             {
                 player.currentMovementState = CurrentMovementState.Shooting;
             }
-
+            
             if (KeyboardState.IsKeyDown(Keys.A))
             {
                 Velocity.X -= player.Speed;
