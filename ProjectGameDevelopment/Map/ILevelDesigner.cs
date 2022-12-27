@@ -18,7 +18,6 @@ namespace ProjectGameDevelopment.Map
         public int _playerHP { get; set; }
         public int _time_x_hurt { get; set; }
         public int _time_x_bullet { get; set; }
-
         public int _points { get; set; }
         public Vector2 _initPos { get; set; }
 
@@ -35,19 +34,14 @@ namespace ProjectGameDevelopment.Map
         //MAP
 
         public TmxMap _map { get; set; }
-
         public Texture2D _tileset { get; set; }
-
         public Vector2 _enemyInitPos { get; set; }
         public MapMaker _mapMaker { get; set; }
 
-
+        //Colision bewaren
         public List<Rectangle> _collisionTiles { get; set; }
         public List<Rectangle> _respawnZone { get; set; }
-
-
         public Rectangle _endZone { get; set; }
-
         public LoadCollisions _collisionController { get; set; }
 
     }
