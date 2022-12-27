@@ -183,7 +183,7 @@ namespace ProjectGameDevelopment.Map
 
             if (_endZone.Intersects(_player.Hitbox))
             {
-                Game.Exit();
+                Game.stateOfGame = Menu.currentGameState.Menu;
             }
 
             #region Positie updaten van Entiteiten

@@ -1,22 +1,55 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Screens;
-using MonoGame.Extended.Screens.Transitions;
-using ProjectGameDevelopment.Map;
 using System;
 using System.Collections.Generic;
 
 namespace ProjectGameDevelopment.Menu
 {
-    public class MenuState : State
+    public class MenuState : GameScreen
     {
         private List<MenuComponent> _components;
-        private ScreenManager _screenManager;
-        private Game1 tijdelijkeGame;
-        private GraphicsDevice _device;
-        public MenuState(Game1 game1, GraphicsDevice graphicDevice, ContentManager content, Level1 lvl1) : base(game1, graphicDevice, content)
+
+        private new Game1 Game => (Game1)base.Game;
+
+        public SpriteBatch _spriteBatch;
+
+        public MenuState(Game game) : base(game)
+        {
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            var buttonTexture = game.Content.Load<Texture2D>("Controls\\ButtonImage");
+            var buttonFont = game.Content.Load<SpriteFont>("Fonts\\Font");
+
+            var Level1button = new MenuButton(buttonTexture, buttonFont)
+            {
+                Position = new Vector2(300, 200),
+                Text = "START LVL 1",
+
+            };
+
+            Level1button.Click += Level1Button_click;
+
+            
+            //LEVEL 2
+            var Level2button = new MenuButton(buttonTexture, buttonFont)
+            {
+                Position = new Vector2(300, 250),
+                Text = "START LVL 2",
+            };
+            Level2button.Click += Level2Button_click;
+
+            _components = new List<MenuComponent>
+            {
+                Level1button,
+                Level2button,
+            };
+
+
+        }
+
+        /*
+        public MenuState(Game1 game1) : base(game1)
         {
             var buttonTexture = _content.Load<Texture2D>("Controls\\ButtonImage");
             var buttonFont = _content.Load<SpriteFont>("Fonts\\Font");
@@ -28,13 +61,7 @@ namespace ProjectGameDevelopment.Menu
 
             };
 
-            _screenManager = new ScreenManager();
-            tijdelijkeGame = game1;
-            _device = graphicDevice;
-            tijdelijkeGame.Components.Add(_screenManager);
             Level1button.Click += Level1Button_click;
-
-
 
             //LEVEL 2
             var Level2button = new MenuButton(buttonTexture, buttonFont)
@@ -44,85 +71,41 @@ namespace ProjectGameDevelopment.Menu
             };
             Level2button.Click += Level2Button_click;
 
-
-            var exitButton = new MenuButton(buttonTexture, buttonFont)
-            {
-                Position = new Vector2(300, 300),
-                Text = "EXIT",
-            };
-            exitButton.Click += ExitButton_Click;
-
-
             _components = new List<MenuComponent>
             {
                 Level1button,
                 Level2button,
-                exitButton
             };
         }
-
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            exitGame();
-        }
+        */
 
         private void Level2Button_click(object sender, EventArgs e)
         {
-            LoadLevel2();
+
+            this.Game.stateOfGame = currentGameState.level2;
+            
+
         }
 
         private void Level1Button_click(object sender, EventArgs e)
         {
-
-            LoadLevel1();
-
+            this.Game.stateOfGame = currentGameState.level2;
         }
-
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
-        {
-            spriteBatch.Begin();
-            
-
-            foreach (var component in _components)
-            {
-                component.Draw(spriteBatch, gameTime);
-            }
-
-
-            spriteBatch.End();
-        }
-
-        public override void PostUpdate(GameTime gameTime)
-        {
-            //momenteel geen used
-        }
-
+        
         public override void Update(GameTime gameTime)
         {
-            
-
             foreach (var component in _components)
             {
                 component.Update(gameTime);
             }
         }
 
-
-        private void LoadLevel1()
+        public override void Draw(GameTime gameTime)
         {
-
-            _screenManager.LoadScreen(new Level1(tijdelijkeGame), new FadeTransition(_device, Color.Black));
-
+            foreach (var component in _components)
+            {
+                component.Draw(_spriteBatch, gameTime);
+            }
         }
-        private void LoadLevel2()
-        {
-            _screenManager.LoadScreen(new Level2(tijdelijkeGame), new FadeTransition(_device, Color.Black));
-        }
-
-        private void exitGame()
-        {
-            this._game1.Exit();
-        }
-
     }
 }

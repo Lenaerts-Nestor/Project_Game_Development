@@ -52,6 +52,7 @@ namespace ProjectGameDevelopment.Menu
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
+            spriteBatch.Begin();
             var colour = Color.White;
             if (_isHovering)
                 colour = Color.Gray;
@@ -65,6 +66,8 @@ namespace ProjectGameDevelopment.Menu
 
                 spriteBatch.DrawString(_font, Text, new Vector2(x, y), PenColour);
             }
+            spriteBatch.End();
+
         }
 
         public override void Update(GameTime gameTime)

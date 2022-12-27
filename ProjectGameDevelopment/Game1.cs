@@ -2,27 +2,27 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Screens;
+using MonoGame.Extended.Screens.Transitions;
 using ProjectGameDevelopment.Characters.Playable;
 using ProjectGameDevelopment.Map;
 using ProjectGameDevelopment.Menu;
+using System.Diagnostics;
 
 namespace ProjectGameDevelopment
 {
-    public class Game1 : Game
+    public class Game1 : Game , GameState
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
         private ScreenManager _screenManager;
 
+        public currentGameState stateOfGame { get; set; }
+        
+        public currentGameState previousStateOfGame { get; set; }
 
-        private State _currentState;
-        private State _Nextstate;
+        private bool backtoMenu;
 
-        public void Changestate(State state)
-        {
-            _Nextstate = state;
-        }
 
         public Player _player { get; set; }
 
@@ -42,9 +42,9 @@ namespace ProjectGameDevelopment
             base.Initialize();
 
             //LoadLevel1();
-
-            _currentState = new MenuState(this, _graphics.GraphicsDevice, Content, new Level1(this));
-
+            stateOfGame = currentGameState.Menu;
+            LoadMenu();
+            //_currentState = new MenuState(this);
             //LoadLevel2();
         }
 
@@ -58,23 +58,27 @@ namespace ProjectGameDevelopment
 
         protected override void Update(GameTime gameTime)
         {
-           
 
-            if (_Nextstate != null)
-            {
-                _currentState = _Nextstate;
-                _Nextstate = null;
-            }
-
-           
-
-            _currentState.Update(gameTime);
+            Debug.WriteLine(stateOfGame);
 
 
+            if(previousStateOfGame != stateOfGame)
+                switch (stateOfGame)
+                {
+                    case currentGameState.level1:
+                        LoadLevel1();
+                        break;
+                    case currentGameState.level2:
+                        LoadLevel2();
+                        break;
+                    case currentGameState.Menu:
+                        LoadMenu();
+                        break;
+                    default:
+                        break;
+                }
 
-
-            _currentState.PostUpdate(gameTime);
-
+            previousStateOfGame = stateOfGame;
 
             base.Update(gameTime);
         }
@@ -83,14 +87,30 @@ namespace ProjectGameDevelopment
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-
-            _currentState.Draw(gameTime, _spriteBatch);
-
+            _spriteBatch.Begin();
 
 
-
-
+            _spriteBatch.End();
+            
             base.Draw(gameTime);
         }
+
+
+        private void LoadLevel1()
+        {
+
+            _screenManager.LoadScreen(new Level1(this), new FadeTransition(GraphicsDevice, Color.Black));
+
+        }
+        private void LoadLevel2()
+        {
+            _screenManager.LoadScreen(new Level2(this), new FadeTransition(GraphicsDevice, Color.Black));
+        }
+        private void LoadMenu()
+        {
+            _screenManager.LoadScreen(new MenuState(this), new FadeTransition(GraphicsDevice, Color.Black));
+        }
+
+
     }
 }
