@@ -45,17 +45,6 @@ namespace ProjectGameDevelopment
             _screenManager = new ScreenManager();
             Components.Add(_screenManager);
         }
-        private void LoadLevel1()
-        {
-            
-            _screenManager.LoadScreen(new Level1(this), new FadeTransition(GraphicsDevice, Color.Black));
-
-        }
-        private void LoadLevel2()
-        {
-            _screenManager.LoadScreen(new Level2(this), new FadeTransition(GraphicsDevice, Color.Black));
-        }
-
         protected override void Initialize()
         {
             

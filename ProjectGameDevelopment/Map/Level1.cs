@@ -58,12 +58,10 @@ namespace ProjectGameDevelopment.Map
 
         public SpriteBatch _spriteBatch;
         public LoadCollisions _collisionController { get; set; }
-
-
         public BuffItem _buffItem { get; set; }
         public List<BuffItem> _buffItemList { get;set; }
 
-        public bool canfly { get; set; } = false;
+        public bool _canfly { get; set; } = false;
         public Level1(Game1 game):base(game)
         {
             
@@ -165,8 +163,13 @@ namespace ProjectGameDevelopment.Map
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
+
+
+        
             //teken de map
             _collisionController.DrawLevel(_spriteBatch, _mapMaker);
+
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS : {this._points}", new Vector2(50,50), Color.White);
             //teken de Objecten
             #region Enemy
             foreach (var enemy in _enemyList)
@@ -256,7 +259,7 @@ namespace ProjectGameDevelopment.Map
                 
                 if (!_player.IsJumping)
                     _player.IsFalling = true;
-                if (canfly)
+                if (_canfly)
                 {
                     _player.IsFalling = false;
                 }
