@@ -74,6 +74,6 @@ namespace ProjectGameDevelopment.Characters.Playable
             return false;
 
         }
-      
+
     }
 }

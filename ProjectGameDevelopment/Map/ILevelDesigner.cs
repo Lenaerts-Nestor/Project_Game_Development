@@ -8,7 +8,7 @@ using TiledSharp;
 
 namespace ProjectGameDevelopment.Map
 {
-    public interface ILevelDesigner
+    public interface ILevelDesigner : IPlayerconditionCheck
     {
         //PLAYER
         public Player _player { get; set; }
@@ -43,6 +43,13 @@ namespace ProjectGameDevelopment.Map
         public List<Rectangle> _respawnZone { get; set; }
         public Rectangle _endZone { get; set; }
         public LoadCollisions _collisionController { get; set; }
+
+
+
+
+        //BUF ITEMS
+        public BuffItem _buffItem { get; set; }
+        public List<BuffItem> _buffItemList { get; set; }
 
     }
 }

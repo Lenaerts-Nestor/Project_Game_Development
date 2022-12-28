@@ -39,7 +39,6 @@ namespace ProjectGameDevelopment.Map
             return _collisionTiles;
         }
 
-
         public List<Rectangle> GetEnemyPathWay(TmxMap _map, List<Rectangle> _enemyPathway)
         {
             foreach (var CollisionRect in _map.ObjectGroups["EnemyPathWay"].Objects)
@@ -49,7 +48,6 @@ namespace ProjectGameDevelopment.Map
 
             return _enemyPathway;
         }
-
         public Rectangle GetEnd(TmxMap _map, Rectangle _endRect)
         {
             foreach (var CollisionRect in _map.ObjectGroups["Collisions"].Objects)

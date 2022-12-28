@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace ProjectGameDevelopment.Menu
 {
-    public class MenuState : GameScreen
+    public class GameOverPanel : GameScreen
     {
         private List<MenuComponent> _components;
 
@@ -14,47 +14,47 @@ namespace ProjectGameDevelopment.Menu
 
         public SpriteBatch _spriteBatch;
 
-        public MenuState(Game game) : base(game)
+        public GameOverPanel(Game game) : base(game)
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             var buttonTexture = game.Content.Load<Texture2D>("Controls\\ButtonImage");
             var buttonFont = game.Content.Load<SpriteFont>("Fonts\\Font");
 
-            var Level1button = new MenuButton(buttonTexture, buttonFont)
+            var QuitButton = new MenuButton(buttonTexture, buttonFont)
             {
                 Position = new Vector2(300, 200),
-                Text = "START LVL 1",
+                Text = "QUIT",
 
             };
 
-            Level1button.Click += Level1Button_click;
+            QuitButton.Click += QuitButton_click;
 
 
             //LEVEL 2
-            var Level2button = new MenuButton(buttonTexture, buttonFont)
+            var MenuButton = new MenuButton(buttonTexture, buttonFont)
             {
                 Position = new Vector2(300, 250),
-                Text = "START LVL 2",
+                Text = "Back to Menu",
             };
-            Level2button.Click += Level2Button_click;
+            MenuButton.Click += MenuButton_click;
 
             _components = new List<MenuComponent>
             {
-                Level1button,
-                Level2button,
+                QuitButton,
+                MenuButton,
             };
         }
 
-        private void Level2Button_click(object sender, EventArgs e)
+        private void MenuButton_click(object sender, EventArgs e)
         {
 
-            this.Game.stateOfGame = currentGameState.level2;
+            this.Game.stateOfGame = currentGameState.Menu;
         }
 
-        private void Level1Button_click(object sender, EventArgs e)
+        private void QuitButton_click(object sender, EventArgs e)
         {
-            this.Game.stateOfGame = currentGameState.level1;
+            this.Game.stateOfGame = currentGameState.GameOver;
         }
 
         public override void Update(GameTime gameTime)
@@ -67,6 +67,7 @@ namespace ProjectGameDevelopment.Menu
 
         public override void Draw(GameTime gameTime)
         {
+           
             foreach (var component in _components)
             {
                 component.Draw(_spriteBatch, gameTime);

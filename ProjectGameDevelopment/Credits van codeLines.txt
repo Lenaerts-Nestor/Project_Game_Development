@@ -1,0 +1,12 @@
+﻿JUMP AND GRAVITY ==> https://flatformer.blogspot.com/
+COLLISION half van code ==> https://www.monogameextended.net/docs/features/collision/collision/
+MENU EN DE SCREENS ==> https://www.monogameextended.net/docs/features/screen-management/screen-management
+
+TEXTURES => https://grafxkid.itch.io/
+FONT ==> zelf gemaakt 
+MAP + Collision van map via Tiled ==> https://www.monogameextended.net/docs/features/tiled/tiled/
+Concept van collision extra ==> https://web.archive.org/web/20191208231225/https://wildbunny.co.uk/blog/2011/12/14/how-to-make-a-2d-platform-game-part-2-collision-detection/
+
+Movement , Input , Animatie , Hero en Enemy and hitbox ==> [digitap, school]
+
+

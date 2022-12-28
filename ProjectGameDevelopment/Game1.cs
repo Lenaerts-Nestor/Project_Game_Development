@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Screens;
 using MonoGame.Extended.Screens.Transitions;
 using ProjectGameDevelopment.Characters.Playable;
@@ -10,7 +9,7 @@ using System.Diagnostics;
 
 namespace ProjectGameDevelopment
 {
-    public class Game1 : Game , GameState
+    public class Game1 : Game, GameState
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -18,10 +17,9 @@ namespace ProjectGameDevelopment
         private ScreenManager _screenManager;
 
         public currentGameState stateOfGame { get; set; }
-        
+
         public currentGameState previousStateOfGame { get; set; }
 
-        private bool backtoMenu;
 
 
         public Player _player { get; set; }
@@ -62,7 +60,7 @@ namespace ProjectGameDevelopment
             Debug.WriteLine(stateOfGame);
 
 
-            if(previousStateOfGame != stateOfGame)
+            if (previousStateOfGame != stateOfGame)
                 switch (stateOfGame)
                 {
                     case currentGameState.level1:
@@ -73,6 +71,9 @@ namespace ProjectGameDevelopment
                         break;
                     case currentGameState.Menu:
                         LoadMenu();
+                        break;
+                    case currentGameState.GameOver:
+                        LoadGameOverPanel();
                         break;
                     default:
                         break;
@@ -88,10 +89,11 @@ namespace ProjectGameDevelopment
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _spriteBatch.Begin();
-
+            if(stateOfGame == currentGameState.GameOver)
+                _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"GAME OVER", new Vector2(330, 150), Color.Black);
 
             _spriteBatch.End();
-            
+
             base.Draw(gameTime);
         }
 
@@ -109,6 +111,10 @@ namespace ProjectGameDevelopment
         private void LoadMenu()
         {
             _screenManager.LoadScreen(new MenuState(this), new FadeTransition(GraphicsDevice, Color.Black));
+        }
+        private void LoadGameOverPanel()
+        {
+            _screenManager.LoadScreen(new GameOverPanel(this), new FadeTransition(GraphicsDevice, Color.Black));
         }
 
 

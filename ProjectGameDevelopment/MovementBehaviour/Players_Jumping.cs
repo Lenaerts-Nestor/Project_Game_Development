@@ -20,7 +20,6 @@ namespace ProjectGameDevelopment.MovementBehaviour
                     player.IsJumping = false;
                 }
 
-
             }
             else
             {

@@ -51,14 +51,21 @@ namespace ProjectGameDevelopment.Map
 
         public Rectangle _endZone { get; set; }
 
+
+        public BuffItem _buffItem { get; set; }
+        public List<BuffItem> _buffItemList { get; set; }
+
+        //Player Condition
+        public bool IsAlive { get; set; } = true;
+        public bool GameIsOver { get; set; }
+        public bool CanFly { get; set; }
+
         #endregion
 
         public SpriteBatch _spriteBatch;
         public LoadCollisions _collisionController { get; set; }
-        public BuffItem _buffItem { get; set; }
-        public List<BuffItem> _buffItemList { get; set; }
 
-        public bool _canfly { get; set; } = false;
+
         public Level1(Game1 game) : base(game)
         {
 
@@ -176,7 +183,7 @@ namespace ProjectGameDevelopment.Map
 
             //teken de buff text boven buff als de buff Item bestaat
             if (!_player._touchedBuff)
-                _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"Buff Item", new Vector2(390,320 ), Color.White);
+                _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"Buff Item", new Vector2(390, 320), Color.White);
 
 
             //teken de Objecten
@@ -208,7 +215,10 @@ namespace ProjectGameDevelopment.Map
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Game.Exit();
 
-
+            if (_endZone.Intersects(_player.Hitbox))
+            {
+                Game.stateOfGame = Menu.currentGameState.level2;
+            }
 
             #region Positie updaten van Entiteiten
 
@@ -239,19 +249,11 @@ namespace ProjectGameDevelopment.Map
                     {
                         //TODO: HP MAKEN MISCHIEN ?
                         _playerHP--;
+                        if (_playerHP == 0)
+                            IsAlive = false;
+
                         _time_X_attacking = 0;
                     }
-                }
-
-            }
-
-            foreach (var item in _buffItemList.ToArray())
-            {
-                if (_player.Hitbox.Intersects(item.Hitbox))
-                {
-                    _player.Speed += 4;
-                    _player._touchedBuff = true;
-                    _buffItemList.Remove(item);
                 }
 
             }
@@ -269,10 +271,6 @@ namespace ProjectGameDevelopment.Map
 
                 if (!_player.IsJumping)
                     _player.IsFalling = true;
-                if (_canfly)
-                {
-                    _player.IsFalling = false;
-                }
 
                 if (rect.Intersects(_player.Hitbox))
                 {
@@ -362,6 +360,30 @@ namespace ProjectGameDevelopment.Map
                 }
 
             }
+
+
+            #endregion
+
+
+            #region BuffItem effect =>
+            foreach (var item in _buffItemList.ToArray())
+            {
+                if (_player.Hitbox.Intersects(item.Hitbox))
+                {
+                    _player.Speed += 4;
+                    _player._touchedBuff = true;
+                    _buffItemList.Remove(item);
+                }
+
+            }
+            #endregion
+
+            #region gameOver condition
+
+            if (!IsAlive)
+                Game.stateOfGame = Menu.currentGameState.GameOver;
+            if(_points == 3)
+                Game.stateOfGame = Menu.currentGameState.GameOver;
 
 
             #endregion

@@ -51,6 +51,19 @@ namespace ProjectGameDevelopment.Map
         public Rectangle _endZone { get; set; }
 
         public LoadCollisions _collisionController { get; set; }
+
+
+        //Buff items 
+        public BuffItem _buffItem { get; set; }
+        public List<BuffItem> _buffItemList { get; set; }
+
+
+        //Player Condition
+        public bool IsAlive { get; set; } = true;
+        public bool GameIsOver { get; set; }
+        public bool CanFly { get; set; }
+
+
         #endregion
 
         public SpriteBatch _spriteBatch;
@@ -61,8 +74,6 @@ namespace ProjectGameDevelopment.Map
         {
 
         }
-
-
         public override void LoadContent()
         {
 
@@ -156,6 +167,18 @@ namespace ProjectGameDevelopment.Map
             _spriteBatch.Begin();
             //teken de map
             _desiredLevel.DrawLevel(_spriteBatch, _mapMaker);
+
+
+            //teken de punten boven links Text
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS : {this._points}", new Vector2(30, 200), Color.White);
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"HP : {this._playerHP}", new Vector2(30, 220), Color.White);
+
+
+
+            //teken end game portal Text
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"END", new Vector2(730, 230), Color.White);
+
+
             //teken de Objecten
             #region Enemy
             foreach (var enemy in _enemyList)
@@ -183,7 +206,7 @@ namespace ProjectGameDevelopment.Map
 
             if (_endZone.Intersects(_player.Hitbox))
             {
-                Game.stateOfGame = Menu.currentGameState.Menu;
+                Game.stateOfGame = Menu.currentGameState.GameOver;
             }
 
             #region Positie updaten van Entiteiten
@@ -214,6 +237,8 @@ namespace ProjectGameDevelopment.Map
                     if (_time_X_attacking > _time_x_hurt)
                     {
                         _playerHP--;
+                        if (_playerHP == 0)
+                            IsAlive = false;
                         _time_X_attacking = 0;
                     }
                 }
@@ -322,6 +347,14 @@ namespace ProjectGameDevelopment.Map
 
             #endregion
 
+
+            #region gameOver condition
+
+            if (!IsAlive)
+                Game.stateOfGame = Menu.currentGameState.GameOver;
+            if (_points == 3)
+                Game.stateOfGame = Menu.currentGameState.GameOver;
+            #endregion
 
         }
 
