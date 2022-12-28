@@ -124,7 +124,7 @@ namespace ProjectGameDevelopment.Map
                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Idle_(32 x 32)"),
                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Running_(32 x 32)"),
                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Ducking_(32 x 32)"),
-                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Casting_Spell_Repeating_(32 x 32)")
+                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Casting_Spell_Aerial_(32 x 32)")
                );
 
             #endregion
@@ -137,7 +137,7 @@ namespace ProjectGameDevelopment.Map
             npc2 = new Enemy(Content.Load<Texture2D>("Sprite Pack 4\\7 - Orchid_Owl_Flying (32 x 32)"), _enemyPathway[1], 1.5f,
                 false, false, _player, new Vector2()
                 );
-            npc3 = new Enemy(Content.Load<Texture2D>("Sprite Pack 4\\8 - Roach_Running (32 x 32)"), new Rectangle(), 1f,
+            npc3 = new Enemy(Content.Load<Texture2D>("Sprite Pack 4\\6 - Jumpy_Lumpy_Leaping_&_Falling (32 x 32)"), new Rectangle(), 1.5f,
                false, true, _player, new Vector2(_respawnZone[1].X, _respawnZone[1].Y)
                );
 
@@ -166,7 +166,7 @@ namespace ProjectGameDevelopment.Map
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
             //teken de map
-            _desiredLevel.DrawLevel(_spriteBatch, _mapMaker);
+            _desiredLevel.DrawLevelMap(_spriteBatch, _mapMaker);
 
 
             //teken de punten boven links Text

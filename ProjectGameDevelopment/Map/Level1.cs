@@ -123,7 +123,7 @@ namespace ProjectGameDevelopment.Map
                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Idle_(32 x 32)"),
                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Running_(32 x 32)"),
                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Ducking_(32 x 32)"),
-                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Casting_Spell_Repeating_(32 x 32)")
+                Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Casting_Spell_Aerial_(32 x 32)")
                );
 
             _buffItem = new BuffItem(Content.Load<Texture2D>("Health_Kit (16 x 16)"),
@@ -171,7 +171,7 @@ namespace ProjectGameDevelopment.Map
 
 
             //teken de map
-            _collisionController.DrawLevel(_spriteBatch, _mapMaker);
+            _collisionController.DrawLevelMap(_spriteBatch, _mapMaker);
             //teken de punten boven links Text
             _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS : {this._points}", new Vector2(50, 50), Color.White);
             _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"HP : {this._playerHP}", new Vector2(50, 80), Color.White);
@@ -337,7 +337,7 @@ namespace ProjectGameDevelopment.Map
                 }
             }
 
-            if (_player.IsShooting && _bullets.ToArray().Length < 5)
+            if (_player.IsShooting && _bullets.ToArray().Length < 20)
             {
                 //na de gewenste tijd word de bullets herladen
                 if (_time_x_bullet > 5)
@@ -382,7 +382,7 @@ namespace ProjectGameDevelopment.Map
 
             if (!IsAlive)
                 Game.stateOfGame = Menu.currentGameState.GameOver;
-            if(_points == 3)
+            if (_points == 3)
                 Game.stateOfGame = Menu.currentGameState.GameOver;
 
 

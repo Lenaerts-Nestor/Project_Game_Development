@@ -67,7 +67,7 @@ namespace ProjectGameDevelopment.Menu
 
         public override void Draw(GameTime gameTime)
         {
-           
+
             foreach (var component in _components)
             {
                 component.Draw(_spriteBatch, gameTime);

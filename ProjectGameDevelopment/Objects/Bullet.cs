@@ -10,7 +10,7 @@ namespace ProjectGameDevelopment.Objects
         {
             this.Spritesheet = _bulletTexture;
             this.Speed = _speed;
-            this.Hitbox = new Rectangle((int)_position.X, (int)_position.Y, _bulletTexture.Width, _bulletTexture.Height);
+            this.Hitbox = new Rectangle((int)_position.X-7, (int)_position.Y+5, _bulletTexture.Width, _bulletTexture.Height);
         }
 
         //controleren als de bullet iets heeft geraakt

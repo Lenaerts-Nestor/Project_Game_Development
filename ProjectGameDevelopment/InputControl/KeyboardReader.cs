@@ -32,19 +32,24 @@ namespace ProjectGameDevelopment.InputControl
                 player.currentMovementState = CurrentMovementState.Shooting;
             }
 
-            if (KeyboardState.IsKeyDown(Keys.A))
+            if (KeyboardState.IsKeyDown(Keys.Left))
             {
                 Velocity.X -= player.Speed;
                 player.SpriteMoveDirection = SpriteEffects.FlipHorizontally;
                 player.currentMovementState = CurrentMovementState.Running;
 
             }
-            else if (KeyboardState.IsKeyDown(Keys.D))
+            else if (KeyboardState.IsKeyDown(Keys.Right))
             {
                 Velocity.X += player.Speed;
 
                 player.currentMovementState = CurrentMovementState.Running;
                 player.SpriteMoveDirection = SpriteEffects.None;
+            }
+            else if (KeyboardState.IsKeyDown(Keys.Down))
+            {
+                //de jumping en ducking is zelfde in deze game, ik vind het een moei annimatie
+                player.currentMovementState = CurrentMovementState.Jumping;
             }
 
 

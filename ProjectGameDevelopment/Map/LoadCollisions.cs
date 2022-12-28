@@ -10,7 +10,7 @@ namespace ProjectGameDevelopment.Map
 
         //bewaren van elke collision in de lijst
 
-        public void DrawLevel(SpriteBatch spriteBatch, MapMaker _desiredMap)
+        public void DrawLevelMap(SpriteBatch spriteBatch, MapMaker _desiredMap)
         {
             _desiredMap.Draw(spriteBatch);
         }

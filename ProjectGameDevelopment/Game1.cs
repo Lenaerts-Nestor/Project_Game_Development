@@ -89,7 +89,7 @@ namespace ProjectGameDevelopment
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _spriteBatch.Begin();
-            if(stateOfGame == currentGameState.GameOver)
+            if (stateOfGame == currentGameState.GameOver)
                 _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"GAME OVER", new Vector2(330, 150), Color.Black);
 
             _spriteBatch.End();

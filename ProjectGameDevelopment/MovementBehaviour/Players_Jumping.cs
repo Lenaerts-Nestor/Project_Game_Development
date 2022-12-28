@@ -23,7 +23,7 @@ namespace ProjectGameDevelopment.MovementBehaviour
             }
             else
             {
-                if (keyboardstate.IsKeyDown(Keys.Space) && !player.IsFalling)
+                if (keyboardstate.IsKeyDown(Keys.Up) && !player.IsFalling)
                 {
                     player.IsJumping = true;
                     player.IsFalling = false;
