@@ -175,6 +175,8 @@ namespace ProjectGameDevelopment.Map
             //teken de punten boven links Text
             _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS : {this._points}", new Vector2(50, 50), Color.White);
             _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"HP : {this._playerHP}", new Vector2(50, 80), Color.White);
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"3 POINTS = Win&Game over", new Vector2(50, 250), Color.White);
+
 
 
             //teken end game portal

@@ -23,8 +23,8 @@ namespace ProjectGameDevelopment.Menu
 
             var QuitButton = new MenuButton(buttonTexture, buttonFont)
             {
-                Position = new Vector2(300, 200),
-                Text = "QUIT",
+                Position = new Vector2(300, 250),
+                Text = "QUIT GAME",
 
             };
 
@@ -34,15 +34,15 @@ namespace ProjectGameDevelopment.Menu
             //LEVEL 2
             var MenuButton = new MenuButton(buttonTexture, buttonFont)
             {
-                Position = new Vector2(300, 250),
+                Position = new Vector2(300, 200),
                 Text = "Back to Menu",
             };
             MenuButton.Click += MenuButton_click;
 
             _components = new List<MenuComponent>
             {
-                QuitButton,
                 MenuButton,
+                QuitButton
             };
         }
 
@@ -54,7 +54,7 @@ namespace ProjectGameDevelopment.Menu
 
         private void QuitButton_click(object sender, EventArgs e)
         {
-            this.Game.stateOfGame = currentGameState.GameOver;
+            this.Game.Exit();
         }
 
         public override void Update(GameTime gameTime)
