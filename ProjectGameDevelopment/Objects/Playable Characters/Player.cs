@@ -13,13 +13,12 @@ namespace ProjectGameDevelopment.Characters.Playable
         public Animation[] PlayerAnimation;
         public AnimationMovement AnimationMovement;
         public CurrentMovementState CurrentMovementState;
-        public int _time_x_hurt { get; set; } = 80;
-        public int _time_X_attacking { get; set; }
-        public int _points { get; set; }
+        public int Time_x_hurt { get; set; } = 80;
+        public int TimeXAttacking { get; set; }
+        public int Points { get; set; }
         public int HealthPoints = 5;
 
         public KeyboardReader InputReader { get; set; }
-        public static int _playerPoint = 0;
         public bool _touchedBuff;
         //Constructor
         public Player(Vector2 _position, bool canJump, Texture2D _spriteIdle, Texture2D _spriteRunning, Texture2D _jumping, Texture2D _shooting)
@@ -40,7 +39,6 @@ namespace ProjectGameDevelopment.Characters.Playable
                 IsFalling = true;
             }
 
-
             //Basic Animatie
             PlayerAnimation = new Animation[4];                             //voor het moment 2
             PlayerAnimation[0] = new Animation(_spriteIdle);
@@ -51,7 +49,6 @@ namespace ProjectGameDevelopment.Characters.Playable
             //Player Movementstate =>
             CurrentMovementState = CurrentMovementState.Idle;               //de sprite begint altijd in idle
             AnimationMovement = new AnimationMovement(Spritesheet);
-
 
             Hitbox = new Rectangle((int)Position.X, (int)Position.Y, 25, 32);
 

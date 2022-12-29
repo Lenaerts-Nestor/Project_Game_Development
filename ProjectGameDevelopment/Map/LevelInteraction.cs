@@ -39,13 +39,13 @@ namespace ProjectGameDevelopment.Map
 
                 if (Player.TouchedEnemy(EnemyList))
                 {
-                    Player._time_X_attacking++;
-                    if (Player._time_X_attacking > Player._time_x_hurt)
+                    Player.TimeXAttacking++;
+                    if (Player.TimeXAttacking > Player.Time_x_hurt)
                     {
                         Player.HealthPoints--;
                         if (Player.HealthPoints == 0) Player.IsAlive = false;
 
-                        Player._time_X_attacking = 0;
+                        Player.TimeXAttacking = 0;
                     }
                 }
             }
@@ -87,7 +87,7 @@ namespace ProjectGameDevelopment.Map
                     {
                         EnemyList.Remove(enemy);
                         Bullets.Remove(bullet);
-                        player._points++;
+                        player.Points++;
                         break;
                     }
                 }
@@ -173,7 +173,7 @@ namespace ProjectGameDevelopment.Map
                 Game.StateOfPlayer = Menu.currentPlayerState.Lost;
             }
 
-            if (player._points == 3)
+            if (player.Points == 3)
             {
                 Game.StateOfGame = Menu.currentGameState.GameOver;
                 Game.StateOfPlayer = Menu.currentPlayerState.Win;

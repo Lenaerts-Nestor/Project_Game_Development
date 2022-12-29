@@ -44,7 +44,7 @@ namespace ProjectGameDevelopment.Map
             _collisionController.DrawLevelMap(_spriteBatch, _mapMaker); // Tekenen van de map
 
             //Teken de TEXT Punten en Extra's 
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS : {this.Player._points}", new Vector2(50, 50), Color.White);
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS : {this.Player.Points}", new Vector2(50, 50), Color.White);
             _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"HP : {this.Player.HealthPoints}", new Vector2(50, 80), Color.White);
             _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"3 POINTS = Win&Game over", new Vector2(50, 250), Color.White);
             _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"END PORTAL", new Vector2(670, 45), Color.White);

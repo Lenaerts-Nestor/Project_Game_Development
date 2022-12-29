@@ -7,7 +7,5 @@
         public currentGameState StateOfGame { get; set; }
         public currentPlayerState StateOfPlayer { get; set; }
 
-
-
     }
 }
