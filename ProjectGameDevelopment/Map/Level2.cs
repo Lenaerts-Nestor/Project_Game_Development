@@ -30,9 +30,9 @@ namespace ProjectGameDevelopment.Map
               Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Ducking_(32 x 32)"), Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Casting_Spell_Aerial_(32 x 32)"));
 
             //Enemy Creatie => 
-            _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 5\\9 - Wispy Fire\\Weak_Flicker_(32 x 32)"), EnemyPathWay[0], 1f, false, false, Player, new Vector2()));
-            _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 4\\7 - Orchid_Owl_Flying (32 x 32)"), EnemyPathWay[1], 1f, false, false, Player, new Vector2()));
-            _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 4\\8 - Roach_Running (32 x 32)"), new Rectangle(), 0.5f, false, true, Player, new Vector2(RespawnZone[1].X, RespawnZone[1].Y)));
+            _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 4\\2 - Martian_Red_Running (32 x 32)"), EnemyPathWay[0], 1f, false, false, Player, new Vector2()));
+            _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 5\\5 - Moe Scotty\\Flying_(32 x 32)"), EnemyPathWay[1], 1f, false, false, Player, new Vector2()));
+            _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 5\\1 - Robo Retro\\Flying_(32 x 32)"), new Rectangle(), 0.5f, false, true, Player, new Vector2(RespawnZone[1].X, RespawnZone[1].Y)));
 
             //Bullets creatie 
             _bulletTexture = Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Sparkles_(8 x 8)");
@@ -44,8 +44,8 @@ namespace ProjectGameDevelopment.Map
             _collisionController.DrawLevelMap(_spriteBatch, _mapMaker); // Tekenen van de map
 
             //Teken de TEXT Punten en Extra's 
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS : {this.Player.Points}", new Vector2(50, 50), Color.White);
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"HP : {this.Player.HealthPoints}", new Vector2(50, 80), Color.White);
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS : {this.Player.Points}", new Vector2(50, 180), Color.White);
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"HP : {this.Player.HealthPoints}", new Vector2(50, 200), Color.White);
             _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"3 POINTS = Win&Game over", new Vector2(50, 250), Color.White);
             _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"END PORTAL", new Vector2(670, 45), Color.White);
 
