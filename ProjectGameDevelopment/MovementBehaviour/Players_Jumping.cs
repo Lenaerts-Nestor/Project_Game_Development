@@ -19,7 +19,6 @@ namespace ProjectGameDevelopment.MovementBehaviour
                     player.Velocity.Y = player.StartY;
                     player.IsJumping = false;
                 }
-
             }
             else
             {

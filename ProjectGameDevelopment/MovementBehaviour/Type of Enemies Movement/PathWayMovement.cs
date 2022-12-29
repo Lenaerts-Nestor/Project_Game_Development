@@ -16,7 +16,6 @@ namespace ProjectGameDevelopment.MovementBehaviour
                 npc.isFacingRight = !npc.isFacingRight;
             }
 
-
             if (!npc.isFacingRight)
             {
                 npc.SpriteMoveDirection = SpriteEffects.FlipHorizontally;

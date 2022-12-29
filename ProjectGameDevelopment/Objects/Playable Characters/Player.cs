@@ -34,7 +34,6 @@ namespace ProjectGameDevelopment.Characters.Playable
             IsShooting = false;
             _touchedBuff = false;
 
-
             if (canJump == true)
             {
                 IsJumping = false;
@@ -64,9 +63,7 @@ namespace ProjectGameDevelopment.Characters.Playable
 
         public void Update(GameTime gameTime)
         {
-
             InputReader.ReadInput(this, gameTime);
-
 
         }
         public bool TouchedEnemy(List<Enemy> enemyList)
