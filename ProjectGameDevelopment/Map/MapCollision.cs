@@ -5,17 +5,22 @@ using TiledSharp;
 
 namespace ProjectGameDevelopment.Map
 {
-    public class LoadCollisions
+    public class MapCollision
     {
 
-        //bewaren van elke collision in de lijst
+        /// <summary>
+        /// Deze klasse houd zich alleen bezig om de collision [respawn collision, tiles collision, enemypathway collision en endzone collision] dan word de map getekend,
+        /// met de gewenste collision op hun posisite's 
+        /// </summary>
+        /// <param name="spriteBatch"></param>
+        /// <param name="_desiredMap"></param>
 
-        public void DrawLevelMap(SpriteBatch spriteBatch, MapMaker _desiredMap)
+        public void DrawLevelMap(SpriteBatch spriteBatch, MapDrawer _desiredMap)
         {
             _desiredMap.Draw(spriteBatch);
         }
 
-        public List<Rectangle> GetCollisionTiles(TmxMap _map, List<Rectangle> _collisionTiles)
+        public List<Rectangle> GetTilesCollision(TmxMap _map, List<Rectangle> _collisionTiles)
         {
             foreach (var CollisionRect in _map.ObjectGroups["Collisions"].Objects)
             {
@@ -27,7 +32,7 @@ namespace ProjectGameDevelopment.Map
             return _collisionTiles;
         }
 
-        public List<Rectangle> GetRespawnZone(TmxMap _map, List<Rectangle> _collisionTiles)
+        public List<Rectangle> GetRespawnCollision(TmxMap _map, List<Rectangle> _collisionTiles)
         {
             foreach (var CollisionRect in _map.ObjectGroups["Collisions"].Objects)
             {
@@ -39,7 +44,7 @@ namespace ProjectGameDevelopment.Map
             return _collisionTiles;
         }
 
-        public List<Rectangle> GetEnemyPathWay(TmxMap _map, List<Rectangle> _enemyPathway)
+        public List<Rectangle> GetEnemyPathWayCollision(TmxMap _map, List<Rectangle> _enemyPathway)
         {
             foreach (var CollisionRect in _map.ObjectGroups["EnemyPathWay"].Objects)
             {
@@ -48,7 +53,7 @@ namespace ProjectGameDevelopment.Map
 
             return _enemyPathway;
         }
-        public Rectangle GetEnd(TmxMap _map, Rectangle _endRect)
+        public Rectangle GetEndCollision(TmxMap _map, Rectangle _endRect)
         {
             foreach (var CollisionRect in _map.ObjectGroups["Collisions"].Objects)
             {

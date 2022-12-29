@@ -13,16 +13,14 @@ namespace ProjectGameDevelopment
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-
         private ScreenManager _screenManager;
 
-        public currentGameState stateOfGame { get; set; }
+        public currentGameState StateOfGame { get; set; }
+        public currentPlayerState StateOfPlayer { get; set; }
+        public currentGameState PreviousStateOfGame { get; set; }
 
-        public currentGameState previousStateOfGame { get; set; }
+        public Player Player { get; set; }
 
-
-
-        public Player _player { get; set; }
 
         public Game1()
         {
@@ -40,7 +38,7 @@ namespace ProjectGameDevelopment
             base.Initialize();
 
             //LoadLevel1();
-            stateOfGame = currentGameState.Menu;
+            StateOfGame = currentGameState.Menu;
             LoadMenu();
             //_currentState = new MenuState(this);
             //LoadLevel2();
@@ -48,20 +46,17 @@ namespace ProjectGameDevelopment
 
         protected override void LoadContent()
         {
-
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-
         }
 
         protected override void Update(GameTime gameTime)
         {
 
-            Debug.WriteLine(stateOfGame);
+            Debug.WriteLine(StateOfGame);
 
 
-            if (previousStateOfGame != stateOfGame)
-                switch (stateOfGame)
+            if (PreviousStateOfGame != StateOfGame)
+                switch (StateOfGame)
                 {
                     case currentGameState.level1:
                         LoadLevel1();
@@ -79,7 +74,7 @@ namespace ProjectGameDevelopment
                         break;
                 }
 
-            previousStateOfGame = stateOfGame;
+            PreviousStateOfGame = StateOfGame;
 
             base.Update(gameTime);
         }
@@ -89,8 +84,11 @@ namespace ProjectGameDevelopment
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _spriteBatch.Begin();
-            if (stateOfGame == currentGameState.GameOver)
-                _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"GAME OVER", new Vector2(330, 150), Color.Black);
+            if (StateOfGame == currentGameState.GameOver)
+                if (StateOfPlayer == currentPlayerState.Win)
+                    _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"You WIN", new Vector2(330, 150), Color.Green);
+                else
+                    _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"You Lost", new Vector2(330, 150), Color.Red);
 
             _spriteBatch.End();
 

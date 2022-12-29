@@ -49,12 +49,12 @@ namespace ProjectGameDevelopment.Menu
         private void Level2Button_click(object sender, EventArgs e)
         {
 
-            this.Game.stateOfGame = currentGameState.level2;
+            this.Game.StateOfGame = currentGameState.level2;
         }
 
         private void Level1Button_click(object sender, EventArgs e)
         {
-            this.Game.stateOfGame = currentGameState.level1;
+            this.Game.StateOfGame = currentGameState.level1;
         }
 
         public override void Update(GameTime gameTime)

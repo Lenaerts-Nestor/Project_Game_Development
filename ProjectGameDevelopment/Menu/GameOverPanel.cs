@@ -49,7 +49,7 @@ namespace ProjectGameDevelopment.Menu
         private void MenuButton_click(object sender, EventArgs e)
         {
 
-            this.Game.stateOfGame = currentGameState.Menu;
+            this.Game.StateOfGame = currentGameState.Menu;
         }
 
         private void QuitButton_click(object sender, EventArgs e)

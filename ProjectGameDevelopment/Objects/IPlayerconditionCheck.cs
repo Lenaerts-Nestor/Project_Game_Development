@@ -2,8 +2,7 @@
 {
     public interface IPlayerconditionCheck
     {
-        public bool IsAlive { get; set; }
+        public bool PlayerIsAlive { get; set; }
         public bool GameIsOver { get; set; }
-        public bool CanFly { get; set; }
     }
 }

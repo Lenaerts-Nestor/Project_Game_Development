@@ -13,6 +13,11 @@ namespace ProjectGameDevelopment.Characters.Playable
         public Animation[] PlayerAnimation;
         public AnimationMovement AnimationMovement;
         public CurrentMovementState CurrentMovementState;
+        public int _time_x_hurt { get; set; } = 80;
+        public int _time_X_attacking { get; set; }
+        public int _points { get; set; }
+        public int HealthPoints = 5;
+
         public KeyboardReader InputReader { get; set; }
         public static int _playerPoint = 0;
         public bool _touchedBuff;

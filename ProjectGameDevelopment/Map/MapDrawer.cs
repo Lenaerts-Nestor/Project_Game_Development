@@ -5,9 +5,14 @@ using TiledSharp;
 
 namespace ProjectGameDevelopment.Map
 {
-    public class MapMaker : Map
+    public class MapDrawer : Map
     {
-        public MapMaker(TmxMap _map, Texture2D _tileset)
+        /// <summary>
+        /// Deze klasse houd zich alleen bezig om de Map te TEKENEN.
+        /// </summary>
+        /// <param name="_map"></param>
+        /// <param name="_tileset"></param>
+        public MapDrawer(TmxMap _map, Texture2D _tileset)
         {
             this.TileMap = _map;
             this.Tileset = _tileset;

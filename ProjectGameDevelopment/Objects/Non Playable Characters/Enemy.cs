@@ -10,10 +10,8 @@ namespace ProjectGameDevelopment.Characters
     {
         #region public fields
         public Animation[] NPCAnimation;
-
         public CurrentMovementState CurrentMovementState;
         public AnimationMovement AnimationMovement;
-
         #endregion
 
         public Enemy(Texture2D _enemySpriteSheet, Rectangle _pathway, float speed, bool _canJump, bool _isInteligent, Player _player, Vector2 inteligentPosition)
@@ -32,7 +30,6 @@ namespace ProjectGameDevelopment.Characters
                 Hitbox = new Rectangle((int)this.Position.X, (int)this.Position.Y, 32, 32);
 
             }
-
 
             this.StartY = this.Velocity.Y;
             this.Spritesheet = _enemySpriteSheet;
@@ -55,11 +52,6 @@ namespace ProjectGameDevelopment.Characters
 
             currentMovementState = CurrentMovementState.Running;
             AnimationMovement = new AnimationMovement(this.Spritesheet);
-
-
-
-
-
         }
 
 

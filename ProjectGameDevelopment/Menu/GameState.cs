@@ -1,10 +1,11 @@
 ﻿namespace ProjectGameDevelopment.Menu
 {
     public enum currentGameState { level1, level2, Menu, GameOver }
+    public enum currentPlayerState { Win, Lost }
     public interface GameState
     {
-        public currentGameState stateOfGame { get; set; }
-
+        public currentGameState StateOfGame { get; set; }
+        public currentPlayerState StateOfPlayer { get; set; }
 
 
 
