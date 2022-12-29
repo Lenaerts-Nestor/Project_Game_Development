@@ -6,7 +6,7 @@ using ProjectGameDevelopment.Objects;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProjectGameDevelopment.Map
+namespace ProjectGameDevelopment.Level
 {
     public class LevelInteraction
     {

@@ -1,4 +1,0 @@
-﻿In deze folder staan de interface LevelDesigner die de basic geeft van what een wereld/level moet/kan hebben.
-Daarna hebben we de classes LVL 1 en LVL 2 die patroon volgen van een factory die de interface Level designer gebruiken [voorbeeld van de pizza's van factory patron in digitap]
-vervolgens hebben we de LoadCollisions classe die de methode heeft om de aangevraagde Collision te bewaren zodat de levels kunnen het gebruiken.
-tenlaatste de Map en MapDrawer, de Map classe geeft de nodige public fields om een map te kunnen tekenen en de Mapdrawer erft over van map classe om en implementeer een methode om de map zelft tekenen met de megegeven gegevens

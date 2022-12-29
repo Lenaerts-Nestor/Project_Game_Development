@@ -3,13 +3,14 @@ using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Screens;
 using ProjectGameDevelopment.Characters;
 using ProjectGameDevelopment.Characters.Playable;
+using ProjectGameDevelopment.Map;
 using ProjectGameDevelopment.Objects;
 using System.Collections.Generic;
 using TiledSharp;
 
-namespace ProjectGameDevelopment.Map
+namespace ProjectGameDevelopment.Level
 {
-    public abstract class LevelMaker : GameScreen,IPlayerconditionCheck
+    public abstract class LevelMaker : GameScreen, IPlayerconditionCheck
     {
         /// <summary>
         /// Alle levels gaan de volgende Properties gebruiken om het Level te maken [het map , de player , de enemies, de bullets enzovoort]
@@ -39,9 +40,6 @@ namespace ProjectGameDevelopment.Map
         public TmxMap _map { get; set; }
         public Texture2D _tileset { get; set; }
         public MapDrawer _mapMaker { get; set; }
-
-
-
 
         public List<Rectangle> CollisionTiles { get; set; } = new List<Rectangle>();
         public List<Rectangle> RespawnZone { get; set; } = new List<Rectangle>();

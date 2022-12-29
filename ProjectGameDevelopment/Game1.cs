@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Screens;
 using MonoGame.Extended.Screens.Transitions;
 using ProjectGameDevelopment.Characters.Playable;
+using ProjectGameDevelopment.Level;
 using ProjectGameDevelopment.Map;
 using ProjectGameDevelopment.Menu;
 using System.Diagnostics;
@@ -34,14 +35,8 @@ namespace ProjectGameDevelopment
         }
         protected override void Initialize()
         {
-
             base.Initialize();
-
-            //LoadLevel1();
             StateOfGame = currentGameState.Menu;
-            LoadMenu();
-            //_currentState = new MenuState(this);
-            //LoadLevel2();
         }
 
         protected override void LoadContent()
@@ -59,16 +54,16 @@ namespace ProjectGameDevelopment
                 switch (StateOfGame)
                 {
                     case currentGameState.level1:
-                        LoadLevel1();
+                        _screenManager.LoadScreen(new Level1(this), new FadeTransition(GraphicsDevice, Color.Black));
                         break;
                     case currentGameState.level2:
-                        LoadLevel2();
+                        _screenManager.LoadScreen(new Level2(this), new FadeTransition(GraphicsDevice, Color.Black));
                         break;
                     case currentGameState.Menu:
-                        LoadMenu();
+                        _screenManager.LoadScreen(new MenuState(this), new FadeTransition(GraphicsDevice, Color.Black));
                         break;
                     case currentGameState.GameOver:
-                        LoadGameOverPanel();
+                        _screenManager.LoadScreen(new GameOverPanel(this), new FadeTransition(GraphicsDevice, Color.Black));
                         break;
                     default:
                         break;
@@ -94,27 +89,6 @@ namespace ProjectGameDevelopment
 
             base.Draw(gameTime);
         }
-
-
-        private void LoadLevel1()
-        {
-
-            _screenManager.LoadScreen(new Level1(this), new FadeTransition(GraphicsDevice, Color.Black));
-
-        }
-        private void LoadLevel2()
-        {
-            _screenManager.LoadScreen(new Level2(this), new FadeTransition(GraphicsDevice, Color.Black));
-        }
-        private void LoadMenu()
-        {
-            _screenManager.LoadScreen(new MenuState(this), new FadeTransition(GraphicsDevice, Color.Black));
-        }
-        private void LoadGameOverPanel()
-        {
-            _screenManager.LoadScreen(new GameOverPanel(this), new FadeTransition(GraphicsDevice, Color.Black));
-        }
-
 
     }
 }
