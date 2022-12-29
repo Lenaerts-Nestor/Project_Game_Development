@@ -58,7 +58,7 @@ namespace ProjectGameDevelopment.Level
             _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"3 POINTS = Win&Game over", new Vector2(50, 250), Color.White);
             _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"Next LVL", new Vector2(670, 45), Color.White);
             if(_buffItemList.Count > 0)
-                _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"Buff Item", new Vector2(RespawnZone[2].X-20, RespawnZone[2].Y-30), Color.White);
+                _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"PowerUp Item", new Vector2(RespawnZone[2].X-20, RespawnZone[2].Y-30), Color.White);
 
 
             Player.Draw(_spriteBatch, gameTime);                                                //Tekenen van Player
