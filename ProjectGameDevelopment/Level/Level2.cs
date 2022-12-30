@@ -24,8 +24,6 @@ namespace ProjectGameDevelopment.Level
             EnemyPathWay = _collisionController.GetEnemyPathWayCollision(_map, EnemyPathWay);
             RespawnZone = _collisionController.GetRespawnCollision(_map, RespawnZone);
             EndZone = _collisionController.GetEndCollision(_map, EndZone);
-
-
             Player = new Player(new Vector2(RespawnZone[0].X, RespawnZone[0].Y), true,
               Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Idle_(32 x 32)"), Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Running_(32 x 32)"),
               Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Ducking_(32 x 32)"), Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Casting_Spell_Aerial_(32 x 32)"));
@@ -40,39 +38,11 @@ namespace ProjectGameDevelopment.Level
         }
         public override void Draw(GameTime gameTime)
         {
-            _spriteBatch.Begin();
-
-            _collisionController.DrawLevelMap(_spriteBatch, _mapMaker); // Tekenen van de map
-
-            //Teken de TEXT Punten en Extra's 
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS : {Player.Points}", new Vector2(50, 180), Color.White);
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"HP : {Player.HealthPoints}", new Vector2(50, 200), Color.White);
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"3 POINTS = Win&Game over", new Vector2(50, 250), Color.White);
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"END PORTAL", new Vector2(670, 45), Color.White);
-
-            Player.Draw(_spriteBatch, gameTime);                                                //Tekenen van Player
-            foreach (var enemy in _enemyList) { enemy.Draw(_spriteBatch, gameTime); }           // Tekenen van Enemie's 
-            foreach (var bullet in _bullets.ToArray()) { bullet.Draw(_spriteBatch, gameTime); } //Tekenen van bu;llet
-
-            _spriteBatch.End();
+            DrawTheLevel(gameTime);
         }
         public override void Update(GameTime gameTime)
         {
-            LevelConditionControl.GetEndzone(Player, EndZone, Game);
-
-            EnemyInitPos = LevelConditionControl.GetEnemyPosition(_enemyList, EnemyInitPos);
-            PlayerInitPosition = Player.Position;
-
-            Player.Update(gameTime);
-            LevelConditionControl.GetPlayerLifeCondition(Player, _enemyList, gameTime);
-
-            LevelConditionControl.GetPlayerCollides(Player, CollisionTiles, PlayerInitPosition);
-            LevelConditionControl.GetBulletCollides(Player, _bullets, _enemyList, CollisionTiles, gameTime);
-            LevelConditionControl.GetEnemyCollides(CollisionTiles, _enemyList, EnemyInitPos);
-            LevelConditionControl.GetBullets(_bullets, Player, _time_x_bullet, _bulletTexture, this);
-            //LevelConditionControl.GetItemBuff(this._buffItemList, this.Player);
-
-            LevelConditionControl.GetPlayerGameState(Player, Game);
+            UpdateTheLevel(gameTime, this.Game);
         }
     }
 }

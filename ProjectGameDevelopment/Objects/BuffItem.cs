@@ -17,7 +17,6 @@ namespace ProjectGameDevelopment.Objects
         {
             spriteBatch.Draw(this.Spritesheet, this.Hitbox, Color.White);
         }
-
         public void Update(GameTime gameTime)
         {
             Hitbox.X += (int)Speed;

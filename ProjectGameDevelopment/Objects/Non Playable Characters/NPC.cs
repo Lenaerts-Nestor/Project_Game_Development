@@ -11,7 +11,6 @@ namespace ProjectGameDevelopment.Characters
 
         public Rectangle Pathway;
 
-
         public Player Player;
         public PathWayMovement PathWayMovement;
         public Following_Movement FollowingMovement;

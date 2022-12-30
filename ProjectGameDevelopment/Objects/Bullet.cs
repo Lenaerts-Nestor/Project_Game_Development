@@ -4,7 +4,7 @@ using ProjectGameDevelopment.Characters;
 
 namespace ProjectGameDevelopment.Objects
 {
-    public class Bullet : Characters.Object, IGameObject
+    public class Bullet : Object, IGameObject
     {
         public Bullet(Texture2D _bulletTexture, Vector2 _position, float _speed)
         {

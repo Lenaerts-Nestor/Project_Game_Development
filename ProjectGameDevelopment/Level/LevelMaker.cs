@@ -17,6 +17,7 @@ namespace ProjectGameDevelopment.Level
         /// </summary>
         /// <param name="game"></param>
 
+
         public LevelMaker(Game game) : base(game) { }
         public SpriteBatch _spriteBatch { get; set; }
 
@@ -39,14 +40,14 @@ namespace ProjectGameDevelopment.Level
 
         public TmxMap _map { get; set; }
         public Texture2D _tileset { get; set; }
-        public MapDrawer _mapMaker { get; set; }
+        public MapDrawer _mapMaker { get; set; } 
 
         public List<Rectangle> CollisionTiles { get; set; } = new List<Rectangle>();
         public List<Rectangle> RespawnZone { get; set; } = new List<Rectangle>();
 
         public Rectangle EndZone { get; set; } = new Rectangle();
         public MapCollision _collisionController { get; set; } = new MapCollision();
-        public LevelInteraction LevelConditionControl { get; set; } = new LevelInteraction();
+        public LevelInteraction LevelCollisionControler { get; set; } = new LevelInteraction();
 
         // Items => 
         public List<BuffItem> _buffItemList { get; set; } = new List<BuffItem>();
@@ -56,6 +57,59 @@ namespace ProjectGameDevelopment.Level
         //Game Condition Kijken => 
         public bool PlayerIsAlive { get; set; }
         public bool GameIsOver { get; set; }
+
+
+
+        public void GetCollisionOfMap()
+        {
+            CollisionTiles = _collisionController.GetTilesCollision(_map, CollisionTiles);
+            EnemyPathWay = _collisionController.GetEnemyPathWayCollision(_map, EnemyPathWay);
+            RespawnZone = _collisionController.GetRespawnCollision(_map, RespawnZone);
+            EndZone = _collisionController.GetEndCollision(_map, EndZone);
+        }
+
+        //UPDATE EN DRAW THE LEVEL
+        public void DrawTheLevel(GameTime gameTime)
+        {
+            _spriteBatch.Begin();
+
+            _collisionController.DrawLevelMap(_spriteBatch, _mapMaker); // Tekenen van de map
+
+            //Teken de TEXT Punten en Extra's 
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS : {Player.Points}", new Vector2(50, 50), Color.White);
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"HP : {Player.HealthPoints}", new Vector2(50, 80), Color.White);
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"3 POINTS = Win&Game over", new Vector2(50, 250), Color.White);
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"Next LVL", new Vector2(670, 45), Color.White);
+            if (_buffItemList.Count > 0)
+                _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"PowerUp Item", new Vector2(RespawnZone[2].X - 20, RespawnZone[2].Y - 30), Color.White);
+
+
+            Player.Draw(_spriteBatch, gameTime);                                                //Tekenen van Player
+            foreach (var enemy in _enemyList) { enemy.Draw(_spriteBatch, gameTime); }           // Tekenen van Enemie's 
+            foreach (var bullet in _bullets.ToArray()) { bullet.Draw(_spriteBatch, gameTime); } //Tekenen van bu;llet
+            foreach (var buffitem in _buffItemList) { buffitem.Draw(_spriteBatch, gameTime); }
+
+            _spriteBatch.End();
+        }
+
+        public void UpdateTheLevel(GameTime gameTime, Game1 Game)
+        {
+            LevelCollisionControler.GetPlayerToNextZone(Player, EndZone, Game);
+            LevelCollisionControler.GetItemBuff(_buffItemList, Player);
+            EnemyInitPos = LevelCollisionControler.GetEnemyPosition(_enemyList, EnemyInitPos);
+            PlayerInitPosition = Player.Position;
+
+            Player.Update(gameTime);
+            LevelCollisionControler.GetPlayerLifeCondition(Player, _enemyList, gameTime);
+
+            LevelCollisionControler.GetPlayerCollides(Player, CollisionTiles, PlayerInitPosition);
+            LevelCollisionControler.GetBulletCollides(Player, _bullets, _enemyList, CollisionTiles, gameTime);
+            LevelCollisionControler.GetEnemyCollides(CollisionTiles, _enemyList, EnemyInitPos);
+            LevelCollisionControler.GetBullets(_bullets, Player, _time_x_bullet, _bulletTexture, this);
+            //LevelConditionControl.GetItemBuff(this._buffItemList, this.Player);
+
+            LevelCollisionControler.GetPlayerGameState(Player, Game);
+        }
 
 
 
