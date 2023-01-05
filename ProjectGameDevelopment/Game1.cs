@@ -4,7 +4,6 @@ using MonoGame.Extended.Screens;
 using MonoGame.Extended.Screens.Transitions;
 using ProjectGameDevelopment.Characters.Playable;
 using ProjectGameDevelopment.Level;
-using ProjectGameDevelopment.Map;
 using ProjectGameDevelopment.Menu;
 using System.Diagnostics;
 

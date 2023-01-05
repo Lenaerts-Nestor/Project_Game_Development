@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ProjectGameDevelopment.AnimationSection.Animation" Collapsed="true">
+    <Position X="4.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAgAAAAAAAAAAQAAAAgCAAAAAAAAAAAE=</HashCode>
+      <FileName>AnimationSection\Animation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjectGameDevelopment.AnimationSection.AnimationMovement" Collapsed="true">
+    <Position X="4.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AnimationSection\AnimationMovement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectGameDevelopment.Level.Level1" Collapsed="true">
+    <Position X="6.75" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAgAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Level\Level1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectGameDevelopment.Level.Level2" Collapsed="true">
+    <Position X="9" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAgAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Level\Level2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectGameDevelopment.Level.LevelMaker" Collapsed="true">
+    <Position X="8" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAQAC4AAGAAAAAAAACAAAIgAAAAIAQwAcICCUSAAIA=</HashCode>
+      <FileName>Level\LevelMaker.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjectGameDevelopment.Map.Map" Collapsed="true">
+    <Position X="0.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAACAAAAAgAAAAAAAAAQACAAA=</HashCode>
+      <FileName>Map\Map.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectGameDevelopment.Map.MapDrawer" Collapsed="true">
+    <Position X="0.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Map\MapDrawer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectGameDevelopment.Menu.MenuButton" Collapsed="true">
+    <Position X="2.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAwAAAAAAQAAAgAgAAAAAAAAAAqgACAAAAAACAAAAgA=</HashCode>
+      <FileName>Menu\MenuButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectGameDevelopment.Menu.MenuComponent" Collapsed="true">
+    <Position X="2.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Menu\MenuComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectGameDevelopment.Characters.Enemy" Collapsed="true">
+    <Position X="0.75" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAQAAAAAAAAgAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\Non Playable Characters\Enemy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjectGameDevelopment.Characters.NPC" Collapsed="true">
+    <Position X="0.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQAAAAAAAAAAAAAAAAACAAAAAAIAAAAQAAAAAQAAAAA=</HashCode>
+      <FileName>Objects\Non Playable Characters\NPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectGameDevelopment.Characters.Entity" Collapsed="true">
+    <Position X="1.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAABBCIAAIAgAAAAAAAAAAAAAABAAAAAAAABABA=</HashCode>
+      <FileName>Objects\Entity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjectGameDevelopment.Characters.Object" Collapsed="true">
+    <Position X="4" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAgQAAAAAABAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Objects\Object.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectGameDevelopment.Characters.Playable.Player" Collapsed="true">
+    <Position X="3" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAQAAAQAgAggAAIAIAAAAAABAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\Playable Characters\Player.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjectGameDevelopment.Objects.BuffItem" Collapsed="true">
+    <Position X="5.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\BuffItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ProjectGameDevelopment.Objects.Bullet" Collapsed="true">
+    <Position X="7.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\Bullet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TiledSharp.TmxMap" Collapsed="true">
+    <Position X="9" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAkEAAhQAAAgAABEABAGIACAAAAAAMgAAAAQACAAA=</HashCode>
+      <FileName>TiledSharp\src\Map.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TiledSharp.TmxDocument" Collapsed="true">
+    <Position X="8" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAgAIAAAAAAAAA=</HashCode>
+      <FileName>TiledSharp\src\TiledCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TiledSharp.TmxTileset" Collapsed="true">
+    <Position X="6.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAACQAAAQgABMAAAAAAYgCQAA=</HashCode>
+      <FileName>TiledSharp\src\Tileset.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="ProjectGameDevelopment.AnimationSection.IAnimation" Collapsed="true">
+    <Position X="12.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAQAAAAgAAAAAAAAAAAAE=</HashCode>
+      <FileName>AnimationSection\IAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjectGameDevelopment.InputControl.IReadInput" Collapsed="true">
+    <Position X="14.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InputControl\IReadInput.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjectGameDevelopment.Menu.GameState" Collapsed="true">
+    <Position X="11" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Menu\GameState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjectGameDevelopment.MovementBehaviour.IEnemyMovement" Collapsed="true">
+    <Position X="16.25" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MovementBehaviour\IEnemyMovement.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjectGameDevelopment.MovementBehaviour.IJump" Collapsed="true">
+    <Position X="19.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABACIAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>MovementBehaviour\IJump.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjectGameDevelopment.MovementBehaviour.IMovable" Collapsed="true">
+    <Position X="11" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>MovementBehaviour\IMovable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjectGameDevelopment.Characters.IGameObject" Collapsed="true">
+    <Position X="18" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\IGameObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjectGameDevelopment.Objects.IPlayerconditionCheck" Collapsed="true">
+    <Position X="12.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\IPlayerconditionCheck.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ProjectGameDevelopment.Objects.IShooting" Collapsed="true">
+    <Position X="16.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\IShooting.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TiledSharp.ICustomLoader" Collapsed="true">
+    <Position X="14.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TiledSharp\src\TiledCore.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ProjectGameDevelopment.Menu.currentGameState" Collapsed="true">
+    <Position X="11" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Menu\GameState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ProjectGameDevelopment.Menu.currentPlayerState" Collapsed="true">
+    <Position X="14.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Menu\GameState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ProjectGameDevelopment.MovementBehaviour.CurrentMovementState" Collapsed="true">
+    <Position X="12.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAgAAAAAAAAAAAAAAAAIAAAAAAAAIAA=</HashCode>
+      <FileName>MovementBehaviour\IMovable.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TiledSharp.OrientationType" Collapsed="true">
+    <Position X="18" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAIAAAAAAAAAAAAEAAAAAAgAAAAAABA=</HashCode>
+      <FileName>TiledSharp\src\Map.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TiledSharp.StaggerAxisType" Collapsed="true">
+    <Position X="11" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>TiledSharp\src\Map.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TiledSharp.StaggerIndexType" Collapsed="true">
+    <Position X="12.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TiledSharp\src\Map.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TiledSharp.RenderOrderType" Collapsed="true">
+    <Position X="19.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAACAAAAABAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>TiledSharp\src\Map.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TiledSharp.TmxObjectType" Collapsed="true">
+    <Position X="16.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAACAAAAAAAAAAAAAAAAAACAASA=</HashCode>
+      <FileName>TiledSharp\src\ObjectGroup.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TiledSharp.DrawOrderType" Collapsed="true">
+    <Position X="16.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEEAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TiledSharp\src\ObjectGroup.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TiledSharp.TmxHorizontalAlignment" Collapsed="true">
+    <Position X="14.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAACACAAAAIAAA=</HashCode>
+      <FileName>TiledSharp\src\ObjectGroup.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TiledSharp.TmxVerticalAlignment" Collapsed="true">
+    <Position X="18" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>TiledSharp\src\ObjectGroup.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

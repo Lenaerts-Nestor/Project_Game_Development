@@ -76,10 +76,10 @@ namespace ProjectGameDevelopment.Level
             _collisionController.DrawLevelMap(_spriteBatch, _mapMaker); // Tekenen van de map
 
             //Teken de TEXT Punten en Extra's 
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS : {Player.Points}", new Vector2(50, 50), Color.White);
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"HP : {Player.HealthPoints}", new Vector2(50, 80), Color.White);
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"3 POINTS = Win&Game over", new Vector2(50, 250), Color.White);
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"Next LVL", new Vector2(670, 45), Color.White);
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS: {Player.Points}", new Vector2(50, 50), Color.White);
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"HP: {Player.HealthPoints}", new Vector2(50, 80), Color.White);
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"3 POINTS = Win", new Vector2(50, 250), Color.White);
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"Portal", new Vector2(680, 45), Color.White);
             if (_buffItemList.Count > 0)
                 _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"PowerUp Item", new Vector2(RespawnZone[2].X - 20, RespawnZone[2].Y - 30), Color.White);
 
@@ -92,9 +92,9 @@ namespace ProjectGameDevelopment.Level
             _spriteBatch.End();
         }
 
-        public void UpdateTheLevel(GameTime gameTime, Game1 Game)
+        public void UpdateTheLevel(GameTime gameTime, Game1 Game, int NextState)
         {
-            LevelCollisionControler.GetPlayerToNextZone(Player, EndZone, Game);
+            LevelCollisionControler.GetPlayerToNextZone(Player, EndZone, Game, NextState);
             LevelCollisionControler.GetItemBuff(_buffItemList, Player);
             EnemyInitPos = LevelCollisionControler.GetEnemyPosition(_enemyList, EnemyInitPos);
             PlayerInitPosition = Player.Position;

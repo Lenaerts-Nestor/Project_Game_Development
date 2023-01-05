@@ -14,10 +14,37 @@ namespace ProjectGameDevelopment.Level
         ///deze classe houd zich bezig om condities/interactie van de gewenste level te controleren
 
         //controleerd of de Player de EndZone heeft geraakt
-        public void GetPlayerToNextZone(Player Player, Rectangle EndZone, Game1 Game)
+        public void GetPlayerToNextZone(Player Player, Rectangle EndZone, Game1 Game, int DesiredLVL)
         {
-            //hier zet ik het momenteel zo want er zijn toch maar 2 lvls
-            if (EndZone.Intersects(Player.Hitbox)) { Game.StateOfGame = Menu.currentGameState.level2; }
+            if (EndZone.Intersects(Player.Hitbox))
+            {
+                switch (DesiredLVL)
+                {
+                    case 0:
+                        Game.StateOfGame = Menu.currentGameState.GameOver;
+                        break;
+                    case 2:
+                        Game.StateOfGame = Menu.currentGameState.level2;
+                        break;
+                    case 3:
+                        Game.StateOfGame = Menu.currentGameState.level3;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            switch (DesiredLVL)
+            {
+                case 2:
+
+                    break;
+                default:
+                    break;
+            }
+
+
+
         }
         public void GetEndzone(Player Player, Rectangle EndZone, Game1 Game)
         {

@@ -13,71 +13,116 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin ../../../ButtonImage.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../../ButtonImage.png;Controls/ButtonImage.png
-
-#begin ../../../Game Development/Cave Tileset/Cave Tileset/_Complete_static_BG_(288 x 208).png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../../Game Development/Cave Tileset/Cave Tileset/_Complete_static_BG_(288 x 208).png;Cave Tileset/_Complete_static_BG_(288 x 208).png
-
-#begin ../../../Game Development/Cave Tileset/Cave Tileset/Brown_Tile_Terrain (16 x 16).png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../../Game Development/Cave Tileset/Cave Tileset/Brown_Tile_Terrain (16 x 16).png;Cave Tileset/Brown_Tile_Terrain (16 x 16).png
-
-#begin ../../../Game Development/Cave Tileset/Cave Tileset/Gray_Tile_Terrain (16 x 16).png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../../Game Development/Cave Tileset/Cave Tileset/Gray_Tile_Terrain (16 x 16).png;Cave Tileset/Gray_Tile_Terrain (16 x 16).png
-
-#begin ../../../Game Development/Cave Tileset/Cave Tileset/Scaffolding_and_BG_Parts (16 x 16).png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../../Game Development/Cave Tileset/Cave Tileset/Scaffolding_and_BG_Parts (16 x 16).png;Cave Tileset/Scaffolding_and_BG_Parts (16 x 16).png
-
 #begin Assets.png
 /copy:Assets.png
 
+#begin Cave Tileset/_Complete_static_BG_(288 x 208).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Cave Tileset/_Complete_static_BG_(288 x 208).png
+
+#begin Cave Tileset/_Complete_static_BG_(288 x 208).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Cave Tileset/_Complete_static_BG_(288 x 208).png
+
+#begin Cave Tileset/Brown_Tile_Terrain (16 x 16).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Cave Tileset/Brown_Tile_Terrain (16 x 16).png
+
+#begin Cave Tileset/Brown_Tile_Terrain (16 x 16).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Cave Tileset/Brown_Tile_Terrain (16 x 16).png
+
+#begin Cave Tileset/Gray_Tile_Terrain (16 x 16).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Cave Tileset/Gray_Tile_Terrain (16 x 16).png
+
+#begin Cave Tileset/Gray_Tile_Terrain (16 x 16).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Cave Tileset/Gray_Tile_Terrain (16 x 16).png
+
+#begin Cave Tileset/Scaffolding_and_BG_Parts (16 x 16).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Cave Tileset/Scaffolding_and_BG_Parts (16 x 16).png
+
+#begin Cave Tileset/Scaffolding_and_BG_Parts (16 x 16).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Cave Tileset/Scaffolding_and_BG_Parts (16 x 16).png
+
 #begin Controls/ButtonImage.png
-/copy:Controls/ButtonImage.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Controls/ButtonImage.png
 
 #begin Final/Assets/Assets.png
 /importer:TextureImporter

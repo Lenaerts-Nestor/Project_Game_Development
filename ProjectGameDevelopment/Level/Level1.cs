@@ -52,7 +52,7 @@ namespace ProjectGameDevelopment.Level
 
         public override void Update(GameTime gameTime)
         {
-            UpdateTheLevel(gameTime,this.Game);
+            UpdateTheLevel(gameTime,this.Game,3);
         }
     }
 }
