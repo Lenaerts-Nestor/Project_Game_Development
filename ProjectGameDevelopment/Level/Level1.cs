@@ -14,7 +14,7 @@ namespace ProjectGameDevelopment.Level
 {
     public class Level1 : LevelMaker
     {
-        private new Game1 Game => (Game1)base.Game;
+        private new Game1 Game => (Game1)base.Game;   //dit is van gamescreen
         public Level1(Game game) : base(game) { }
         public override void LoadContent()
         {

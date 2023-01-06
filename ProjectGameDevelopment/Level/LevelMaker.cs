@@ -12,13 +12,7 @@ namespace ProjectGameDevelopment.Level
 {
     public abstract class LevelMaker : GameScreen, IPlayerconditionCheck
     {
-        /// <summary>
-        /// Alle levels gaan de volgende Properties gebruiken om het Level te maken [het map , de player , de enemies, de bullets enzovoort]
-        /// </summary>
-        /// <param name="game"></param>
-
-
-        public LevelMaker(Game game) : base(game) { }
+        public LevelMaker(Game game) : base(game) { }       //dit is van gamescreen
         public SpriteBatch _spriteBatch { get; set; }
 
 
@@ -69,7 +63,7 @@ namespace ProjectGameDevelopment.Level
         }
 
         //UPDATE EN DRAW THE LEVEL
-        public void DrawTheLevel(GameTime gameTime)
+        public void DrawTheLevel(GameTime gameTime) 
         {
             _spriteBatch.Begin();
 

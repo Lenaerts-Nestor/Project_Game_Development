@@ -34,17 +34,6 @@ namespace ProjectGameDevelopment.Level
                 }
             }
 
-            switch (DesiredLVL)
-            {
-                case 2:
-
-                    break;
-                default:
-                    break;
-            }
-
-
-
         }
         public void GetEndzone(Player Player, Rectangle EndZone, Game1 Game)
         {

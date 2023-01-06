@@ -141,6 +141,211 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="ProjectGameDevelopment.InputControl.KeyboardReader" Collapsed="true">
+    <Position X="32.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InputControl\KeyboardReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectGameDevelopment.Level.Level3" Collapsed="true">
+    <Position X="24.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAgAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Level\Level3.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectGameDevelopment.Level.LevelInteraction" Collapsed="true">
+    <Position X="34" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAgBAAAAAAIAAAAAABAAAgAAABAAAAAAAAAAiAAAQ=</HashCode>
+      <FileName>Level\LevelInteraction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectGameDevelopment.Map.MapCollision" Collapsed="true">
+    <Position X="35.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAIAAAAAAAAAAAAAAAIGAAAAAAAA=</HashCode>
+      <FileName>Map\MapCollision.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectGameDevelopment.Menu.GameOverPanel" Collapsed="true">
+    <Position X="30.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAIgAAAAAAAAAAAAgAAAAAAIAAAAEACAA=</HashCode>
+      <FileName>Menu\GameOverPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectGameDevelopment.Menu.MenuState" Collapsed="true">
+    <Position X="27" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAIgAAAAAAAAAAAAgAAAAAAIAAAEAAAAA=</HashCode>
+      <FileName>Menu\MenuState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectGameDevelopment.MovementBehaviour.Following_Movement" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MovementBehaviour\Type of Enemies Movement\Following_Movement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProjectGameDevelopment.MovementBehaviour.PathWayMovement" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MovementBehaviour\Type of Enemies Movement\PathWayMovement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ProjectGameDevelopment.MovementBehaviour.Players_Jumping" Collapsed="true">
+    <Position X="30.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MovementBehaviour\Players_Jumping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TiledSharp.TmxGroup" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="30.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAEEAAgAAAAAAAAAAAAAQAAAAAAADMAAAAAAACAAA=</HashCode>
+      <FileName>TiledSharp\src\Group.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TiledSharp.TmxImageLayer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="34" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAAABAAAAAAAAAAAIEQAAAAAABDIAAAAAAACAAA=</HashCode>
+      <FileName>TiledSharp\src\ImageLayer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TiledSharp.TmxLayer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="35.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAEAAAAAAAAAAAAAAAAAQAAAAAAALIAAAAAAICAAA=</HashCode>
+      <FileName>TiledSharp\src\Layer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TiledSharp.TmxLayerTile" Collapsed="true">
+    <Position X="27" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAgAAAAABEQACAAAAAAAAAAIAAAAAAAAAAYAA=</HashCode>
+      <FileName>TiledSharp\src\Layer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TiledSharp.TmxObjectGroup" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="32.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAAAAAAAAAAAAAAAIAQAAAAAAAHoAAAAgAACAAA=</HashCode>
+      <FileName>TiledSharp\src\ObjectGroup.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TiledSharp.TmxObject" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="30.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABAAAgIAAAAAAAFQAAAAAAAAIAYAACAACYQA=</HashCode>
+      <FileName>TiledSharp\src\ObjectGroup.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TiledSharp.TmxObjectPoint" Collapsed="true">
+    <Position X="34" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>TiledSharp\src\ObjectGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TiledSharp.TmxText" Collapsed="true">
+    <Position X="27" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgCDAAAAAAACAAAKAAAAAAAAAAEAAAAAAggAAAAAE=</HashCode>
+      <FileName>TiledSharp\src\ObjectGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TiledSharp.TmxAlignment" Collapsed="true">
+    <Position X="34" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAABAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TiledSharp\src\ObjectGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TiledSharp.TmxList&lt;T&gt;" Collapsed="true">
+    <Position X="28.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAACAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TiledSharp\src\TiledCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TiledSharp.PropertyDict" Collapsed="true">
+    <Position X="32.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TiledSharp\src\TiledCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TiledSharp.TmxImage" Collapsed="true">
+    <Position X="32.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgBgAAAAAAAAAAAEAAAAgAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>TiledSharp\src\TiledCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TiledSharp.TmxColor" Collapsed="true">
+    <Position X="28.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAEAAQA=</HashCode>
+      <FileName>TiledSharp\src\TiledCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TiledSharp.TmxBase64Data" Collapsed="true">
+    <Position X="27" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>TiledSharp\src\TiledCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TiledSharp.TmxTileOffset" Collapsed="true">
+    <Position X="28.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>TiledSharp\src\Tileset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TiledSharp.TmxTerrain" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="35.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAACAQA=</HashCode>
+      <FileName>TiledSharp\src\Tileset.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TiledSharp.TmxTilesetTile" Collapsed="true">
+    <Position X="30.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgACCAAIAAAAABAAAIAAAIAAAAAAABAAAQAAAAACAEA=</HashCode>
+      <FileName>TiledSharp\src\Tileset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TiledSharp.TmxAnimationFrame" Collapsed="true">
+    <Position X="35.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TiledSharp\src\Tileset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjectGameDevelopment.Game1" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAwAAAAAAAAAABAAAAAACAIAAAQABAAQ=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Interface Name="ProjectGameDevelopment.AnimationSection.IAnimation" Collapsed="true">
     <Position X="12.75" Y="13" Width="1.5" />
     <TypeIdentifier>
@@ -208,6 +413,20 @@
     <Position X="14.5" Y="13" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TiledSharp\src\TiledCore.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TiledSharp.ITmxLayer" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAADIAAAAAAACAAA=</HashCode>
+      <FileName>TiledSharp\src\ITmxLayer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TiledSharp.ITmxElement" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>TiledSharp\src\TiledCore.cs</FileName>
     </TypeIdentifier>
   </Interface>
