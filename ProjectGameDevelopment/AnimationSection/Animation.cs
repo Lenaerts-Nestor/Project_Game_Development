@@ -24,13 +24,7 @@ namespace ProjectGameDevelopment.AnimationSection
             {
 
                 var rect = new Rectangle(32 * Teller, 0, 32, 32);
-                //var rectSize = new Rectangle(32 * Teller, Row, 45, 45);
-
                 spriteBatch.Draw(_texture, position, rect, Color.White, 0f, new Vector2(), 1, spriteDirection, 0f);
-
-                //spriteBatch.Draw(spritesheet, rectSize, rect, Color.White, 0f, position, spriteDirection, 0f);
-                //spriteBatch.Draw(spritesheet, position,rect, Color.White);
-
                 TslFrame += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
                 if (TslFrame > miliSecPerFrame)

@@ -38,9 +38,6 @@ namespace ProjectGameDevelopment.Characters
             this.isFacingRight = true;
             this.Player = _player;
             this.SpriteMoveDirection = SpriteEffects.None;
-            this.PathWayMovement = new PathWayMovement();
-            this.FollowingMovement = new Following_Movement();
-
             //IN DEZE GAME KUNNEN DE VIJANDEN GEWOON NIET SHIETEN, dus ik vraag ze ook niet in de constructor parameters
 
             CanShoot = false;
