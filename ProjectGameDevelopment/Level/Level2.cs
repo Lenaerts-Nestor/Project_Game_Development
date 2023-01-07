@@ -16,7 +16,7 @@ namespace ProjectGameDevelopment.Level
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             //Map maken => 
             _map = new TmxMap("Content\\Level2.tmx");
-            _tileset = Content.Load<Texture2D>("Final\\Assets\\" + _map.Tilesets[0].Name.ToString());
+            _tileset = Content.Load<Texture2D>("Final\\Season\\" + _map.Tilesets[0].Name.ToString());
             _mapMaker = new MapDrawer(_map, _tileset);
 
             //BEWAAR DE COLLISIONS =>
@@ -25,24 +25,23 @@ namespace ProjectGameDevelopment.Level
             RespawnZone = _collisionController.GetRespawnCollision(_map, RespawnZone);
             EndZone = _collisionController.GetEndCollision(_map, EndZone);
             Player = new Player(new Vector2(RespawnZone[0].X, RespawnZone[0].Y), true,
-              Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Idle_(32 x 32)"), Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Running_(32 x 32)"),
-              Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Ducking_(32 x 32)"), Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Casting_Spell_Aerial_(32 x 32)"));
+              Content.Load<Texture2D>("Sprite Pack 6\\4 - Orange\\Idle (32 x 32)"), Content.Load<Texture2D>("Sprite Pack 6\\4 - Orange\\Rolling (32 x 32)"),
+              Content.Load<Texture2D>("Sprite Pack 6\\4 - Orange\\Squished (32 x 32)"), Content.Load<Texture2D>("Sprite Pack 6\\4 - Orange\\Kick_Attack (32 x 32)"), false) ;
 
             //Enemy Creatie => 
-            _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 4\\2 - Martian_Red_Running (32 x 32)"), EnemyPathWay[0], 1f, false, false, Player, new Vector2()));
-            _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 5\\5 - Moe Scotty\\Flying_(32 x 32)"), EnemyPathWay[1], 1f, false, false, Player, new Vector2()));
-            _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 5\\1 - Robo Retro\\Flying_(32 x 32)"), new Rectangle(), 3f, false, true, Player, new Vector2(RespawnZone[1].X, RespawnZone[1].Y)));
+            _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 4\\8 - Roach_Running (32 x 32)"), EnemyPathWay[0], 1f, false, false, Player, new Vector2()));
+            _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 6\\2 - Fairy\\Idle_Flying (32 x 32)"), EnemyPathWay[1], 1f, false, false, Player, new Vector2()));
+            _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 4\\8 - Roach_Running (32 x 32)"), EnemyPathWay[2], 1f, false, false, Player, new Vector2()));
 
-            //Bullets creatie 
-            _bulletTexture = Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Sparkles_(8 x 8)");
+
         }
         public override void Draw(GameTime gameTime)
         {
-            DrawTheLevel(gameTime);
+            DrawTheLevel(gameTime, new Vector2(30,220), new Vector2(30,250), Color.Black,false);
         }
         public override void Update(GameTime gameTime)
         {
-            UpdateTheLevel(gameTime, this.Game,3);
+            UpdateTheLevel(gameTime, this.Game,3,2);
         }
     }
 }

@@ -21,41 +21,26 @@ namespace ProjectGameDevelopment.Menu
             var buttonTexture = game.Content.Load<Texture2D>("Controls\\ButtonImage");
             var buttonFont = game.Content.Load<SpriteFont>("Fonts\\Font");
 
-            var Level1button = new MenuButton(buttonTexture, buttonFont)
-            {
-                Position = new Vector2(300, 200),
-                Text = "START LVL 1",
+            var Level1button = new MenuButton(buttonTexture, buttonFont){Position = new Vector2(300, 150),Text = "START LVL 1",};
+            var Level2button = new MenuButton(buttonTexture, buttonFont){Position = new Vector2(300, 200),Text = "START LVL 2",};
+            var level3button = new MenuButton(buttonTexture, buttonFont) { Position = new Vector2(300, 250), Text = "START LVL 3", };
+            var level4button = new MenuButton(buttonTexture, buttonFont) { Position = new Vector2(300, 300), Text = "START LVL 4", };
 
-            };
 
             Level1button.Click += Level1Button_click;
-
-
-            //LEVEL 2
-            var Level2button = new MenuButton(buttonTexture, buttonFont)
-            {
-                Position = new Vector2(300, 250),
-                Text = "START LVL 2",
-            };
             Level2button.Click += Level2Button_click;
+            level3button.Click += Level3button_Click;
+            level4button.Click += Level4button_Click;
 
-            _components = new List<MenuComponent>
-            {
-                Level1button,
-                Level2button,
-            };
+            _components = new List<MenuComponent>{Level1button,Level2button,level3button,level4button};
         }
 
-        private void Level2Button_click(object sender, EventArgs e)
-        {
 
-            this.Game.StateOfGame = currentGameState.level2;
-        }
+        private void Level1Button_click(object sender, EventArgs e){this.Game.StateOfGame = currentGameState.level1;}
+        private void Level2Button_click(object sender, EventArgs e){this.Game.StateOfGame = currentGameState.level2;}
+        private void Level3button_Click(object sender, EventArgs e) { this.Game.StateOfGame = currentGameState.level3; }
+        private void Level4button_Click(object sender, EventArgs e) { this.Game.StateOfGame = currentGameState.level4; }
 
-        private void Level1Button_click(object sender, EventArgs e)
-        {
-            this.Game.StateOfGame = currentGameState.level1;
-        }
 
         public override void Update(GameTime gameTime)
         {

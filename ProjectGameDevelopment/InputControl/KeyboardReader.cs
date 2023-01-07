@@ -19,8 +19,8 @@ namespace ProjectGameDevelopment.InputControl
             player.currentMovementState = CurrentMovementState.Idle;
 
             Jumpcontrol.Jumps(player, KeyboardState);
-
-            player.IsShooting = KeyboardState.IsKeyDown(Keys.R);
+            if(player.CanShoot)
+                player.IsShooting = KeyboardState.IsKeyDown(Keys.R);
 
             //GRAVITY
             if (player.IsFalling)
@@ -35,6 +35,7 @@ namespace ProjectGameDevelopment.InputControl
             if (KeyboardState.IsKeyDown(Keys.Left))
             {
                 Velocity.X -= player.Speed;
+                player.IsShooting = false;
                 player.SpriteMoveDirection = SpriteEffects.FlipHorizontally;
                 player.currentMovementState = CurrentMovementState.Running;
 
@@ -42,7 +43,7 @@ namespace ProjectGameDevelopment.InputControl
             else if (KeyboardState.IsKeyDown(Keys.Right))
             {
                 Velocity.X += player.Speed;
-
+                player.IsShooting = false;
                 player.currentMovementState = CurrentMovementState.Running;
                 player.SpriteMoveDirection = SpriteEffects.None;
             }

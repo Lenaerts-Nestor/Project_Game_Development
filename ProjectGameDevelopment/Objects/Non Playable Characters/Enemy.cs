@@ -21,7 +21,7 @@ namespace ProjectGameDevelopment.Characters
             if (this.IsInteligent)
             {
                 this.Position = new Vector2(inteligentPosition.X, inteligentPosition.Y);
-                Hitbox = new Rectangle((int)Position.X, (int)Position.Y, 25, 32);
+                Hitbox = new Rectangle((int)Position.X, (int)Position.Y, 25, 30);
 
             }
             else

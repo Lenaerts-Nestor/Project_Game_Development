@@ -58,6 +58,12 @@ namespace ProjectGameDevelopment
                     case currentGameState.level2:
                         _screenManager.LoadScreen(new Level2(this), new FadeTransition(GraphicsDevice, Color.Black));
                         break;
+                    case currentGameState.level3:
+                        _screenManager.LoadScreen(new Level3(this), new FadeTransition(GraphicsDevice, Color.Black));
+                        break;
+                    case currentGameState.level4:
+                        _screenManager.LoadScreen(new Level4(this), new FadeTransition(GraphicsDevice, Color.Black));
+                        break;
                     case currentGameState.Menu:
                         _screenManager.LoadScreen(new MenuState(this), new FadeTransition(GraphicsDevice, Color.Black));
                         break;
@@ -75,7 +81,7 @@ namespace ProjectGameDevelopment
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.LightBlue);
 
             _spriteBatch.Begin();
             if (StateOfGame == currentGameState.GameOver)

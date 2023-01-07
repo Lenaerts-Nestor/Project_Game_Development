@@ -7,12 +7,12 @@ namespace ProjectGameDevelopment.MovementBehaviour
     {
         public void Jumps(Player player, KeyboardState keyboardstate)
         {
+            //credits => https://flatformer.blogspot.com/
             if (player.IsJumping)
             {
                 player.Velocity.Y += player.JumpSpeed;
                 player.JumpSpeed += 1;
-                //de jump gaat te snel => zoek een manier om de jump trager te doen omhoog, om te tonnen de animatie
-                player.currentMovementState = CurrentMovementState.Jumping;
+
                 if (player.Velocity.Y >= player.StartY)
                 //als het verder is dan de grond
                 {

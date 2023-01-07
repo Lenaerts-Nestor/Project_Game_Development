@@ -23,11 +23,17 @@ namespace ProjectGameDevelopment.Level
                     case 0:
                         Game.StateOfGame = Menu.currentGameState.GameOver;
                         break;
+                    case 1:
+                        Game.StateOfGame = Menu.currentGameState.level1;
+                        break;
                     case 2:
                         Game.StateOfGame = Menu.currentGameState.level2;
                         break;
                     case 3:
                         Game.StateOfGame = Menu.currentGameState.level3;
+                        break;
+                    case 4:
+                        Game.StateOfGame = Menu.currentGameState.level4;
                         break;
                     default:
                         break;
@@ -167,13 +173,13 @@ namespace ProjectGameDevelopment.Level
 
         }
 
-        public void GetItemBuff(List<BuffItem> _buffItemList, Player Player)
+        public void GetItemBuff(List<BuffItem> _buffItemList, Player Player, int buff)
         {
             foreach (var item in _buffItemList.ToArray())
             {
                 if (Player.Hitbox.Intersects(item.Hitbox))
                 {
-                    Player.Speed += 4;
+                    Player.Speed += buff;
                     Player._touchedBuff = true;
                     _buffItemList.Remove(item);
                 }

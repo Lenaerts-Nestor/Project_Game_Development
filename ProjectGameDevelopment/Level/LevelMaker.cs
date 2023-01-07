@@ -63,19 +63,19 @@ namespace ProjectGameDevelopment.Level
         }
 
         //UPDATE EN DRAW THE LEVEL
-        public void DrawTheLevel(GameTime gameTime) 
+        public void DrawTheLevel(GameTime gameTime, Vector2 hpPos, Vector2 score, Color color, bool showpoints) 
         {
             _spriteBatch.Begin();
 
             _collisionController.DrawLevelMap(_spriteBatch, _mapMaker); // Tekenen van de map
 
             //Teken de TEXT Punten en Extra's 
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS: {Player.Points}", new Vector2(50, 50), Color.White);
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"HP: {Player.HealthPoints}", new Vector2(50, 80), Color.White);
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"3 POINTS = Win", new Vector2(50, 250), Color.White);
-            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"Portal", new Vector2(680, 45), Color.White);
+            _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"HP: {Player.HealthPoints}", score, color);
+            if (showpoints)
+                _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"POINTS: {Player.Points}", hpPos, color);
+
             if (_buffItemList.Count > 0)
-                _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"PowerUp Item", new Vector2(RespawnZone[2].X - 20, RespawnZone[2].Y - 30), Color.White);
+                _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts\\Font"), $"Item", new Vector2(RespawnZone[2].X - 10, RespawnZone[2].Y - 20), Color.White);
 
 
             Player.Draw(_spriteBatch, gameTime);                                                //Tekenen van Player
@@ -86,10 +86,10 @@ namespace ProjectGameDevelopment.Level
             _spriteBatch.End();
         }
 
-        public void UpdateTheLevel(GameTime gameTime, Game1 Game, int NextState)
+        public void UpdateTheLevel(GameTime gameTime, Game1 Game, int NextState, int buffSpeed)
         {
             LevelCollisionControler.GetPlayerToNextZone(Player, EndZone, Game, NextState);
-            LevelCollisionControler.GetItemBuff(_buffItemList, Player);
+            LevelCollisionControler.GetItemBuff(_buffItemList, Player,buffSpeed);
             EnemyInitPos = LevelCollisionControler.GetEnemyPosition(_enemyList, EnemyInitPos);
             PlayerInitPosition = Player.Position;
 
@@ -105,6 +105,10 @@ namespace ProjectGameDevelopment.Level
             LevelCollisionControler.GetPlayerGameState(Player, Game);
         }
 
+        public int Getnumer()
+        {
+            return 9;
+        }
 
 
     }

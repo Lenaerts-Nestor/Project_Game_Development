@@ -21,7 +21,7 @@ namespace ProjectGameDevelopment.Characters.Playable
         public KeyboardReader InputReader { get; set; }
         public bool _touchedBuff;
         //Constructor
-        public Player(Vector2 _position, bool canJump, Texture2D _spriteIdle, Texture2D _spriteRunning, Texture2D _jumping, Texture2D _shooting)
+        public Player(Vector2 _position, bool canJump, Texture2D _spriteIdle, Texture2D _spriteRunning, Texture2D _jumping, Texture2D _shooting, bool canshoot = true)
         {
 
             Spritesheet = _spriteIdle;
@@ -29,7 +29,7 @@ namespace ProjectGameDevelopment.Characters.Playable
             StartY = Velocity.Y;
             InputReader = new KeyboardReader();
 
-            CanShoot = true;
+            CanShoot = canshoot;
             IsShooting = false;
             _touchedBuff = false;
 

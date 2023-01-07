@@ -42,19 +42,18 @@ namespace ProjectGameDevelopment.Level
             _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 5\\5 - Moe Scotty\\Flying_(32 x 32)"), EnemyPathWay[1], 1f, false, false, Player, new Vector2()));
             _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 5\\1 - Robo Retro\\Flying_(32 x 32)"), new Rectangle(), 0.5f, false, true, Player, new Vector2(RespawnZone[1].X, RespawnZone[1].Y)));
 
-            _buffItemList.Add(new BuffItem(Content.Load<Texture2D>("Health_Kit (16 x 16)"), new Vector2(RespawnZone[2].X, RespawnZone[2].Y), 0));
-            //Bullets creatie 
+            _buffItemList.Add(new BuffItem(Content.Load<Texture2D>("Sprite Pack 6\\1 - Penguin\\Blink (16 x 16)"), new Vector2(RespawnZone[2].X, RespawnZone[2].Y), 0));
             _bulletTexture = Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Sparkles_(8 x 8)");
         }
 
         public override void Draw(GameTime gameTime)
         {
-            DrawTheLevel(gameTime);
+            DrawTheLevel(gameTime, new Vector2(50, 180), new Vector2(50, 200),Color.Yellow,true);
         }
 
         public override void Update(GameTime gameTime)
         {
-            UpdateTheLevel(gameTime, this.Game,0);
+            UpdateTheLevel(gameTime, this.Game,4,2);
         }
     }
 }
