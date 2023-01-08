@@ -25,11 +25,7 @@ namespace ProjectGameDevelopment.Level
             _tileset = Content.Load<Texture2D>("Final\\Assets\\" + _map.Tilesets[0].Name.ToString());
             _mapMaker = new MapDrawer(_map, _tileset);
 
-            CollisionTiles = _collisionController.GetTilesCollision(_map, CollisionTiles);
-            EnemyPathWay = _collisionController.GetEnemyPathWayCollision(_map, EnemyPathWay);
-            RespawnZone = _collisionController.GetRespawnCollision(_map, RespawnZone);
-            EndZone = _collisionController.GetEndCollision(_map, EndZone);
-
+            GetCollisionOfMap();
 
 
             Player = new Player(new Vector2(RespawnZone[0].X, RespawnZone[0].Y), true,

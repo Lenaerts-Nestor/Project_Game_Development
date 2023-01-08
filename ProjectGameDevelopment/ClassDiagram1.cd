@@ -147,6 +147,7 @@
       <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>InputControl\KeyboardReader.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="ProjectGameDevelopment.Level.Level3" Collapsed="true">
     <Position X="24.5" Y="15.25" Width="1.5" />

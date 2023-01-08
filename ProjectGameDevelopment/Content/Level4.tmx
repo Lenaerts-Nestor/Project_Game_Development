@@ -209,6 +209,5 @@
  </objectgroup>
  <objectgroup id="3" name="EnemyPathWay">
   <object id="319" name="EnemyPathWay [1]" x="248.833" y="96.5415" width="290.334" height="32"/>
-  <object id="320" name="EnemyPathWay [0]" x="482.666" y="296.958" width="171" height="32"/>
  </objectgroup>
 </map>

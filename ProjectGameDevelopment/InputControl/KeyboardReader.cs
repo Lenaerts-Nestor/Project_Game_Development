@@ -6,7 +6,7 @@ using ProjectGameDevelopment.MovementBehaviour;
 
 namespace ProjectGameDevelopment.InputControl
 {
-    public class KeyboardReader
+    public class KeyboardReader : IReadInput
     {
         public void ReadInput(Player player, GameTime gameTime)
         {

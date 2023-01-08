@@ -21,6 +21,7 @@ namespace ProjectGameDevelopment.Level
                 switch (DesiredLVL)
                 {
                     case 0:
+                        Game.StateOfPlayer = Menu.currentPlayerState.Win;
                         Game.StateOfGame = Menu.currentGameState.GameOver;
                         break;
                     case 1:

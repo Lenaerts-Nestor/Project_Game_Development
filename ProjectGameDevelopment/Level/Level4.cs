@@ -28,17 +28,14 @@ namespace ProjectGameDevelopment.Level
             _mapMaker = new MapDrawer(_map, _tileset);
 
             //BEWAAR DE COLLISIONS =>
-            CollisionTiles = _collisionController.GetTilesCollision(_map, CollisionTiles);
-            EnemyPathWay = _collisionController.GetEnemyPathWayCollision(_map, EnemyPathWay);
-            RespawnZone = _collisionController.GetRespawnCollision(_map, RespawnZone);
-            EndZone = _collisionController.GetEndCollision(_map, EndZone);
+            GetCollisionOfMap();
+
             Player = new Player(new Vector2(RespawnZone[0].X, RespawnZone[0].Y), true,
             Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Idle_(32 x 32)"), Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Running_(32 x 32)"),
               Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Ducking_(32 x 32)"), Content.Load<Texture2D>("Sprite Pack 5\\2 - Lil Wiz\\Casting_Spell_Aerial_(32 x 32)"));
 
             //Enemy Creatie => 
             _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 4\\2 - Martian_Red_Running (32 x 32)"), EnemyPathWay[0], 1f, false, false, Player, new Vector2()));
-            _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 5\\5 - Moe Scotty\\Flying_(32 x 32)"), EnemyPathWay[1], 1f, false, false, Player, new Vector2()));
             _enemyList.Add(new Enemy(Content.Load<Texture2D>("Sprite Pack 5\\1 - Robo Retro\\Flying_(32 x 32)"), new Rectangle(), 0.5f, false, true, Player, new Vector2(RespawnZone[1].X, RespawnZone[1].Y)));
 
             _buffItemList.Add(new BuffItem(Content.Load<Texture2D>("Health_Kit (16 x 16)"), new Vector2(RespawnZone[2].X, RespawnZone[2].Y), 0));

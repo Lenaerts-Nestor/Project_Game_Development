@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace ProjectGameDevelopment.Characters.Playable
 {
-    public class Player : Entity, IGameObject, IJump
+    public class Player : Entity, IGameObject
     {
         //Properties: [public fields] => UpperCamelCase || [Private fields] lowerCamelCase
         public Animation[] PlayerAnimation;
@@ -17,7 +17,6 @@ namespace ProjectGameDevelopment.Characters.Playable
         public int TimeXAttacking { get; set; }
         public int Points { get; set; }
         public int HealthPoints = 5;
-
         public KeyboardReader InputReader { get; set; }
         public bool _touchedBuff;
         //Constructor

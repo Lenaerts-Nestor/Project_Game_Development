@@ -20,10 +20,8 @@ namespace ProjectGameDevelopment.Level
             _mapMaker = new MapDrawer(_map, _tileset);
 
             //BEWAAR DE COLLISIONS =>
-            CollisionTiles = _collisionController.GetTilesCollision(_map, CollisionTiles);
-            EnemyPathWay = _collisionController.GetEnemyPathWayCollision(_map, EnemyPathWay);
-            RespawnZone = _collisionController.GetRespawnCollision(_map, RespawnZone);
-            EndZone = _collisionController.GetEndCollision(_map, EndZone);
+            GetCollisionOfMap();
+
             Player = new Player(new Vector2(RespawnZone[0].X, RespawnZone[0].Y), true,
               Content.Load<Texture2D>("Sprite Pack 6\\4 - Orange\\Idle (32 x 32)"), Content.Load<Texture2D>("Sprite Pack 6\\4 - Orange\\Rolling (32 x 32)"),
               Content.Load<Texture2D>("Sprite Pack 6\\4 - Orange\\Squished (32 x 32)"), Content.Load<Texture2D>("Sprite Pack 6\\4 - Orange\\Kick_Attack (32 x 32)"), false) ;

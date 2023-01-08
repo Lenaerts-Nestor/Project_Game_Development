@@ -18,7 +18,6 @@ namespace ProjectGameDevelopment.Objects
         {
             return Hitbox.Intersects(rect);
         }
-
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             spriteBatch.Draw(this.Spritesheet, this.Hitbox, Color.White);
@@ -29,4 +28,5 @@ namespace ProjectGameDevelopment.Objects
             Hitbox.X += (int)Speed;
         }
     }
+
 }
