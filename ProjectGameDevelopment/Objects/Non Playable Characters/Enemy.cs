@@ -6,7 +6,7 @@ using ProjectGameDevelopment.MovementBehaviour;
 
 namespace ProjectGameDevelopment.Characters
 {
-    public class Enemy : NPC, IJump, IGameObject
+    public class Enemy : NPC, IGameObject
     {
         #region public fields
         public Animation[] NPCAnimation;

@@ -16,21 +16,21 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ProjectGameDevelopment.Level.Level1" Collapsed="true">
-    <Position X="6.75" Y="15.25" Width="1.5" />
+    <Position X="6.75" Y="17.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAgAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>Level\Level1.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ProjectGameDevelopment.Level.Level2" Collapsed="true">
-    <Position X="9" Y="15.25" Width="1.5" />
+    <Position X="9" Y="17.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAgAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>Level\Level2.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ProjectGameDevelopment.Level.LevelMaker" Collapsed="true">
-    <Position X="8" Y="13.75" Width="1.5" />
+    <Position X="8" Y="15.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAQAC4AAGAAAAAAAACAAAIgAAAAIAQwAcICCUSAAIA=</HashCode>
       <FileName>Level\LevelMaker.cs</FileName>
@@ -66,7 +66,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ProjectGameDevelopment.Characters.Enemy" Collapsed="true">
-    <Position X="0.75" Y="12" Width="1.5" />
+    <Position X="2.25" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAQAAAAAAAAgAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Objects\Non Playable Characters\Enemy.cs</FileName>
@@ -74,14 +74,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="ProjectGameDevelopment.Characters.NPC" Collapsed="true">
-    <Position X="0.75" Y="10.5" Width="1.5" />
+    <Position X="2.25" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CQAAAAAAAAAAAAAAAAACAAAAAAIAAAAQAAAAAQAAAAA=</HashCode>
       <FileName>Objects\Non Playable Characters\NPC.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ProjectGameDevelopment.Characters.Entity" Collapsed="true">
-    <Position X="1.75" Y="9" Width="1.5" />
+    <Position X="3.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAABBCIAAIAgAAAAAAAAAAAAAABAAAAAAAABABA=</HashCode>
       <FileName>Objects\Entity.cs</FileName>
@@ -89,14 +89,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="ProjectGameDevelopment.Characters.Object" Collapsed="true">
-    <Position X="4" Y="7.75" Width="1.5" />
+    <Position X="5.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAEAAAgQAAAAAABAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Objects\Object.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ProjectGameDevelopment.Characters.Playable.Player" Collapsed="true">
-    <Position X="3" Y="10.5" Width="1.5" />
+    <Position X="4.5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAQAQAAAQAgAggAAIAIAAAAAABAACAAAAAAAAAAAAAA=</HashCode>
       <FileName>Objects\Playable Characters\Player.cs</FileName>
@@ -104,7 +104,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="ProjectGameDevelopment.Objects.BuffItem" Collapsed="true">
-    <Position X="5.25" Y="9" Width="1.5" />
+    <Position X="6.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Objects\BuffItem.cs</FileName>
@@ -112,7 +112,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="ProjectGameDevelopment.Objects.Bullet" Collapsed="true">
-    <Position X="7.5" Y="9" Width="1.5" />
+    <Position X="9" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Objects\Bullet.cs</FileName>
@@ -120,21 +120,21 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TiledSharp.TmxMap" Collapsed="true">
-    <Position X="9" Y="12.5" Width="1.5" />
+    <Position X="9" Y="14.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAkEAAhQAAAgAABEABAGIACAAAAAAMgAAAAQACAAA=</HashCode>
       <FileName>TiledSharp\src\Map.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TiledSharp.TmxDocument" Collapsed="true">
-    <Position X="8" Y="11.25" Width="1.5" />
+    <Position X="8" Y="13.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAgAIAAAAAAAAA=</HashCode>
       <FileName>TiledSharp\src\TiledCore.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TiledSharp.TmxTileset" Collapsed="true">
-    <Position X="6.75" Y="12.5" Width="1.5" />
+    <Position X="6.75" Y="14.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAAAAAAAAAAAAACQAAAQgABMAAAAAAYgCQAA=</HashCode>
       <FileName>TiledSharp\src\Tileset.cs</FileName>
@@ -179,7 +179,7 @@
   <Class Name="ProjectGameDevelopment.Menu.MenuState" Collapsed="true">
     <Position X="27" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAIgAAAAAAAAAAAAgAAAAAAIAAAEAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAIgAAAAAAAAAAAAwAAAAAAIAAAEAAAAA=</HashCode>
       <FileName>Menu\MenuState.cs</FileName>
     </TypeIdentifier>
   </Class>
