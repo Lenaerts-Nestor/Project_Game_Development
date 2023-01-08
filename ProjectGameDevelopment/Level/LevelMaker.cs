@@ -105,10 +105,6 @@ namespace ProjectGameDevelopment.Level
             LevelCollisionControler.GetPlayerGameState(Player, Game);
         }
 
-        public int Getnumer()
-        {
-            return 9;
-        }
 
 
     }
